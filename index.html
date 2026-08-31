@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Nectar Water</title>
 
 <style>
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -52,7 +49,6 @@ body{
     align-items:center;
     justify-content:center;
     font-size:60px;
-    border:3px solid white;
 }
 
 .header h1{
@@ -136,7 +132,7 @@ textarea{
 
 .total-title{
     text-align:center;
-    font-size:23px;
+    font-size:22px;
     font-weight:bold;
     margin-bottom:8px;
 }
@@ -158,7 +154,8 @@ textarea{
     font-size:13px;
     color:#555;
     margin-top:8px;
-    line-height:1.5;
+    line-height:1.6;
+    text-align:left;
 }
 
 .btn{
@@ -234,16 +231,12 @@ textarea{
     font-size:12px;
     margin-top:20px;
 }
-
 </style>
-
 </head>
 
 <body>
 
-
 <div class="app">
-
 
 <!-- HEADER -->
 
@@ -260,9 +253,7 @@ textarea{
 </div>
 
 
-
 <div class="content">
-
 
 <!-- HOME -->
 
@@ -271,7 +262,6 @@ textarea{
 <h2 class="welcome">
 Welcome 👋
 </h2>
-
 
 <div class="card">
 
@@ -329,7 +319,6 @@ RO + UV + Mineral Technology
 </div>
 
 
-
 <!-- ORDER -->
 
 <div id="order" class="section">
@@ -338,9 +327,7 @@ RO + UV + Mineral Technology
 🛒 Order Now
 </h2>
 
-
 <div class="card">
-
 
 <label>
 नाम *
@@ -384,8 +371,14 @@ Quantity चुनें
 <option value="4">4 Jars</option>
 <option value="5">5 Jars</option>
 <option value="10">10 Jars</option>
+<option value="15">15 Jars</option>
 <option value="20">20 Jars</option>
+<option value="25">25 Jars</option>
+<option value="29">29 Jars</option>
+<option value="30">30 Jars</option>
+<option value="40">40 Jars</option>
 <option value="50">50 Jars</option>
+<option value="75">75 Jars</option>
 <option value="100">100 Jars</option>
 
 </select>
@@ -400,22 +393,23 @@ id="distance"
 type="number"
 min="0"
 step="0.1"
-placeholder="जैसे 3, 7, 12 या 16"
+placeholder="जैसे 3, 7 या 15"
 oninput="calculateTotal()"
 >
 
 
 <div class="delivery-note">
 
-🚚 0–5 KM: Free Delivery<br>
-📍 5–15 KM: ₹3 प्रति Jar प्रति अतिरिक्त KM<br>
-📍 15 KM से अधिक: 15 KM तक ₹3/Jar/KM + उसके बाद ₹7/Jar/KM
+🚚 5 KM तक: Free Delivery<br>
+
+📦 1–29 Jar: 5–15 KM के बीच ₹1.50 प्रति Jar<br>
+
+🎉 30 या अधिक Jar: 15 KM तक Free Delivery
 
 </div>
 
 
-
-<!-- TOTAL BOX -->
+<!-- ORDER SUMMARY -->
 
 <div class="total-box">
 
@@ -429,7 +423,9 @@ oninput="calculateTotal()"
 <span
 id="jarAmount"
 class="amount">
+
 ₹0
+
 </span>
 </div>
 
@@ -439,7 +435,9 @@ class="amount">
 <span
 id="deliveryCharge"
 class="amount">
+
 ₹0
+
 </span>
 </div>
 
@@ -447,14 +445,16 @@ class="amount">
 <div class="grand-total">
 
 💵 Grand Total:
+
 <span id="grandTotal">
+
 ₹0
+
 </span>
 
 </div>
 
 </div>
-
 
 
 <label>
@@ -494,11 +494,9 @@ class="success">
 
 </div>
 
-
 </div>
 
 </div>
-
 
 
 <!-- CONTACT -->
@@ -508,7 +506,6 @@ class="success">
 <h2 class="welcome">
 📞 Contact Us
 </h2>
-
 
 <div class="card">
 
@@ -572,9 +569,7 @@ target="_blank">
 
 </div>
 
-
 </div>
-
 
 
 <!-- BOTTOM MENU -->
@@ -609,13 +604,10 @@ onclick="showSection('contact')">
 
 </div>
 
-
 </div>
 
 
-
 <script>
-
 
 /* =========================
    PRICE SETTINGS
@@ -623,11 +615,108 @@ onclick="showSection('contact')">
 
 const JAR_PRICE = 20;
 
-const FREE_DISTANCE = 5;
+const DELIVERY_PER_JAR = 1.50;
 
-const FIRST_RATE = 3;
 
-const SECOND_RATE = 7;
+/* =========================
+   DELIVERY CALCULATION
+========================= */
+
+function calculateDelivery(quantity, distance){
+
+    let deliveryCharge = 0;
+
+
+    /*
+       30 या ज्यादा Jar
+       15 KM तक FREE
+    */
+
+    if(quantity >= 30){
+
+        deliveryCharge = 0;
+
+    }
+
+
+    /*
+       1 से 29 Jar
+       5 KM तक FREE
+       5 KM से ज्यादा और 15 KM तक
+       ₹1.50 प्रति Jar
+    */
+
+    else if(quantity >= 1 && quantity <= 29){
+
+        if(distance > 5 && distance <= 15){
+
+            deliveryCharge =
+                quantity * DELIVERY_PER_JAR;
+
+        }
+
+        else{
+
+            deliveryCharge = 0;
+
+        }
+
+    }
+
+
+    return deliveryCharge;
+
+}
+
+
+/* =========================
+   TOTAL CALCULATION
+========================= */
+
+function calculateTotal(){
+
+    const quantity =
+        Number(
+            document.getElementById("quantity").value
+        ) || 0;
+
+
+    const distance =
+        Number(
+            document.getElementById("distance").value
+        ) || 0;
+
+
+    const jarAmount =
+        quantity * JAR_PRICE;
+
+
+    const deliveryCharge =
+        calculateDelivery(
+            quantity,
+            distance
+        );
+
+
+    const grandTotal =
+        jarAmount + deliveryCharge;
+
+
+    document.getElementById("jarAmount")
+        .innerText =
+        "₹" + jarAmount.toFixed(2);
+
+
+    document.getElementById("deliveryCharge")
+        .innerText =
+        "₹" + deliveryCharge.toFixed(2);
+
+
+    document.getElementById("grandTotal")
+        .innerText =
+        "₹" + grandTotal.toFixed(2);
+
+}
 
 
 /* =========================
@@ -636,354 +725,266 @@ const SECOND_RATE = 7;
 
 function showSection(sectionName){
 
-const sections =
-document.querySelectorAll(".section");
+    const sections =
+        document.querySelectorAll(".section");
 
 
-sections.forEach(function(section){
+    sections.forEach(function(section){
 
-section.classList.remove("active");
+        section.classList.remove("active");
 
-});
+    });
 
 
-document
-.getElementById(sectionName)
-.classList.add("active");
+    document
+        .getElementById(sectionName)
+        .classList.add("active");
 
 }
-
 
 
 /* =========================
-   DELIVERY CALCULATOR
-========================= */
-
-function calculateDelivery(quantity,distance){
-
-let deliveryCharge = 0;
-
-
-if(distance <= FREE_DISTANCE){
-
-deliveryCharge = 0;
-
-}
-
-
-else if(distance <= 15){
-
-const extraKm =
-distance - FREE_DISTANCE;
-
-deliveryCharge =
-extraKm * FIRST_RATE * quantity;
-
-}
-
-
-else{
-
-const firstExtraKm =
-15 - FREE_DISTANCE;
-
-const secondExtraKm =
-distance - 15;
-
-
-deliveryCharge =
-(
-firstExtraKm * FIRST_RATE * quantity
-)
-+
-(
-secondExtraKm * SECOND_RATE * quantity
-);
-
-}
-
-
-return Math.ceil(deliveryCharge);
-
-}
-
-
-
-/* =========================
-   TOTAL CALCULATOR
-========================= */
-
-function calculateTotal(){
-
-const quantity =
-Number(
-document.getElementById("quantity").value
-) || 0;
-
-
-const distance =
-Number(
-document.getElementById("distance").value
-) || 0;
-
-
-const jarAmount =
-quantity * JAR_PRICE;
-
-
-const deliveryCharge =
-calculateDelivery(
-quantity,
-distance
-);
-
-
-const grandTotal =
-jarAmount + deliveryCharge;
-
-
-document.getElementById("jarAmount")
-.innerText =
-"₹" + jarAmount;
-
-
-document.getElementById("deliveryCharge")
-.innerText =
-"₹" + deliveryCharge;
-
-
-document.getElementById("grandTotal")
-.innerText =
-"₹" + grandTotal;
-
-}
-
-
-
-/* =========================
-   SEND ORDER TO WHATSAPP
+   SEND WHATSAPP ORDER
 ========================= */
 
 function sendOrder(){
 
+    const name =
+        document
+        .getElementById("name")
+        .value
+        .trim();
 
-const name =
-document
-.getElementById("name")
-.value
-.trim();
 
+    const mobile =
+        document
+        .getElementById("mobile")
+        .value
+        .trim();
 
-const mobile =
-document
-.getElementById("mobile")
-.value
-.trim();
 
+    const quantity =
+        Number(
+            document
+            .getElementById("quantity")
+            .value
+        );
 
-const quantity =
-Number(
-document
-.getElementById("quantity")
-.value
-);
 
+    const distance =
+        Number(
+            document
+            .getElementById("distance")
+            .value
+        );
 
-const distance =
-Number(
-document
-.getElementById("distance")
-.value
-);
 
+    const address =
+        document
+        .getElementById("address")
+        .value
+        .trim();
 
-const address =
-document
-.getElementById("address")
-.value
-.trim();
 
+    const extra =
+        document
+        .getElementById("extra")
+        .value
+        .trim();
 
-const extra =
-document
-.getElementById("extra")
-.value
-.trim();
 
+    /* VALIDATION */
 
+    if(name === ""){
 
-/* NAME CHECK */
+        alert("कृपया अपना नाम लिखें।");
 
-if(name === ""){
+        return;
 
-alert(
-"कृपया अपना नाम लिखें।"
-);
+    }
 
-return;
 
-}
+    if(!/^[0-9]{10}$/.test(mobile)){
 
+        alert(
+            "कृपया सही 10 अंकों का मोबाइल नंबर डालें।"
+        );
 
+        return;
 
-/* MOBILE CHECK */
+    }
 
-if(!/^[0-9]{10}$/.test(mobile)){
 
-alert(
-"कृपया सही 10 अंकों का मोबाइल नंबर डालें।"
-);
+    if(quantity <= 0){
 
-return;
+        alert(
+            "कृपया Jar की संख्या चुनें।"
+        );
 
-}
+        return;
 
+    }
 
 
-/* QUANTITY CHECK */
+    if(distance < 0){
 
-if(quantity <= 0){
+        alert(
+            "कृपया सही Delivery Distance डालें।"
+        );
 
-alert(
-"कृपया Jar की संख्या चुनें।"
-);
+        return;
 
-return;
+    }
 
-}
 
+    if(address === ""){
 
+        alert(
+            "कृपया Delivery Address लिखें।"
+        );
 
-/* DISTANCE CHECK */
+        return;
 
-if(distance < 0){
+    }
 
-alert(
-"कृपया सही Delivery Distance डालें।"
-);
 
-return;
+    /* CALCULATION */
 
-}
+    const jarAmount =
+        quantity * JAR_PRICE;
 
 
+    const deliveryCharge =
+        calculateDelivery(
+            quantity,
+            distance
+        );
 
-/* ADDRESS CHECK */
 
-if(address === ""){
+    const grandTotal =
+        jarAmount + deliveryCharge;
 
-alert(
-"कृपया Delivery Address लिखें।"
-);
 
-return;
+    /* DELIVERY TEXT */
 
-}
+    let deliveryText;
 
 
+    if(quantity >= 30 && distance <= 15){
 
-/* CALCULATE */
+        deliveryText =
+            "30+ Jar: 15 KM तक Free Delivery";
 
-const jarAmount =
-quantity * JAR_PRICE;
+    }
 
+    else if(
+        quantity <= 29 &&
+        distance > 5 &&
+        distance <= 15
+    ){
 
-const deliveryCharge =
-calculateDelivery(
-quantity,
-distance
-);
+        deliveryText =
+            "₹1.50 प्रति Jar Delivery Charge";
 
+    }
 
-const grandTotal =
-jarAmount + deliveryCharge;
+    else if(
+        quantity <= 29 &&
+        distance <= 5
+    ){
 
+        deliveryText =
+            "5 KM तक Free Delivery";
 
+    }
 
-/* WHATSAPP MESSAGE */
+    else{
 
-const orderMessage =
+        deliveryText =
+            "इस दूरी के लिए Delivery Charge लागू नहीं है";
 
-"💧 NECTAR WATER - NEW ORDER\n\n" +
+    }
 
-"👤 नाम: " +
-name +
-"\n\n" +
 
-"📱 ग्राहक मोबाइल: " +
-mobile +
-"\n\n" +
+    /* WHATSAPP MESSAGE */
 
-"🪣 20 Liter Jar: " +
-quantity +
-"\n\n" +
+    const orderMessage =
 
-"💰 प्रति Jar: ₹" +
-JAR_PRICE +
-"\n\n" +
+        "💧 NECTAR WATER - NEW ORDER\n\n" +
 
-"📍 Delivery Distance: " +
-distance +
-" KM\n\n" +
+        "👤 नाम: " +
+        name +
+        "\n\n" +
 
-"🚚 Delivery Charge: ₹" +
-deliveryCharge +
-"\n\n" +
+        "📱 ग्राहक मोबाइल: " +
+        mobile +
+        "\n\n" +
 
-"💵 GRAND TOTAL: ₹" +
-grandTotal +
-"\n\n" +
+        "🪣 20 Liter Jar: " +
+        quantity +
+        "\n\n" +
 
-"📍 Delivery Address:\n" +
-address +
-"\n\n" +
+        "💰 प्रति Jar: ₹" +
+        JAR_PRICE +
+        "\n\n" +
 
-"📝 अतिरिक्त जानकारी:\n" +
-(extra || "कोई नहीं") +
-"\n\n" +
+        "📍 Delivery Distance: " +
+        distance +
+        " KM\n\n" +
 
-"कृपया मेरा Order confirm करें।";
+        "🚚 Delivery: " +
+        deliveryText +
+        "\n\n" +
 
+        "🚚 Delivery Charge: ₹" +
+        deliveryCharge.toFixed(2) +
+        "\n\n" +
 
+        "🪣 Jar Amount: ₹" +
+        jarAmount.toFixed(2) +
+        "\n\n" +
 
-/* WHATSAPP NUMBER */
+        "💵 GRAND TOTAL: ₹" +
+        grandTotal.toFixed(2) +
+        "\n\n" +
 
-const whatsappNumber =
-"918604970943";
+        "📍 Delivery Address:\n" +
+        address +
+        "\n\n" +
 
+        "📝 अतिरिक्त जानकारी:\n" +
+        (extra || "कोई नहीं") +
+        "\n\n" +
 
+        "कृपया मेरा Order confirm करें।";
 
-/* WHATSAPP URL */
 
-const whatsappURL =
+    /* WHATSAPP */
 
-"https://wa.me/" +
-whatsappNumber +
-"?text=" +
-encodeURIComponent(orderMessage);
+    const whatsappNumber =
+        "918604970943";
 
 
+    const whatsappURL =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(orderMessage);
 
-/* SUCCESS MESSAGE */
 
-document
-.getElementById("success")
-.style.display = "block";
+    document
+        .getElementById("success")
+        .style.display = "block";
 
 
-
-/* OPEN WHATSAPP */
-
-window.open(
-whatsappURL,
-"_blank"
-);
+    window.open(
+        whatsappURL,
+        "_blank"
+    );
 
 }
 
 </script>
 
-
 </body>
-
 </html>
