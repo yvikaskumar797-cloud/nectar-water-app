@@ -4,210 +4,235 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Nectar Water</title>
 
 <style>
 
 *{
-box-sizing:border-box;
-margin:0;
-padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#667eea,#764ba2);
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
 }
 
 .app{
-width:100%;
-max-width:480px;
-background:white;
-border-radius:28px;
-overflow:hidden;
-box-shadow:0 15px 40px rgba(0,0,0,.25);
+    width:100%;
+    max-width:480px;
+    background:white;
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
 }
 
 .header{
-background:linear-gradient(135deg,#4776f5,#5d6ee8);
-color:white;
-text-align:center;
-padding:28px 20px;
+    background:linear-gradient(135deg,#4776f5,#5d6ee8);
+    color:white;
+    text-align:center;
+    padding:28px 20px;
 }
 
 .logo{
-width:105px;
-height:105px;
-border-radius:50%;
-background:white;
-margin:auto;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:60px;
-border:3px solid white;
+    width:105px;
+    height:105px;
+    border-radius:50%;
+    background:white;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:60px;
+    border:3px solid white;
 }
 
 .header h1{
-font-size:30px;
-margin-top:15px;
+    font-size:30px;
+    margin-top:15px;
 }
 
 .header p{
-margin-top:5px;
+    margin-top:5px;
 }
 
 .content{
-padding:25px 20px 90px;
-min-height:460px;
+    padding:25px 20px 90px;
+    min-height:500px;
 }
 
 .section{
-display:none;
+    display:none;
 }
 
 .section.active{
-display:block;
+    display:block;
 }
 
 .welcome{
-text-align:center;
-font-size:26px;
-margin-bottom:20px;
+    text-align:center;
+    font-size:26px;
+    margin-bottom:20px;
 }
 
 .card{
-background:#f2f5ff;
-border-radius:18px;
-padding:20px;
-margin-bottom:18px;
-text-align:center;
+    background:#f2f5ff;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:18px;
+    text-align:center;
 }
 
 .card h2{
-font-size:21px;
-margin-bottom:12px;
+    font-size:21px;
+    margin-bottom:12px;
 }
 
 .card p{
-line-height:1.6;
-margin-bottom:12px;
+    line-height:1.6;
+    margin-bottom:12px;
 }
 
 label{
-display:block;
-text-align:left;
-font-weight:bold;
-margin-top:10px;
+    display:block;
+    text-align:left;
+    font-weight:bold;
+    margin-top:10px;
 }
 
 input,
 textarea,
 select{
-width:100%;
-padding:14px;
-margin-top:7px;
-border:1px solid #ccc;
-border-radius:11px;
-font-size:16px;
+    width:100%;
+    padding:14px;
+    margin-top:7px;
+    border:1px solid #ccc;
+    border-radius:11px;
+    font-size:16px;
 }
 
 textarea{
-height:90px;
-resize:none;
+    height:90px;
+    resize:none;
 }
 
-.total{
-background:#fff3cd;
-border:2px solid #ffc107;
-border-radius:14px;
-padding:15px;
-margin-top:15px;
-font-size:24px;
-font-weight:bold;
-text-align:center;
+.total-box{
+    background:#fff3cd;
+    border:2px solid #ffc107;
+    border-radius:14px;
+    padding:15px;
+    margin-top:15px;
+    text-align:left;
+    line-height:1.8;
+}
+
+.total-title{
+    text-align:center;
+    font-size:23px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.amount{
+    font-weight:bold;
+}
+
+.grand-total{
+    border-top:2px solid #ffc107;
+    margin-top:8px;
+    padding-top:8px;
+    font-size:24px;
+    font-weight:bold;
+    text-align:center;
+}
+
+.delivery-note{
+    font-size:13px;
+    color:#555;
+    margin-top:8px;
+    line-height:1.5;
 }
 
 .btn{
-display:block;
-width:100%;
-border:none;
-border-radius:12px;
-padding:14px;
-font-size:17px;
-cursor:pointer;
-margin-top:12px;
-text-decoration:none;
-text-align:center;
+    display:block;
+    width:100%;
+    border:none;
+    border-radius:12px;
+    padding:14px;
+    font-size:17px;
+    cursor:pointer;
+    margin-top:12px;
+    text-decoration:none;
+    text-align:center;
 }
 
 .primary{
-background:#5872e8;
-color:white;
+    background:#5872e8;
+    color:white;
 }
 
 .whatsapp{
-background:#25D366;
-color:white;
+    background:#25D366;
+    color:white;
 }
 
 .call{
-background:#1683d8;
-color:white;
+    background:#1683d8;
+    color:white;
 }
 
 .map{
-background:#e74c3c;
-color:white;
+    background:#e74c3c;
+    color:white;
 }
 
 .success{
-display:none;
-background:#dcffe8;
-color:#08752c;
-padding:14px;
-border-radius:12px;
-margin-top:15px;
-font-weight:bold;
-text-align:center;
+    display:none;
+    background:#dcffe8;
+    color:#08752c;
+    padding:14px;
+    border-radius:12px;
+    margin-top:15px;
+    font-weight:bold;
+    text-align:center;
 }
 
 .bottom{
-position:fixed;
-bottom:15px;
-width:calc(100% - 30px);
-max-width:450px;
-background:white;
-padding:8px;
-border-radius:20px;
-display:flex;
-gap:7px;
-box-shadow:0 5px 25px rgba(0,0,0,.25);
+    position:fixed;
+    bottom:15px;
+    width:calc(100% - 30px);
+    max-width:450px;
+    background:white;
+    padding:8px;
+    border-radius:20px;
+    display:flex;
+    gap:7px;
+    box-shadow:0 5px 25px rgba(0,0,0,.25);
 }
 
 .nav{
-flex:1;
-border:0;
-background:#5b73e8;
-color:white;
-padding:13px 4px;
-border-radius:12px;
-font-size:13px;
+    flex:1;
+    border:0;
+    background:#5b73e8;
+    color:white;
+    padding:13px 4px;
+    border-radius:12px;
+    font-size:13px;
 }
 
 .footer{
-text-align:center;
-color:#777;
-font-size:12px;
-margin-top:20px;
+    text-align:center;
+    color:#777;
+    font-size:12px;
+    margin-top:20px;
 }
 
 </style>
@@ -366,15 +391,70 @@ Quantity चुनें
 </select>
 
 
-<!-- TOTAL -->
+<label>
+Delivery Distance (KM) *
+</label>
 
-<div
-id="totalBox"
-class="total">
+<input
+id="distance"
+type="number"
+min="0"
+step="0.1"
+placeholder="जैसे 3, 7, 12 या 16"
+oninput="calculateTotal()"
+>
 
-💰 कुल राशि: ₹0
+
+<div class="delivery-note">
+
+🚚 0–5 KM: Free Delivery<br>
+📍 5–15 KM: ₹3 प्रति Jar प्रति अतिरिक्त KM<br>
+📍 15 KM से अधिक: 15 KM तक ₹3/Jar/KM + उसके बाद ₹7/Jar/KM
 
 </div>
+
+
+
+<!-- TOTAL BOX -->
+
+<div class="total-box">
+
+<div class="total-title">
+💰 Order Summary
+</div>
+
+
+<div>
+🪣 Jar Amount:
+<span
+id="jarAmount"
+class="amount">
+₹0
+</span>
+</div>
+
+
+<div>
+🚚 Delivery Charge:
+<span
+id="deliveryCharge"
+class="amount">
+₹0
+</span>
+</div>
+
+
+<div class="grand-total">
+
+💵 Grand Total:
+<span id="grandTotal">
+₹0
+</span>
+
+</div>
+
+</div>
+
 
 
 <label>
@@ -410,7 +490,7 @@ onclick="sendOrder()">
 id="success"
 class="success">
 
-✅ Order WhatsApp पर भेजा जा रहा है...
+✅ आपका Order WhatsApp पर भेजा जा रहा है...
 
 </div>
 
@@ -537,13 +617,22 @@ onclick="showSection('contact')">
 <script>
 
 
-/* JAR PRICE */
+/* =========================
+   PRICE SETTINGS
+========================= */
 
 const JAR_PRICE = 20;
 
+const FREE_DISTANCE = 5;
+
+const FIRST_RATE = 3;
+
+const SECOND_RATE = 7;
 
 
-/* PAGE CHANGE */
+/* =========================
+   PAGE CHANGE
+========================= */
 
 function showSection(sectionName){
 
@@ -566,29 +655,114 @@ document
 
 
 
-/* CALCULATE TOTAL */
+/* =========================
+   DELIVERY CALCULATOR
+========================= */
+
+function calculateDelivery(quantity,distance){
+
+let deliveryCharge = 0;
+
+
+if(distance <= FREE_DISTANCE){
+
+deliveryCharge = 0;
+
+}
+
+
+else if(distance <= 15){
+
+const extraKm =
+distance - FREE_DISTANCE;
+
+deliveryCharge =
+extraKm * FIRST_RATE * quantity;
+
+}
+
+
+else{
+
+const firstExtraKm =
+15 - FREE_DISTANCE;
+
+const secondExtraKm =
+distance - 15;
+
+
+deliveryCharge =
+(
+firstExtraKm * FIRST_RATE * quantity
+)
++
+(
+secondExtraKm * SECOND_RATE * quantity
+);
+
+}
+
+
+return Math.ceil(deliveryCharge);
+
+}
+
+
+
+/* =========================
+   TOTAL CALCULATOR
+========================= */
 
 function calculateTotal(){
 
 const quantity =
 Number(
 document.getElementById("quantity").value
-);
+) || 0;
 
 
-const total =
+const distance =
+Number(
+document.getElementById("distance").value
+) || 0;
+
+
+const jarAmount =
 quantity * JAR_PRICE;
 
 
-document.getElementById("totalBox")
-.innerHTML =
-"💰 कुल राशि: ₹" + total;
+const deliveryCharge =
+calculateDelivery(
+quantity,
+distance
+);
+
+
+const grandTotal =
+jarAmount + deliveryCharge;
+
+
+document.getElementById("jarAmount")
+.innerText =
+"₹" + jarAmount;
+
+
+document.getElementById("deliveryCharge")
+.innerText =
+"₹" + deliveryCharge;
+
+
+document.getElementById("grandTotal")
+.innerText =
+"₹" + grandTotal;
 
 }
 
 
 
-/* SEND ORDER */
+/* =========================
+   SEND ORDER TO WHATSAPP
+========================= */
 
 function sendOrder(){
 
@@ -615,6 +789,14 @@ document
 );
 
 
+const distance =
+Number(
+document
+.getElementById("distance")
+.value
+);
+
+
 const address =
 document
 .getElementById("address")
@@ -630,18 +812,21 @@ document
 
 
 
-/* CHECK NAME */
+/* NAME CHECK */
 
 if(name === ""){
 
-alert("कृपया अपना नाम लिखें।");
+alert(
+"कृपया अपना नाम लिखें।"
+);
 
 return;
 
 }
 
 
-/* CHECK MOBILE */
+
+/* MOBILE CHECK */
 
 if(!/^[0-9]{10}$/.test(mobile)){
 
@@ -654,7 +839,8 @@ return;
 }
 
 
-/* CHECK QUANTITY */
+
+/* QUANTITY CHECK */
 
 if(quantity <= 0){
 
@@ -667,7 +853,22 @@ return;
 }
 
 
-/* CHECK ADDRESS */
+
+/* DISTANCE CHECK */
+
+if(distance < 0){
+
+alert(
+"कृपया सही Delivery Distance डालें।"
+);
+
+return;
+
+}
+
+
+
+/* ADDRESS CHECK */
 
 if(address === ""){
 
@@ -681,10 +882,21 @@ return;
 
 
 
-/* TOTAL */
+/* CALCULATE */
 
-const total =
+const jarAmount =
 quantity * JAR_PRICE;
+
+
+const deliveryCharge =
+calculateDelivery(
+quantity,
+distance
+);
+
+
+const grandTotal =
+jarAmount + deliveryCharge;
 
 
 
@@ -710,8 +922,16 @@ quantity +
 JAR_PRICE +
 "\n\n" +
 
-"💵 कुल राशि: ₹" +
-total +
+"📍 Delivery Distance: " +
+distance +
+" KM\n\n" +
+
+"🚚 Delivery Charge: ₹" +
+deliveryCharge +
+"\n\n" +
+
+"💵 GRAND TOTAL: ₹" +
+grandTotal +
 "\n\n" +
 
 "📍 Delivery Address:\n" +
@@ -726,17 +946,25 @@ address +
 
 
 
-/* WHATSAPP LINK */
+/* WHATSAPP NUMBER */
+
+const whatsappNumber =
+"918604970943";
+
+
+
+/* WHATSAPP URL */
 
 const whatsappURL =
 
-"https://wa.me/918604970943?text=" +
-
+"https://wa.me/" +
+whatsappNumber +
+"?text=" +
 encodeURIComponent(orderMessage);
 
 
 
-/* SUCCESS */
+/* SUCCESS MESSAGE */
 
 document
 .getElementById("success")
