@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Nectar Water | Pure & Natural Drinking Water</title>
+<title>Nectar Water</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -14,7 +15,7 @@
 }
 
 body{
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
     background:linear-gradient(135deg,#667eea,#764ba2);
     min-height:100vh;
     display:flex;
@@ -29,26 +30,29 @@ body{
     background:white;
     border-radius:28px;
     overflow:hidden;
-    box-shadow:0 15px 40px rgba(0,0,0,0.25);
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
 }
 
-/* HEADER */
 .header{
     background:linear-gradient(135deg,#4776f5,#5d6ee8);
     color:white;
     text-align:center;
-    padding:28px 20px 25px;
+    padding:28px 20px;
 }
 
 .logo{
     width:105px;
     height:105px;
-    background:white;
     border-radius:50%;
-    margin:0 auto 15px;
+    background:white;
+    margin:auto;
     padding:5px;
     border:3px solid white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     overflow:hidden;
+    font-size:60px;
 }
 
 .logo img{
@@ -60,16 +64,16 @@ body{
 
 .header h1{
     font-size:30px;
-    margin-bottom:6px;
+    margin:15px 0 5px;
 }
 
 .header p{
     font-size:16px;
 }
 
-/* CONTENT */
 .content{
     padding:25px 20px 90px;
+    min-height:460px;
 }
 
 .section{
@@ -83,13 +87,13 @@ body{
 .welcome{
     text-align:center;
     font-size:26px;
-    margin-bottom:22px;
+    margin-bottom:20px;
 }
 
 .card{
     background:#f2f5ff;
     border-radius:18px;
-    padding:22px;
+    padding:20px;
     margin-bottom:18px;
     text-align:center;
 }
@@ -100,91 +104,86 @@ body{
 }
 
 .card p{
-    font-size:16px;
     line-height:1.6;
-    margin-bottom:15px;
+    margin-bottom:12px;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:14px;
+    margin:7px 0 14px;
+    border:1px solid #ccc;
+    border-radius:11px;
+    font-size:16px;
+}
+
+textarea{
+    height:90px;
+    resize:none;
+}
+
+label{
+    display:block;
+    text-align:left;
+    font-weight:bold;
+    margin-top:5px;
 }
 
 .btn{
     display:block;
     width:100%;
     border:none;
-    padding:14px;
     border-radius:12px;
+    padding:14px;
     font-size:17px;
     cursor:pointer;
+    margin-top:10px;
     text-decoration:none;
-    margin-top:12px;
-    transition:0.2s;
 }
 
-.btn:hover{
-    transform:scale(1.02);
-}
-
-.btn-primary{
+.primary{
     background:#5872e8;
     color:white;
 }
 
-.btn-whatsapp{
+.whatsapp{
     background:#25D366;
     color:white;
 }
 
-.btn-call{
+.call{
     background:#1683d8;
     color:white;
 }
 
-.btn-map{
+.map{
     background:#e74c3c;
     color:white;
 }
 
-/* ORDER FORM */
-.form-group{
-    margin-bottom:15px;
-}
-
-.form-group label{
-    display:block;
+.total{
+    background:#fff3cd;
+    border:2px solid #ffc107;
+    border-radius:14px;
+    padding:14px;
+    margin:5px 0 15px;
+    font-size:24px;
     font-weight:bold;
-    margin-bottom:7px;
 }
 
-.form-group input,
-.form-group textarea,
-.form-group select{
-    width:100%;
-    padding:13px;
-    border:1px solid #ccc;
-    border-radius:10px;
-    font-size:16px;
+.success{
+    display:none;
+    background:#dcffe8;
+    color:#08752c;
+    padding:14px;
+    border-radius:12px;
+    margin-top:15px;
+    font-weight:bold;
 }
 
-.form-group textarea{
-    height:90px;
-    resize:none;
-}
-
-/* CONTACT */
-.contact-card{
-    text-align:center;
-}
-
-.contact-item{
-    padding:14px 5px;
-    border-bottom:1px solid #ddd;
-    line-height:1.6;
-}
-
-.contact-item:last-child{
-    border-bottom:none;
-}
-
-/* BOTTOM NAV */
-.bottom-nav{
+.bottom{
     position:fixed;
     bottom:15px;
     width:calc(100% - 30px);
@@ -194,360 +193,552 @@ body{
     border-radius:20px;
     display:flex;
     gap:7px;
-    box-shadow:0 5px 25px rgba(0,0,0,0.25);
+    box-shadow:0 5px 25px rgba(0,0,0,.25);
 }
 
-.nav-btn{
+.nav{
     flex:1;
-    border:none;
+    border:0;
     background:#5b73e8;
     color:white;
-    padding:13px 5px;
-    border-radius:13px;
-    font-size:14px;
-    cursor:pointer;
-}
-
-.nav-btn:hover{
-    background:#405bd4;
-}
-
-.success{
-    display:none;
-    background:#d9ffe7;
-    color:#08752c;
-    padding:15px;
+    padding:13px 4px;
     border-radius:12px;
-    margin-top:15px;
-    text-align:center;
-    font-weight:bold;
+    font-size:13px;
 }
 
 .footer{
     text-align:center;
-    margin-top:20px;
-    font-size:13px;
     color:#777;
+    font-size:12px;
+    margin-top:20px;
 }
+
 </style>
 </head>
+
 
 <body>
 
 <div class="app">
 
+
 <!-- HEADER -->
+
 <div class="header">
 
-    <div class="logo">
-        <img src="nectar-water.jpg"
-             alt="Nectar Water Logo"
-             onerror="this.style.display='none'; this.parentElement.innerHTML='💧'; this.parentElement.style.fontSize='60px'; this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center';">
-    </div>
+<div class="logo">
 
-    <h1>Nectar Water 💧</h1>
-    <p>Pure & Natural Drinking Water</p>
+💧
+
+</div>
+
+<h1>Nectar Water 💧</h1>
+
+<p>Pure & Natural Drinking Water</p>
 
 </div>
 
 
 <div class="content">
 
+
 <!-- HOME -->
+
 <div id="home" class="section active">
 
-    <h2 class="welcome">Welcome 👋</h2>
-
-    <div class="card">
-
-        <h2>20 Liter Jar Home Delivery 🚚</h2>
-
-        <p>
-            शुद्ध पानी, स्वस्थ जीवन।
-        </p>
-
-        <button class="btn btn-primary"
-                onclick="showSection('order')">
-            🛒 Order Now
-        </button>
-
-    </div>
+<h2 class="welcome">
+Welcome 👋
+</h2>
 
 
-    <div class="card">
+<div class="card">
 
-        <h2>RO + UV + Mineral Technology</h2>
+<h2>
+20 Liter Jar Home Delivery 🚚
+</h2>
 
-        <p>
-            घर, दुकान, शादी-पार्टी और bulk supply के लिए संपर्क करें।
-        </p>
+<p>
+शुद्ध पानी, स्वस्थ जीवन।
+</p>
 
-    </div>
+<p>
+<b>₹20 प्रति 20 Liter Jar</b>
+</p>
 
+<button
+class="btn primary"
+onclick="showSection('order')">
 
-    <div class="card">
+🛒 Order Now
 
-        <h2>हमारी सुविधाएं 💧</h2>
-
-        <p>
-            ✅ 20 Liter Jar<br>
-            ✅ Home Delivery<br>
-            ✅ RO + UV Technology<br>
-            ✅ Bulk Water Supply
-        </p>
-
-    </div>
+</button>
 
 </div>
+
+
+<div class="card">
+
+<h2>
+RO + UV + Mineral Technology
+</h2>
+
+<p>
+घर, दुकान, शादी-पार्टी और bulk supply के लिए संपर्क करें।
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+हमारी सुविधाएं 💧
+</h2>
+
+<p>
+✅ 20 Liter Jar<br>
+✅ Home Delivery<br>
+✅ RO + UV Technology<br>
+✅ Bulk Water Supply
+</p>
+
+</div>
+
+</div>
+
 
 
 <!-- ORDER -->
+
 <div id="order" class="section">
 
-    <h2 class="welcome">🛒 Order Now</h2>
-
-    <div class="card">
-
-        <form onsubmit="sendOrder(event)">
-
-            <div class="form-group">
-                <label>नाम *</label>
-                <input type="text"
-                       id="name"
-                       placeholder="अपना नाम लिखें"
-                       required>
-            </div>
+<h2 class="welcome">
+🛒 Order Now
+</h2>
 
 
-            <div class="form-group">
-                <label>मोबाइल नंबर *</label>
-                <input type="tel"
-                       id="mobile"
-                       placeholder="10 अंकों का मोबाइल नंबर"
-                       maxlength="10"
-                       required>
-            </div>
+<div class="card">
 
 
-            <div class="form-group">
-                <label>20 Liter Jar की संख्या *</label>
-
-                <select id="quantity" required>
-                    <option value="">Quantity चुनें</option>
-                    <option value="1">1 Jar</option>
-                    <option value="2">2 Jars</option>
-                    <option value="3">3 Jars</option>
-                    <option value="4">4 Jars</option>
-                    <option value="5">5 Jars</option>
-                    <option value="10">10 Jars</option>
-                    <option value="20">20 Jars</option>
-                    <option value="50">50 Jars</option>
-                    <option value="100">100 Jars</option>
-                </select>
-            </div>
+<form onsubmit="sendOrder(event)">
 
 
-            <div class="form-group">
-                <label>Delivery Address *</label>
+<label>
+नाम *
+</label>
 
-                <textarea id="address"
-                          placeholder="पूरा पता लिखें"
-                          required></textarea>
-            </div>
-
-
-            <div class="form-group">
-                <label>अतिरिक्त जानकारी</label>
-
-                <textarea id="message"
-                          placeholder="यदि कोई विशेष जानकारी हो तो लिखें"></textarea>
-            </div>
+<input
+id="name"
+type="text"
+placeholder="अपना नाम लिखें"
+required
+>
 
 
-            <button type="submit"
-                    class="btn btn-whatsapp">
-                📱 WhatsApp पर Order भेजें
-            </button>
+<label>
+मोबाइल नंबर *
+</label>
 
-        </form>
+<input
+id="mobile"
+type="tel"
+placeholder="10 अंकों का मोबाइल नंबर"
+maxlength="10"
+required
+>
 
-        <div id="success"
-             class="success">
-            आपका Order WhatsApp पर भेजा जा रहा है...
-        </div>
 
-    </div>
+<label>
+20 Liter Jar की संख्या *
+</label>
+
+<select
+id="quantity"
+onchange="calculateTotal()"
+required
+>
+
+<option value="">
+Quantity चुनें
+</option>
+
+<option value="1">
+1 Jar
+</option>
+
+<option value="2">
+2 Jars
+</option>
+
+<option value="3">
+3 Jars
+</option>
+
+<option value="4">
+4 Jars
+</option>
+
+<option value="5">
+5 Jars
+</option>
+
+<option value="10">
+10 Jars
+</option>
+
+<option value="20">
+20 Jars
+</option>
+
+<option value="50">
+50 Jars
+</option>
+
+<option value="100">
+100 Jars
+</option>
+
+</select>
+
+
+<div
+id="totalBox"
+class="total">
+
+💰 कुल राशि: ₹0
 
 </div>
 
 
+<label>
+Delivery Address *
+</label>
+
+<textarea
+id="address"
+placeholder="पूरा Delivery Address लिखें"
+required>
+</textarea>
+
+
+<label>
+अतिरिक्त जानकारी
+</label>
+
+<textarea
+id="message"
+placeholder="यदि कोई विशेष जानकारी हो तो लिखें">
+</textarea>
+
+
+<button
+type="submit"
+class="btn whatsapp">
+
+📱 WhatsApp पर Order भेजें
+
+</button>
+
+
+</form>
+
+
+<div
+id="success"
+class="success">
+
+✅ आपका Order WhatsApp पर भेजा जा रहा है...
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
 <!-- CONTACT -->
+
 <div id="contact" class="section">
 
-    <h2 class="welcome">📞 Contact Us</h2>
-
-    <div class="card contact-card">
-
-        <div class="contact-item">
-            <b>💧 Nectar Water</b><br>
-            Pure & Natural Drinking Water
-        </div>
-
-        <div class="contact-item">
-            <b>📍 Address</b><br>
-            Jahanabad, District Fatehpur,<br>
-            Uttar Pradesh
-        </div>
-
-        <div class="contact-item">
-            <b>📱 WhatsApp / Mobile</b><br>
-            8604970943
-        </div>
+<h2 class="welcome">
+📞 Contact Us
+</h2>
 
 
-        <a class="btn btn-whatsapp"
-           href="https://wa.me/918604970943"
-           target="_blank">
-            📱 WhatsApp करें
-        </a>
+<div class="card">
+
+<h2>
+Nectar Water 💧
+</h2>
+
+<p>
+<b>Vikash Kumar Yadav</b>
+</p>
+
+<p>
+📱 8604970943
+</p>
+
+<p>
+📧 yvikaskumar797@gmail.com
+</p>
+
+<p>
+📍 Jahanabad, District Fatehpur, U.P.
+</p>
 
 
-        <a class="btn btn-call"
-           href="tel:8604970943">
-            📞 अभी Call करें
-        </a>
+<a
+class="btn whatsapp"
+href="https://wa.me/918604970943"
+target="_blank">
+
+📱 WhatsApp करें
+
+</a>
 
 
-        <a class="btn btn-map"
-           href="https://www.google.com/maps/search/?api=1&query=Jahanabad%2C+District+Fatehpur%2C+Uttar+Pradesh"
-           target="_blank">
-            📍 Google Maps पर Location
-        </a>
+<a
+class="btn call"
+href="tel:8604970943">
 
-    </div>
+📞 Call करें
+
+</a>
+
+
+<a
+class="btn map"
+href="https://www.google.com/maps/search/?api=1&query=Jahanabad%2C%20District%20Fatehpur%2C%20Uttar%20Pradesh"
+target="_blank">
+
+📍 Google Maps
+
+</a>
+
+
+</div>
 
 </div>
 
 
 <div class="footer">
-    © 2026 Nectar Water — All Rights Reserved
-</div>
+
+© 2026 Nectar Water
 
 </div>
 
 
-<!-- BOTTOM NAV -->
-<div class="bottom-nav">
+</div>
 
-    <button class="nav-btn"
-            onclick="showSection('home')">
-        🏠 Home
-    </button>
 
-    <button class="nav-btn"
-            onclick="showSection('order')">
-        🛒 Order
-    </button>
 
-    <button class="nav-btn"
-            onclick="showSection('contact')">
-        📞 Contact
-    </button>
+<!-- BOTTOM MENU -->
+
+<div class="bottom">
+
+<button
+class="nav"
+onclick="showSection('home')">
+
+🏠 Home
+
+</button>
+
+
+<button
+class="nav"
+onclick="showSection('order')">
+
+🛒 Order
+
+</button>
+
+
+<button
+class="nav"
+onclick="showSection('contact')">
+
+📞 Contact
+
+</button>
 
 </div>
 
+
 </div>
+
 
 
 <script>
 
-/* SECTION CHANGE */
+
+const JAR_PRICE = 20;
+
+
+
+/* PAGE CHANGE */
+
 function showSection(sectionName){
 
-    const sections = document.querySelectorAll(".section");
+const sections =
+document.querySelectorAll(".section");
 
-    sections.forEach(function(section){
-        section.classList.remove("active");
-    });
+sections.forEach(function(section){
 
-    document.getElementById(sectionName).classList.add("active");
+section.classList.remove("active");
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+});
+
+
+document
+.getElementById(sectionName)
+.classList.add("active");
+
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
 }
 
 
-/* WHATSAPP ORDER */
+
+/* TOTAL CALCULATOR */
+
+function calculateTotal(){
+
+const quantity =
+parseInt(
+document.getElementById("quantity").value
+) || 0;
+
+
+const total =
+quantity * JAR_PRICE;
+
+
+document.getElementById("totalBox")
+.innerText =
+"💰 कुल राशि: ₹" + total;
+
+}
+
+
+
+/* SEND ORDER */
+
 function sendOrder(event){
 
-    event.preventDefault();
-
-    const name =
-        document.getElementById("name").value.trim();
-
-    const mobile =
-        document.getElementById("mobile").value.trim();
-
-    const quantity =
-        document.getElementById("quantity").value;
-
-    const address =
-        document.getElementById("address").value.trim();
-
-    const extra =
-        document.getElementById("message").value.trim();
+event.preventDefault();
 
 
-    /* MOBILE VALIDATION */
-
-    if(!/^[0-9]{10}$/.test(mobile)){
-
-        alert("कृपया सही 10 अंकों का मोबाइल नंबर डालें।");
-
-        return;
-    }
+const name =
+document.getElementById("name")
+.value.trim();
 
 
-    const whatsappNumber = "918604970943";
+const mobile =
+document.getElementById("mobile")
+.value.trim();
 
 
-    const text =
-`💧 *Nectar Water - New Order*
-
-👤 नाम: ${name}
-
-📱 मोबाइल: ${mobile}
-
-🪣 20 Liter Jar: ${quantity}
-
-📍 Delivery Address:
-${address}
-
-📝 अतिरिक्त जानकारी:
-${extra || "कोई नहीं"}
-
-कृपया मेरा Order confirm करें।`;
+const quantity =
+document.getElementById("quantity")
+.value;
 
 
-    const whatsappURL =
-        "https://wa.me/" +
-        whatsappNumber +
-        "?text=" +
-        encodeURIComponent(text);
+const address =
+document.getElementById("address")
+.value.trim();
 
 
-    document.getElementById("success").style.display="block";
+const extra =
+document.getElementById("message")
+.value.trim();
 
 
-    window.open(
-        whatsappURL,
-        "_blank"
-    );
+const total =
+parseInt(quantity) * JAR_PRICE;
+
+
+
+/* MOBILE CHECK */
+
+if(!/^[0-9]{10}$/.test(mobile)){
+
+alert(
+"कृपया सही 10 अंकों का मोबाइल नंबर डालें।"
+);
+
+return;
+
+}
+
+
+
+if(!quantity){
+
+alert(
+"कृपया Jar की संख्या चुनें।"
+);
+
+return;
+
+}
+
+
+
+/* WHATSAPP MESSAGE */
+
+const text =
+
+"💧 NECTAR WATER - NEW ORDER\n\n" +
+
+"👤 नाम: " + name + "\n\n" +
+
+"📱 ग्राहक मोबाइल: " + mobile + "\n\n" +
+
+"🪣 20 Liter Jar: " + quantity + "\n\n" +
+
+"💰 प्रति Jar: ₹20\n\n" +
+
+"💵 कुल राशि: ₹" + total + "\n\n" +
+
+"📍 Delivery Address:\n" +
+address + "\n\n" +
+
+"📝 अतिरिक्त जानकारी:\n" +
+(extra || "कोई नहीं") + "\n\n" +
+
+"कृपया मेरा Order confirm करें।";
+
+
+
+const whatsappURL =
+
+"https://wa.me/918604970943?text=" +
+
+encodeURIComponent(text);
+
+
+
+document.getElementById("success")
+.style.display="block";
+
+
+window.open(
+whatsappURL,
+"_blank"
+);
+
 }
 
 </script>
+
 
 </body>
 </html>
