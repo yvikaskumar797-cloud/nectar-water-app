@@ -8,456 +8,425 @@
 
 <style>
 *{
-  box-sizing:border-box;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f1f5f9;
-  color:#1e293b;
-}
-
-button,
-input{
-  font-family:inherit;
-}
-
-button{
-  cursor:pointer;
+    font-family:Arial,sans-serif;
+    background:#f1f5f9;
+    color:#1e293b;
 }
 
 /* ================= LOGIN ================= */
 
-#loginPage{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  background:linear-gradient(135deg,#2563eb,#7c3aed);
+.login-page{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:linear-gradient(135deg,#4776f5,#764ba2);
 }
 
-.loginBox{
-  width:100%;
-  max-width:400px;
-  background:#fff;
-  padding:30px;
-  border-radius:20px;
-  box-shadow:0 15px 40px rgba(0,0,0,.25);
+.login-box{
+    width:100%;
+    max-width:400px;
+    background:#fff;
+    padding:30px;
+    border-radius:22px;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
 }
 
 .logo{
-  text-align:center;
-  font-size:55px;
+    text-align:center;
+    font-size:58px;
+    margin-bottom:5px;
 }
 
-.loginBox h1{
-  text-align:center;
-  margin:8px 0;
+.login-box h1{
+    text-align:center;
+    margin-bottom:5px;
 }
 
-.loginBox p{
-  text-align:center;
-  color:#64748b;
+.login-box p{
+    text-align:center;
+    color:#64748b;
+    margin-bottom:22px;
 }
 
-.loginBox input{
-  width:100%;
-  padding:13px;
-  margin-top:12px;
-  border:1px solid #cbd5e1;
-  border-radius:9px;
-  font-size:16px;
+label{
+    display:block;
+    font-weight:bold;
+    margin-top:14px;
 }
 
-.loginBtn{
-  width:100%;
-  padding:13px;
-  margin-top:15px;
-  border:0;
-  border-radius:9px;
-  background:#2563eb;
-  color:white;
-  font-size:16px;
-  font-weight:bold;
+input{
+    width:100%;
+    padding:13px;
+    margin-top:7px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    font-size:16px;
+    outline:none;
 }
 
-.loginError{
-  color:#dc2626;
-  text-align:center;
-  margin-top:12px;
+input:focus{
+    border-color:#4776f5;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+}
+
+.login-btn{
+    width:100%;
+    margin-top:20px;
+    padding:14px;
+    border-radius:10px;
+    background:#4776f5;
+    color:#fff;
+    font-size:17px;
+    font-weight:bold;
+}
+
+.login-btn:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+}
+
+.message{
+    margin-top:15px;
+    padding:12px;
+    border-radius:10px;
+    display:none;
+    text-align:center;
+    font-weight:bold;
+}
+
+.error{
+    background:#fee2e2;
+    color:#b91c1c;
+}
+
+.success{
+    background:#dcfce7;
+    color:#15803d;
 }
 
 /* ================= ADMIN ================= */
 
 #adminPage{
-  display:none;
+    display:none;
 }
 
 .header{
-  background:linear-gradient(135deg,#2563eb,#4f46e5);
-  color:white;
-  padding:18px;
+    background:linear-gradient(135deg,#4776f5,#5d6ee8);
+    color:white;
+    padding:20px;
 }
 
-.headerInner{
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
+.header-inner{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
 }
 
 .header h1{
-  margin:0 0 5px;
-  font-size:24px;
+    font-size:25px;
 }
 
-.adminEmail{
-  font-size:13px;
-  opacity:.9;
+.admin-email{
+    margin-top:5px;
+    opacity:.9;
+    font-size:14px;
 }
 
 .logout{
-  width:auto;
-  padding:10px 18px;
-  border:0;
-  border-radius:8px;
-  background:#fff;
-  color:#2563eb;
-  font-weight:bold;
+    background:white;
+    color:#4776f5;
+    padding:10px 16px;
+    border-radius:9px;
+    font-weight:bold;
 }
 
 .container{
-  max-width:1200px;
-  margin:auto;
-  padding:20px;
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
 }
 
 /* ================= FILTER ================= */
 
-.filter{
-  background:#fff;
-  padding:18px;
-  border-radius:15px;
-  box-shadow:0 2px 10px rgba(0,0,0,.08);
-  margin-bottom:20px;
+.filter-box{
+    background:white;
+    padding:18px;
+    border-radius:16px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    margin-bottom:20px;
 }
 
-.filterGrid{
-  display:grid;
-  grid-template-columns:1fr 1fr auto auto;
-  gap:12px;
-  align-items:end;
+.filter-row{
+    display:flex;
+    gap:12px;
+    align-items:end;
 }
 
-.filter label{
-  display:block;
-  font-weight:bold;
-  margin-bottom:5px;
+.filter-item{
+    flex:1;
 }
 
-.filter input{
-  width:100%;
-  padding:12px;
-  border:1px solid #cbd5e1;
-  border-radius:8px;
-  font-size:15px;
-}
-
-.refresh,
-.printReport{
-  width:auto;
-  padding:12px 18px;
-  border:0;
-  border-radius:8px;
-  color:white;
-  font-weight:bold;
+.filter-item label{
+    margin-top:0;
 }
 
 .refresh{
-  background:#2563eb;
-}
-
-.printReport{
-  background:#475569;
+    padding:13px 20px;
+    background:#4776f5;
+    color:white;
+    border-radius:10px;
+    font-weight:bold;
+    min-width:110px;
 }
 
 /* ================= STATS ================= */
 
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-  margin-bottom:20px;
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-bottom:20px;
 }
 
 .stat{
-  background:white;
-  padding:20px;
-  border-radius:15px;
-  text-align:center;
-  box-shadow:0 2px 10px rgba(0,0,0,.08);
+    background:white;
+    padding:20px;
+    border-radius:16px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
-.statTitle{
-  color:#64748b;
-  font-size:14px;
+.stat-title{
+    color:#64748b;
+    font-size:14px;
 }
 
-.statValue{
-  font-size:28px;
-  font-weight:bold;
-  margin-top:8px;
+.stat-value{
+    font-size:28px;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+.limit{
+    color:#4776f5;
 }
 
 /* ================= ORDERS ================= */
 
+.orders{
+    display:grid;
+    gap:15px;
+}
+
 .order{
-  background:#fff;
-  padding:20px;
-  border-radius:15px;
-  margin-bottom:15px;
-  box-shadow:0 2px 10px rgba(0,0,0,.08);
+    background:white;
+    border-radius:16px;
+    padding:20px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
-.orderHeader{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-bottom:15px;
+.order-head{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:15px;
 }
 
-.orderNo{
-  font-size:18px;
-  font-weight:bold;
+.order-number{
+    font-size:18px;
+    font-weight:bold;
 }
 
 .status{
-  padding:7px 12px;
-  border-radius:20px;
-  font-size:13px;
-  font-weight:bold;
+    padding:7px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
 }
 
 .pending{
-  background:#fef3c7;
-  color:#92400e;
+    background:#fef3c7;
+    color:#92400e;
 }
 
 .delivered{
-  background:#dcfce7;
-  color:#166534;
+    background:#dcfce7;
+    color:#166534;
 }
 
-.orderGrid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
+.order-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
 }
 
 .detail{
-  background:#f8fafc;
-  padding:11px;
-  border-radius:8px;
-  line-height:1.5;
+    background:#f8fafc;
+    padding:10px;
+    border-radius:8px;
+    word-break:break-word;
 }
 
 .detail b{
-  display:block;
-  margin-bottom:3px;
+    display:block;
+    margin-bottom:4px;
 }
 
 .actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:15px;
+    margin-top:15px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
 }
 
-.action{
-  width:auto;
-  padding:10px 14px;
-  border:0;
-  border-radius:8px;
-  color:white;
-  font-weight:bold;
-  text-decoration:none;
+.action-btn{
+    padding:10px 14px;
+    border-radius:8px;
+    color:white;
+    font-weight:bold;
+    text-decoration:none;
+    display:inline-block;
 }
 
-.call{
-  background:#0284c7;
+.call-btn{
+    background:#1683d8;
 }
 
-.whatsapp{
-  background:#16a34a;
+.whatsapp-btn{
+    background:#25D366;
 }
 
-.deliver{
-  background:#15803d;
+.deliver-btn{
+    background:#16a34a;
 }
 
-.markPending{
-  background:#d97706;
+.pending-btn{
+    background:#f59e0b;
 }
 
-.printOrder{
-  background:#475569;
+.print-btn{
+    background:#475569;
 }
 
 .empty{
-  background:#fff;
-  padding:30px;
-  border-radius:15px;
-  text-align:center;
-  color:#64748b;
+    background:white;
+    padding:35px;
+    text-align:center;
+    border-radius:16px;
+    color:#64748b;
 }
 
 .loading{
-  text-align:center;
-  padding:20px;
+    text-align:center;
+    padding:25px;
+    color:#64748b;
 }
 
-/* ================= REPORT ================= */
+/* ================= FOOTER ================= */
 
-#reportArea{
-  display:none;
+.footer{
+    text-align:center;
+    padding:25px;
+    color:#64748b;
+    font-size:13px;
 }
-
 
 /* ================= MOBILE ================= */
 
-@media(max-width:800px){
+@media(max-width:700px){
 
-  .filterGrid{
-    grid-template-columns:1fr;
-  }
+    .cards{
+        grid-template-columns:1fr;
+    }
 
-  .refresh,
-  .printReport{
-    width:100%;
-  }
+    .filter-row{
+        flex-direction:column;
+        align-items:stretch;
+    }
 
-  .stats{
-    grid-template-columns:1fr;
-  }
+    .order-grid{
+        grid-template-columns:1fr;
+    }
 
-  .orderGrid{
-    grid-template-columns:1fr;
-  }
+    .header-inner{
+        align-items:flex-start;
+    }
 
-  .headerInner{
-    flex-direction:column;
-    align-items:flex-start;
-  }
+    .header h1{
+        font-size:21px;
+    }
 
-  .logout{
-    width:100%;
-  }
-
-}
-
-
-/* ================= PRINT ================= */
-
-@media print{
-
-  body{
-    background:white;
-  }
-
-  #loginPage,
-  .header,
-  .filter,
-  .stats,
-  #ordersList{
-    display:none !important;
-  }
-
-  #adminPage{
-    display:block !important;
-  }
-
-  #reportArea{
-    display:block !important;
-  }
-
-  .printReportPage{
-    padding:20px;
-  }
-
-  table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:20px;
-  }
-
-  th,
-  td{
-    border:1px solid #333;
-    padding:8px;
-    text-align:left;
-  }
-
-  h1,
-  h2{
-    text-align:center;
-  }
+    .logout{
+        padding:9px 12px;
+    }
 
 }
 </style>
 </head>
 
-
 <body>
-
 
 <!-- =====================================================
      LOGIN PAGE
 ===================================================== -->
 
-<div id="loginPage">
+<div id="loginPage" class="login-page">
 
-  <div class="loginBox">
+    <div class="login-box">
 
-    <div class="logo">💧</div>
+        <div class="logo">💧</div>
 
-    <h1>Nectar Water</h1>
+        <h1>Nectar Water</h1>
 
-    <p>Admin Panel Login</p>
+        <p>Admin Panel Login</p>
 
-    <input
-      id="email"
-      type="email"
-      placeholder="Admin Email"
-      autocomplete="username"
-    >
+        <label>📧 Email</label>
 
-    <input
-      id="password"
-      type="password"
-      placeholder="Password"
-      autocomplete="current-password"
-    >
+        <input
+            id="email"
+            type="email"
+            placeholder="Admin Email"
+            autocomplete="username"
+        >
 
-    <button
-      id="loginBtn"
-      class="loginBtn">
+        <label>🔒 Password</label>
 
-      🔐 Login
+        <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            autocomplete="current-password"
+        >
 
-    </button>
+        <button
+            id="loginButton"
+            class="login-btn">
 
-    <div
-      id="loginError"
-      class="loginError">
+            🔐 Login
+
+        </button>
+
+        <div
+            id="loginMessage"
+            class="message">
+        </div>
+
     </div>
-
-  </div>
 
 </div>
 
@@ -468,240 +437,157 @@ button{
 
 <div id="adminPage">
 
+    <div class="header">
 
-  <div class="header">
+        <div class="header-inner">
 
-    <div class="headerInner">
+            <div>
 
-      <div>
+                <h1>💧 Nectar Water Admin</h1>
 
-        <h1>💧 Nectar Water Admin</h1>
+                <div
+                    id="adminEmail"
+                    class="admin-email">
+                </div>
+
+            </div>
+
+            <button
+                id="logoutButton"
+                class="logout">
+
+                🚪 Logout
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="container">
+
+        <!-- ================= FILTER ================= -->
+
+        <div class="filter-box">
+
+            <div class="filter-row">
+
+                <div class="filter-item">
+
+                    <label>📅 Delivery Date</label>
+
+                    <input
+                        id="filterDate"
+                        type="date"
+                    >
+
+                </div>
+
+
+                <div class="filter-item">
+
+                    <label>
+                        🔎 Search Order / Mobile / Name
+                    </label>
+
+                    <input
+                        id="searchBox"
+                        type="text"
+                        placeholder="Order No / Mobile / Name"
+                    >
+
+                </div>
+
+
+                <button
+                    id="refreshButton"
+                    class="refresh">
+
+                    🔄 Refresh
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= STATS ================= -->
+
+        <div class="cards">
+
+            <div class="stat">
+
+                <div class="stat-title">
+                    🪣 Booked Jar
+                </div>
+
+                <div
+                    id="bookedJar"
+                    class="stat-value limit">
+
+                    0 / 300
+
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-title">
+                    📦 Total Orders
+                </div>
+
+                <div
+                    id="totalOrders"
+                    class="stat-value">
+
+                    0
+
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-title">
+                    💰 Total Sales
+                </div>
+
+                <div
+                    id="totalSales"
+                    class="stat-value">
+
+                    ₹0.00
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= ORDERS ================= -->
 
         <div
-          id="adminEmail"
-          class="adminEmail">
+            id="orders"
+            class="orders">
+
+            <div class="loading">
+                ⏳ Orders load हो रहे हैं...
+            </div>
+
         </div>
 
-      </div>
 
-
-      <button
-        id="logoutBtn"
-        class="logout">
-
-        🚪 Logout
-
-      </button>
+        <div class="footer">
+            💧 Nectar Water • 20 Liter Drinking Water
+        </div>
 
     </div>
-
-  </div>
-
-
-  <div class="container">
-
-
-    <!-- FILTER -->
-
-    <div class="filter">
-
-      <div class="filterGrid">
-
-
-        <div>
-
-          <label>
-            📅 Delivery Date
-          </label>
-
-          <input
-            id="deliveryDate"
-            type="date"
-          >
-
-        </div>
-
-
-        <div>
-
-          <label>
-            🔎 Search
-          </label>
-
-          <input
-            id="search"
-            type="text"
-            placeholder="Order / Mobile / Name"
-          >
-
-        </div>
-
-
-        <button
-          id="refreshBtn"
-          class="refresh">
-
-          🔄 Refresh
-
-        </button>
-
-
-        <button
-          id="printReportBtn"
-          class="printReport">
-
-          🖨️ Daily Report
-
-        </button>
-
-
-      </div>
-
-    </div>
-
-
-    <!-- STATISTICS -->
-
-    <div class="stats">
-
-
-      <div class="stat">
-
-        <div class="statTitle">
-          🪣 Booked Jar
-        </div>
-
-        <div
-          id="jarTotal"
-          class="statValue">
-
-          0 / 300
-
-        </div>
-
-      </div>
-
-
-      <div class="stat">
-
-        <div class="statTitle">
-          📦 Total Orders
-        </div>
-
-        <div
-          id="orderTotal"
-          class="statValue">
-
-          0
-
-        </div>
-
-      </div>
-
-
-      <div class="stat">
-
-        <div class="statTitle">
-          💰 Total Sales
-        </div>
-
-        <div
-          id="salesTotal"
-          class="statValue">
-
-          ₹0.00
-
-        </div>
-
-      </div>
-
-
-    </div>
-
-
-    <h2>
-      📋 Orders
-    </h2>
-
-
-    <div id="ordersList">
-
-      <div class="loading">
-        ⏳ Orders load हो रहे हैं...
-      </div>
-
-    </div>
-
-
-    <!-- PRINT REPORT -->
-
-    <div id="reportArea">
-
-      <div class="printReportPage">
-
-        <h1>
-          💧 Nectar Water
-        </h1>
-
-        <h2>
-          Daily Order Report
-        </h2>
-
-        <p>
-          <b>Delivery Date:</b>
-          <span id="reportDate"></span>
-        </p>
-
-        <p>
-          <b>Total Orders:</b>
-          <span id="reportOrders"></span>
-        </p>
-
-        <p>
-          <b>Total Jar:</b>
-          <span id="reportJars"></span>
-        </p>
-
-        <p>
-          <b>Total Sales:</b>
-          ₹<span id="reportSales"></span>
-        </p>
-
-
-        <table>
-
-          <thead>
-
-            <tr>
-
-              <th>Order</th>
-
-              <th>Customer</th>
-
-              <th>Mobile</th>
-
-              <th>Jar</th>
-
-              <th>Total</th>
-
-              <th>Status</th>
-
-            </tr>
-
-          </thead>
-
-
-          <tbody id="reportTable">
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-    </div>
-
-  </div>
 
 </div>
 
@@ -712,33 +598,29 @@ button{
 
 <script type="module">
 
-
 import {
-  initializeApp
-} from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
 import {
-  getAuth,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
-} from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+    getAuth,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
 import {
-  getFirestore,
-  collection,
-  query,
-  where,
-  getDocs,
-  doc,
-  getDoc,
-  updateDoc
-} from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+    getFirestore,
+    collection,
+    query,
+    where,
+    getDocs,
+    doc,
+    updateDoc,
+    getDoc
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
 /* =====================================================
@@ -747,26 +629,26 @@ import {
 
 const firebaseConfig = {
 
-  apiKey:
-  "AIzaSyC3qW2tnclJO65ziiptBAWxzifPoSLcKTw",
+    apiKey:
+    "AIzaSyC3qW2tnclJO65ziiptBAWxzifPoSLcKTw",
 
-  authDomain:
-  "nectar-water-e42b4.firebaseapp.com",
+    authDomain:
+    "nectar-water-e42b4.firebaseapp.com",
 
-  projectId:
-  "nectar-water",
+    projectId:
+    "nectar-water",
 
-  storageBucket:
-  "nectar-water.firebasestorage.app",
+    storageBucket:
+    "nectar-water.firebasestorage.app",
 
-  messagingSenderId:
-  "292708650665",
+    messagingSenderId:
+    "292708650665",
 
-  appId:
-  "1:292708650665:web:f8ec60a21665e70867a3b8",
+    appId:
+    "1:292708650665:web:f8ec60a21665e70867a3b8",
 
-  measurementId:
-  "G-P40N8EEDRC"
+    measurementId:
+    "G-P40N8EEDRC"
 
 };
 
@@ -776,15 +658,13 @@ const firebaseConfig = {
 ===================================================== */
 
 const app =
-  initializeApp(firebaseConfig);
-
+    initializeApp(firebaseConfig);
 
 const auth =
-  getAuth(app);
-
+    getAuth(app);
 
 const db =
-  getFirestore(app);
+    getFirestore(app);
 
 
 /* =====================================================
@@ -792,185 +672,179 @@ const db =
 ===================================================== */
 
 const loginPage =
-  document.getElementById(
-    "loginPage"
-  );
-
+    document.getElementById("loginPage");
 
 const adminPage =
-  document.getElementById(
-    "adminPage"
-  );
+    document.getElementById("adminPage");
 
+const loginButton =
+    document.getElementById("loginButton");
 
-const emailInput =
-  document.getElementById(
-    "email"
-  );
+const logoutButton =
+    document.getElementById("logoutButton");
 
+const loginMessage =
+    document.getElementById("loginMessage");
 
-const passwordInput =
-  document.getElementById(
-    "password"
-  );
+const adminEmail =
+    document.getElementById("adminEmail");
 
+const filterDate =
+    document.getElementById("filterDate");
 
-const loginBtn =
-  document.getElementById(
-    "loginBtn"
-  );
+const searchBox =
+    document.getElementById("searchBox");
 
+const ordersBox =
+    document.getElementById("orders");
 
-const loginError =
-  document.getElementById(
-    "loginError"
-  );
-
-
-const deliveryDate =
-  document.getElementById(
-    "deliveryDate"
-  );
-
-
-const searchInput =
-  document.getElementById(
-    "search"
-  );
-
-
-const ordersList =
-  document.getElementById(
-    "ordersList"
-  );
+const refreshButton =
+    document.getElementById("refreshButton");
 
 
 /* =====================================================
    TODAY DATE
 ===================================================== */
 
-function getToday(){
+function getTodayDate(){
 
-  const d =
-    new Date();
+    const now = new Date();
 
-  return (
+    const year =
+        now.getFullYear();
 
-    d.getFullYear()
-    + "-"
-    +
-    String(
-      d.getMonth()+1
-    ).padStart(2,"0")
-    + "-"
-    +
-    String(
-      d.getDate()
-    ).padStart(2,"0")
+    const month =
+        String(
+            now.getMonth() + 1
+        ).padStart(2,"0");
 
-  );
+    const day =
+        String(
+            now.getDate()
+        ).padStart(2,"0");
+
+    return `${year}-${month}-${day}`;
 
 }
 
 
-deliveryDate.value =
-  getToday();
+/* =====================================================
+   DISPLAY DATE
+===================================================== */
+
+function formatDate(date){
+
+    if(!date){
+        return "-";
+    }
+
+    const parts =
+        String(date).split("-");
+
+    if(parts.length === 3){
+
+        return `${parts[2]}-${parts[1]}-${parts[0]}`;
+
+    }
+
+    return date;
+
+}
+
+
+/* =====================================================
+   SET DEFAULT DATE
+===================================================== */
+
+filterDate.value =
+    getTodayDate();
 
 
 /* =====================================================
    LOGIN
 ===================================================== */
 
-loginBtn.addEventListener(
-  "click",
-  async()=>{
+loginButton.addEventListener(
+    "click",
+    async function(){
 
-    const email =
-      emailInput
-      .value
-      .trim();
+        const email =
+            document
+            .getElementById("email")
+            .value
+            .trim();
+
+        const password =
+            document
+            .getElementById("password")
+            .value;
 
 
-    const password =
-      passwordInput
-      .value;
+        if(!email || !password){
+
+            showLoginMessage(
+                "Email और Password दोनों डालें।",
+                false
+            );
+
+            return;
+
+        }
 
 
-    if(
-      !email ||
-      !password
-    ){
+        loginButton.disabled = true;
 
-      loginError.innerText =
-        "Email और Password डालें।";
+        loginButton.innerText =
+            "⏳ Login हो रहा है...";
 
-      return;
+
+        try{
+
+            await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+        }
+
+        catch(error){
+
+            console.error(error);
+
+            showLoginMessage(
+                getLoginError(error),
+                false
+            );
+
+            loginButton.disabled = false;
+
+            loginButton.innerText =
+                "🔐 Login";
+
+        }
 
     }
-
-
-    loginBtn.disabled =
-      true;
-
-
-    loginBtn.innerText =
-      "⏳ Login हो रहा है...";
-
-
-    try{
-
-      await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-
-      loginError.innerText =
-        "";
-
-    }
-
-    catch(error){
-
-      console.error(error);
-
-
-      loginError.innerText =
-        "❌ Login नहीं हुआ। Email/Password जाँचें।";
-
-    }
-
-
-    loginBtn.disabled =
-      false;
-
-
-    loginBtn.innerText =
-      "🔐 Login";
-
-  }
 );
 
 
 /* =====================================================
-   ENTER TO LOGIN
+   ENTER KEY
 ===================================================== */
 
-passwordInput.addEventListener(
-  "keydown",
-  event=>{
+document
+.getElementById("password")
+.addEventListener(
+    "keydown",
+    function(event){
 
-    if(
-      event.key ===
-      "Enter"
-    ){
+        if(event.key === "Enter"){
 
-      loginBtn.click();
+            loginButton.click();
+
+        }
 
     }
-
-  }
 );
 
 
@@ -979,43 +853,39 @@ passwordInput.addEventListener(
 ===================================================== */
 
 onAuthStateChanged(
-  auth,
-  user=>{
+    auth,
+    function(user){
 
-    if(user){
+        if(user){
 
-      loginPage.style.display =
-        "none";
+            loginPage.style.display =
+                "none";
 
+            adminPage.style.display =
+                "block";
 
-      adminPage.style.display =
-        "block";
+            adminEmail.innerText =
+                user.email || "";
 
+            loginButton.disabled = false;
 
-      document
-      .getElementById(
-        "adminEmail"
-      )
-      .innerText =
-        user.email || "";
+            loginButton.innerText =
+                "🔐 Login";
 
+            loadOrders();
 
-      loadOrders();
+        }
+        else{
 
-    }
+            loginPage.style.display =
+                "flex";
 
-    else{
+            adminPage.style.display =
+                "none";
 
-      loginPage.style.display =
-        "flex";
-
-
-      adminPage.style.display =
-        "none";
+        }
 
     }
-
-  }
 );
 
 
@@ -1023,25 +893,23 @@ onAuthStateChanged(
    LOGOUT
 ===================================================== */
 
-document
-.getElementById(
-  "logoutBtn"
-)
-.addEventListener(
-  "click",
-  async()=>{
+logoutButton.addEventListener(
+    "click",
+    async function(){
 
-    await signOut(auth);
+        try{
 
-  }
+            await signOut(auth);
+
+        }
+        catch(error){
+
+            console.error(error);
+
+        }
+
+    }
 );
-
-
-/* =====================================================
-   ALL ORDERS
-===================================================== */
-
-let allOrders = [];
 
 
 /* =====================================================
@@ -1050,676 +918,958 @@ let allOrders = [];
 
 async function loadOrders(){
 
-  const date =
-    deliveryDate.value;
-
-
-  ordersList.innerHTML =
-    `
-      <div class="loading">
-        ⏳ Orders load हो रहे हैं...
-      </div>
-    `;
-
-
-  try{
-
-    const ordersRef =
-      collection(
-        db,
-        "orders"
-      );
-
-
-    const q =
-      query(
-
-        ordersRef,
-
-        where(
-          "deliveryDate",
-          "==",
-          date
-        )
-
-      );
-
-
-    const snapshot =
-      await getDocs(q);
-
-
-    allOrders = [];
-
-
-    snapshot.forEach(
-      item=>{
-
-        allOrders.push({
-
-          id:
-            item.id,
-
-          ...item.data()
-
-        });
-
-      }
-    );
-
-
-    displayOrders();
-
-
-    await loadBookingCount(
-      date
-    );
-
-  }
-
-  catch(error){
-
-    console.error(
-      "Firestore Error:",
-      error
-    );
-
-
-    ordersList.innerHTML =
-      `
-        <div class="empty">
-
-          ❌ Orders load नहीं हुए।
-
-          <br><br>
-
-          Firebase Rules या
-          deliveryDate field check करें।
-
+    ordersBox.innerHTML =
+        `
+        <div class="loading">
+            ⏳ Orders load हो रहे हैं...
         </div>
-      `;
-
-  }
-
-}
+        `;
 
 
-/* =====================================================
-   DISPLAY ORDERS
-===================================================== */
-
-function displayOrders(){
-
-  let orders =
-    [...allOrders];
+    const selectedDate =
+        filterDate.value;
 
 
-  const search =
-    searchInput
-    .value
-    .trim()
-    .toLowerCase();
+    if(!selectedDate){
+
+        ordersBox.innerHTML =
+            `
+            <div class="empty">
+                📅 Delivery Date चुनें।
+            </div>
+            `;
+
+        return;
+
+    }
 
 
-  if(search){
+    try{
 
-    orders =
-      orders.filter(
-        order=>{
-
-          const text =
-
-            String(
-              order.name || ""
-            )
-
-            + " "
-
-            +
-
-            String(
-              order.mobile || ""
-            )
-
-            + " "
-
-            +
-
-            String(
-              order.orderNumber || ""
+        const ordersRef =
+            collection(
+                db,
+                "orders"
             );
 
 
-          return text
-            .toLowerCase()
-            .includes(
-              search
+        const ordersQuery =
+            query(
+                ordersRef,
+                where(
+                    "deliveryDate",
+                    "==",
+                    selectedDate
+                )
+            );
+
+
+        const snapshot =
+            await getDocs(
+                ordersQuery
+            );
+
+
+        let orders = [];
+
+
+        snapshot.forEach(
+            function(docSnap){
+
+                orders.push({
+
+                    id:
+                        docSnap.id,
+
+                    ...docSnap.data()
+
+                });
+
+            }
+        );
+
+
+        /* Newest first */
+
+        orders.sort(
+            function(a,b){
+
+                return String(
+                    b.orderNumber || ""
+                ).localeCompare(
+                    String(
+                        a.orderNumber || ""
+                    )
+                );
+
+            }
+        );
+
+
+        window.currentOrders =
+            orders;
+
+
+        renderOrders();
+
+        await loadDailyStats(
+            selectedDate
+        );
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Load Orders Error:",
+            error
+        );
+
+
+        ordersBox.innerHTML =
+            `
+            <div class="empty">
+                ❌ Orders load नहीं हो पाए।<br><br>
+                Firestore Rules या Firebase configuration check करें।
+            </div>
+            `;
+
+    }
+
+}
+
+
+/* =====================================================
+   DAILY STATS
+===================================================== */
+
+async function loadDailyStats(date){
+
+    try{
+
+        const bookingRef =
+            doc(
+                db,
+                "dailyBookings",
+                date
+            );
+
+
+        const bookingSnap =
+            await getDoc(
+                bookingRef
+            );
+
+
+        let booked =
+            0;
+
+
+        if(
+            bookingSnap.exists()
+        ){
+
+            booked =
+                Number(
+                    bookingSnap
+                    .data()
+                    .bookedJar
+                ) || 0;
+
+        }
+
+
+        const orders =
+            window.currentOrders || [];
+
+
+        let sales = 0;
+
+
+        orders.forEach(
+            function(order){
+
+                sales +=
+                    Number(
+                        order.grandTotal || 0
+                    );
+
+            }
+        );
+
+
+        document
+        .getElementById("bookedJar")
+        .innerText =
+            `${booked} / 300`;
+
+
+        document
+        .getElementById("totalOrders")
+        .innerText =
+            orders.length;
+
+
+        document
+        .getElementById("totalSales")
+        .innerText =
+            "₹" +
+            sales.toFixed(2);
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Stats Error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   RENDER ORDERS
+===================================================== */
+
+function renderOrders(){
+
+    let orders =
+        window.currentOrders || [];
+
+
+    const search =
+        searchBox
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    if(search){
+
+        orders =
+            orders.filter(
+                function(order){
+
+                    const text =
+
+                        String(
+                            order.orderNumber || ""
+                        ) + " " +
+
+                        String(
+                            order.name || ""
+                        ) + " " +
+
+                        String(
+                            order.mobile || ""
+                        ) + " " +
+
+                        String(
+                            order.address || ""
+                        );
+
+
+                    return text
+                        .toLowerCase()
+                        .includes(search);
+
+                }
+            );
+
+    }
+
+
+    if(orders.length === 0){
+
+        ordersBox.innerHTML =
+            `
+            <div class="empty">
+                📭 इस तारीख के लिए कोई order नहीं मिला।
+            </div>
+            `;
+
+        document
+        .getElementById("totalOrders")
+        .innerText = "0";
+
+        return;
+
+    }
+
+
+    ordersBox.innerHTML = "";
+
+
+    orders.forEach(
+        function(order){
+
+            const status =
+                order.status || "Pending";
+
+
+            const isDelivered =
+                status === "Delivered";
+
+
+            const mobile =
+                String(
+                    order.mobile || ""
+                )
+                .replace(/\D/g,"");
+
+
+            const whatsappNumber =
+                mobile.length === 10
+                ? "91" + mobile
+                : mobile;
+
+
+            const card =
+                document.createElement("div");
+
+
+            card.className =
+                "order";
+
+
+            card.innerHTML = `
+
+                <div class="order-head">
+
+                    <div class="order-number">
+
+                        🆔 Order:
+                        ${escapeHtml(
+                            order.orderNumber || "-"
+                        )}
+
+                    </div>
+
+
+                    <div class="status ${
+                        isDelivered
+                        ? "delivered"
+                        : "pending"
+                    }">
+
+                        ${
+                            isDelivered
+                            ? "🟢 Delivered"
+                            : "🟡 Pending"
+                        }
+
+                    </div>
+
+                </div>
+
+
+                <div class="order-grid">
+
+
+                    <div class="detail">
+
+                        <b>👤 Customer</b>
+
+                        ${escapeHtml(
+                            order.name || "-"
+                        )}
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <b>📱 Mobile</b>
+
+                        ${escapeHtml(
+                            order.mobile || "-"
+                        )}
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <b>📅 Delivery Date</b>
+
+                        ${escapeHtml(
+                            order.deliveryDateDisplay ||
+                            formatDate(order.deliveryDate)
+                        )}
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <b>🪣 Jar</b>
+
+                        ${Number(
+                            order.quantity || 0
+                        )}
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <b>📍 Distance</b>
+
+                        ${Number(
+                            order.distance || 0
+                        )} KM
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <b>🚚 Delivery Charge</b>
+
+                        ₹${Number(
+                            order.deliveryCharge || 0
+                        ).toFixed(2)}
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <b>💰 Jar Amount</b>
+
+                        ₹${Number(
+                            order.jarAmount || 0
+                        ).toFixed(2)}
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        <b>💵 Grand Total</b>
+
+                        ₹${Number(
+                            order.grandTotal || 0
+                        ).toFixed(2)}
+
+                    </div>
+
+
+                    <div
+                        class="detail"
+                        style="grid-column:1/-1">
+
+                        <b>📍 Address</b>
+
+                        ${escapeHtml(
+                            order.address || "-"
+                        )}
+
+                    </div>
+
+
+                    <div
+                        class="detail"
+                        style="grid-column:1/-1">
+
+                        <b>📝 Extra Information</b>
+
+                        ${escapeHtml(
+                            order.extra ||
+                            "कोई जानकारी नहीं"
+                        )}
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="actions">
+
+
+                    ${
+                        mobile
+                        ?
+                        `
+                        <a
+                            class="action-btn call-btn"
+                            href="tel:${escapeHtml(
+                                mobile
+                            )}">
+
+                            📞 Call
+
+                        </a>
+                        `
+                        :
+                        ""
+                    }
+
+
+                    ${
+                        whatsappNumber
+                        ?
+                        `
+                        <a
+                            class="action-btn whatsapp-btn"
+                            target="_blank"
+                            rel="noopener"
+                            href="https://wa.me/${escapeHtml(
+                                whatsappNumber
+                            )}?text=${encodeURIComponent(
+                                "नमस्ते " +
+                                (order.name || "") +
+                                " जी,\n\n" +
+                                "Nectar Water Order " +
+                                (order.orderNumber || "") +
+                                " के संबंध में संपर्क कर रहे हैं।\n\n" +
+                                "धन्यवाद।\nNectar Water"
+                            )}">
+
+                            📱 WhatsApp
+
+                        </a>
+                        `
+                        :
+                        ""
+                    }
+
+
+                    <button
+                        class="action-btn ${
+                            isDelivered
+                            ? "pending-btn"
+                            : "deliver-btn"
+                        }"
+                        data-order-id="${escapeHtml(
+                            order.id
+                        )}"
+                        data-new-status="${
+                            isDelivered
+                            ? "Pending"
+                            : "Delivered"
+                        }">
+
+                        ${
+                            isDelivered
+                            ? "↩️ Pending करें"
+                            : "✅ Delivered करें"
+                        }
+
+                    </button>
+
+
+                    <button
+                        class="action-btn print-btn"
+                        data-print-id="${escapeHtml(
+                            order.id
+                        )}">
+
+                        🖨️ Print
+
+                    </button>
+
+
+                </div>
+
+            `;
+
+
+            ordersBox.appendChild(card);
+
+        }
+    );
+
+
+    /* Status buttons */
+
+    document
+    .querySelectorAll(
+        "[data-order-id]"
+    )
+    .forEach(
+        function(button){
+
+            button.addEventListener(
+                "click",
+                async function(){
+
+                    const orderId =
+                        button.dataset.orderId;
+
+                    const newStatus =
+                        button.dataset.newStatus;
+
+                    await changeStatus(
+                        orderId,
+                        newStatus
+                    );
+
+                }
             );
 
         }
-      );
-
-  }
-
-
-  /* =================
-     TOTALS
-  ================= */
-
-  let jars = 0;
-
-  let sales = 0;
-
-
-  allOrders.forEach(
-    order=>{
-
-      jars +=
-        Number(
-          order.quantity
-        ) || 0;
-
-
-      sales +=
-        Number(
-          order.grandTotal
-        ) || 0;
-
-    }
-  );
-
-
-  document
-  .getElementById(
-    "jarTotal"
-  )
-  .innerText =
-    jars +
-    " / 300";
-
-
-  document
-  .getElementById(
-    "orderTotal"
-  )
-  .innerText =
-    allOrders.length;
-
-
-  document
-  .getElementById(
-    "salesTotal"
-  )
-  .innerText =
-    "₹" +
-    sales.toFixed(2);
-
-
-  /* =================
-     NO ORDERS
-  ================= */
-
-  if(
-    orders.length ===
-    0
-  ){
-
-    ordersList.innerHTML =
-      `
-        <div class="empty">
-          📭 कोई order नहीं मिला।
-        </div>
-      `;
-
-    return;
-
-  }
-
-
-  ordersList.innerHTML =
-    "";
-
-
-  /* =================
-     CREATE ORDER CARDS
-  ================= */
-
-  orders.forEach(
-    order=>{
-
-      const status =
-        order.status ||
-        "Pending";
-
-
-      const isDelivered =
-        status ===
-        "Delivered";
-
-
-      const mobile =
-        String(
-          order.mobile || ""
-        )
-        .replace(
-          /\D/g,
-          ""
-        );
-
-
-      const card =
-        document.createElement(
-          "div"
-        );
-
-
-      card.className =
-        "order";
-
-
-      card.innerHTML = `
-
-        <div class="orderHeader">
-
-          <div class="orderNo">
-
-            🆔 Order:
-            ${safe(
-              order.orderNumber ||
-              order.id
-            )}
-
-          </div>
-
-
-          <div class="status ${
-            isDelivered
-            ? "delivered"
-            : "pending"
-          }">
-
-            ${
-              isDelivered
-              ? "🟢 Delivered"
-              : "🟡 Pending"
-            }
-
-          </div>
-
-        </div>
-
-
-        <div class="orderGrid">
-
-
-          <div class="detail">
-
-            <b>👤 Customer</b>
-
-            ${safe(
-              order.name ||
-              "-"
-            )}
-
-          </div>
-
-
-          <div class="detail">
-
-            <b>📱 Mobile</b>
-
-            ${safe(
-              order.mobile ||
-              "-"
-            )}
-
-          </div>
-
-
-          <div class="detail">
-
-            <b>📅 Delivery Date</b>
-
-            ${safe(
-              order.deliveryDateDisplay ||
-              order.deliveryDate ||
-              "-"
-            )}
-
-          </div>
-
-
-          <div class="detail">
-
-            <b>🪣 Jar</b>
-
-            ${
-              Number(
-                order.quantity
-              ) || 0
-            }
-
-          </div>
-
-
-          <div class="detail">
-
-            <b>📍 Distance</b>
-
-            ${
-              Number(
-                order.distance
-              ) || 0
-            }
-            KM
-
-          </div>
-
-
-          <div class="detail">
-
-            <b>🚚 Delivery Charge</b>
-
-            ₹${
-              (
-                Number(
-                  order.deliveryCharge
-                ) || 0
-              ).toFixed(2)
-            }
-
-          </div>
-
-
-          <div class="detail">
-
-            <b>💰 Jar Amount</b>
-
-            ₹${
-              (
-                Number(
-                  order.jarAmount
-                ) || 0
-              ).toFixed(2)
-            }
-
-          </div>
-
-
-          <div class="detail">
-
-            <b>💵 Grand Total</b>
-
-            ₹${
-              (
-                Number(
-                  order.grandTotal
-                ) || 0
-              ).toFixed(2)
-            }
-
-          </div>
-
-
-          <div
-            class="detail"
-            style="grid-column:1/-1">
-
-            <b>📍 Address</b>
-
-            ${safe(
-              order.address ||
-              "-"
-            )}
-
-          </div>
-
-
-          <div
-            class="detail"
-            style="grid-column:1/-1">
-
-            <b>📝 Extra</b>
-
-            ${safe(
-              order.extra ||
-              "कोई जानकारी नहीं"
-            )}
-
-          </div>
-
-
-        </div>
-
-
-        <div class="actions">
-
-
-          <a
-            class="action call"
-            href="tel:${safe(mobile)}">
-
-            📞 Call
-
-          </a>
-
-
-          <a
-            class="action whatsapp"
-            target="_blank"
-            href="https://wa.me/91${safe(mobile)}">
-
-            📱 WhatsApp
-
-          </a>
-
-
-          <button
-            class="action printOrder">
-
-            🖨️ Print
-
-          </button>
-
-
-          <button
-            class="action ${
-              isDelivered
-              ? "markPending"
-              : "deliver"
-            }">
-
-            ${
-              isDelivered
-              ? "↩️ Pending करें"
-              : "✅ Delivered करें"
-            }
-
-          </button>
-
-
-        </div>
-
-      `;
-
-
-      /* STATUS BUTTON */
-
-      const buttons =
-        card.querySelectorAll(
-          "button"
-        );
-
-
-      const printButton =
-        buttons[0];
-
-
-      const statusButton =
-        buttons[1];
-
-
-      printButton.addEventListener(
-        "click",
-        ()=>{
-
-          printSingleOrder(
-            order
-          );
-
-        }
-      );
-
-
-      statusButton.addEventListener(
-        "click",
-        ()=>{
-
-          changeStatus(
-            order.id,
-            isDelivered
-            ? "Pending"
-            : "Delivered"
-          );
-
-        }
-      );
-
-
-      ordersList.appendChild(
-        card
-      );
-
-    }
-  );
-
-}
-
-
-/* =====================================================
-   BOOKING COUNT
-===================================================== */
-
-async function loadBookingCount(
-  date
-){
-
-  try{
-
-    const bookingRef =
-      doc(
-        db,
-        "dailyBookings",
-        date
-      );
-
-
-    const bookingSnap =
-      await getDoc(
-        bookingRef
-      );
-
-
-    if(
-      bookingSnap.exists()
-    ){
-
-      const data =
-        bookingSnap.data();
-
-
-      const booked =
-        Number(
-          data.bookedJar
-        ) || 0;
-
-
-      document
-      .getElementById(
-        "jarTotal"
-      )
-      .innerText =
-        booked +
-        " / 300";
-
-    }
-
-  }
-
-  catch(error){
-
-    console.log(
-      "dailyBookings error:",
-      error
     );
 
-  }
+
+    /* Print buttons */
+
+    document
+    .querySelectorAll(
+        "[data-print-id]"
+    )
+    .forEach(
+        function(button){
+
+            button.addEventListener(
+                "click",
+                function(){
+
+                    const orderId =
+                        button.dataset.printId;
+
+                    const order =
+                        window.currentOrders
+                        .find(
+                            function(item){
+                                return item.id === orderId;
+                            }
+                        );
+
+
+                    if(order){
+
+                        printOrder(order);
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    document
+    .getElementById("totalOrders")
+    .innerText =
+        orders.length;
 
 }
 
 
 /* =====================================================
-   UPDATE STATUS
+   CHANGE STATUS
 ===================================================== */
 
 async function changeStatus(
-  id,
-  newStatus
+    orderId,
+    newStatus
 ){
 
-  try{
+    try{
 
-    await updateDoc(
-
-      doc(
-        db,
-        "orders",
-        id
-      ),
-
-      {
-        status:
-          newStatus
-      }
-
-    );
+        const orderRef =
+            doc(
+                db,
+                "orders",
+                orderId
+            );
 
 
-    await loadOrders();
+        await updateDoc(
+            orderRef,
+            {
+                status:
+                    newStatus
+            }
+        );
 
-  }
 
-  catch(error){
-
-    console.error(error);
+        await loadOrders();
 
 
-    alert(
-      "❌ Status update नहीं हो पाया।"
-    );
+    }
 
-  }
+    catch(error){
+
+        console.error(
+            "Status Error:",
+            error
+        );
+
+
+        alert(
+            "❌ Status update नहीं हो पाया।\n\nFirestore Rules check करें।"
+        );
+
+    }
 
 }
 
 
 /* =====================================================
-   DATE CHANGE
+   PRINT ORDER
 ===================================================== */
 
-deliveryDate.addEventListener(
-  "change",
-  loadOrders
-);
+function printOrder(order){
+
+    const printWindow =
+        window.open(
+            "",
+            "_blank",
+            "width=700,height=800"
+        );
+
+
+    if(!printWindow){
+
+        alert(
+            "⚠️ Popup blocked है। Browser में popup allow करें।"
+        );
+
+        return;
+
+    }
+
+
+    const status =
+        order.status || "Pending";
+
+
+    const html = `
+
+<!DOCTYPE html>
+
+<html lang="hi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Nectar Water Order</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    padding:25px;
+    color:#111827;
+}
+
+.receipt{
+    max-width:600px;
+    margin:auto;
+    border:2px solid #111827;
+    padding:25px;
+    border-radius:12px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:5px;
+}
+
+.subtitle{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.line{
+    border-top:1px solid #ddd;
+    margin:15px 0;
+}
+
+.row{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding:7px 0;
+}
+
+.total{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.footer{
+    text-align:center;
+    margin-top:25px;
+}
+
+@media print{
+
+    button{
+        display:none;
+    }
+
+    body{
+        padding:0;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="receipt">
+
+<h1>💧 NECTAR WATER</h1>
+
+<div class="subtitle">
+राधे राधे 🙏<br>
+शुद्ध पानी • आपके घर तक
+</div>
+
+<div class="line"></div>
+
+<div class="row">
+<b>Order No.</b>
+<span>${escapeHtml(order.orderNumber || "-")}</span>
+</div>
+
+<div class="row">
+<b>Status</b>
+<span>${escapeHtml(status)}</span>
+</div>
+
+<div class="row">
+<b>Customer</b>
+<span>${escapeHtml(order.name || "-")}</span>
+</div>
+
+<div class="row">
+<b>Mobile</b>
+<span>${escapeHtml(order.mobile || "-")}</span>
+</div>
+
+<div class="row">
+<b>Delivery Date</b>
+<span>${escapeHtml(
+    order.deliveryDateDisplay ||
+    formatDate(order.deliveryDate)
+)}</span>
+</div>
+
+<div class="row">
+<b>Jar</b>
+<span>${Number(order.quantity || 0)}</span>
+</div>
+
+<div class="row">
+<b>Distance</b>
+<span>${Number(order.distance || 0)} KM</span>
+</div>
+
+<div class="row">
+<b>Delivery Charge</b>
+<span>₹${Number(
+    order.deliveryCharge || 0
+).toFixed(2)}</span>
+</div>
+
+<div class="row">
+<b>Jar Amount</b>
+<span>₹${Number(
+    order.jarAmount || 0
+).toFixed(2)}</span>
+</div>
+
+<div class="line"></div>
+
+<div class="row total">
+<b>Grand Total</b>
+<span>₹${Number(
+    order.grandTotal || 0
+).toFixed(2)}</span>
+</div>
+
+<div class="line"></div>
+
+<p>
+<b>Address:</b><br>
+${escapeHtml(order.address || "-")}
+</p>
+
+<br>
+
+<p>
+<b>Extra:</b><br>
+${escapeHtml(
+    order.extra || "कोई जानकारी नहीं"
+)}
+</p>
+
+<div class="footer">
+
+धन्यवाद 🙏<br>
+💧 Nectar Water<br>
+राधे राधे 🙏
+
+</div>
+
+</div>
+
+<script>
+
+window.onload = function(){
+
+    window.print();
+
+};
+
+<\/script>
+
+</body>
+
+</html>
+
+`;
+
+
+    printWindow.document.open();
+
+    printWindow.document.write(html);
+
+    printWindow.document.close();
+
+}
 
 
 /* =====================================================
    SEARCH
 ===================================================== */
 
-searchInput.addEventListener(
-  "input",
-  displayOrders
+searchBox.addEventListener(
+    "input",
+    function(){
+
+        renderOrders();
+
+    }
+);
+
+
+/* =====================================================
+   DATE CHANGE
+===================================================== */
+
+filterDate.addEventListener(
+    "change",
+    function(){
+
+        searchBox.value = "";
+
+        loadOrders();
+
+    }
 );
 
 
@@ -1727,455 +1877,138 @@ searchInput.addEventListener(
    REFRESH
 ===================================================== */
 
-document
-.getElementById(
-  "refreshBtn"
-)
-.addEventListener(
-  "click",
-  loadOrders
+refreshButton.addEventListener(
+    "click",
+    function(){
+
+        loadOrders();
+
+    }
 );
 
 
 /* =====================================================
-   DAILY REPORT
+   LOGIN MESSAGE
 ===================================================== */
 
-document
-.getElementById(
-  "printReportBtn"
-)
-.addEventListener(
-  "click",
-  ()=>{
+function showLoginMessage(
+    text,
+    success
+){
 
-    createReport();
+    loginMessage.innerText =
+        text;
 
-    window.print();
-
-  }
-);
-
-
-function createReport(){
-
-  const date =
-    deliveryDate.value;
-
-
-  let jars = 0;
-
-  let sales = 0;
-
-
-  allOrders.forEach(
-    order=>{
-
-      jars +=
-        Number(
-          order.quantity
-        ) || 0;
-
-
-      sales +=
-        Number(
-          order.grandTotal
-        ) || 0;
-
-    }
-  );
-
-
-  document
-  .getElementById(
-    "reportDate"
-  )
-  .innerText =
-    formatDate(date);
-
-
-  document
-  .getElementById(
-    "reportOrders"
-  )
-  .innerText =
-    allOrders.length;
-
-
-  document
-  .getElementById(
-    "reportJars"
-  )
-  .innerText =
-    jars;
-
-
-  document
-  .getElementById(
-    "reportSales"
-  )
-  .innerText =
-    sales.toFixed(2);
-
-
-  const table =
-    document
-    .getElementById(
-      "reportTable"
-    );
-
-
-  table.innerHTML =
-    "";
-
-
-  allOrders.forEach(
-    order=>{
-
-      const row =
-        document.createElement(
-          "tr"
+    loginMessage.className =
+        "message " +
+        (
+            success
+            ? "success"
+            : "error"
         );
 
+    loginMessage.style.display =
+        "block";
 
-      row.innerHTML = `
-
-        <td>
-          ${safe(
-            order.orderNumber ||
-            order.id
-          )}
-        </td>
-
-        <td>
-          ${safe(
-            order.name ||
-            "-"
-          )}
-        </td>
-
-        <td>
-          ${safe(
-            order.mobile ||
-            "-"
-          )}
-        </td>
-
-        <td>
-          ${
-            Number(
-              order.quantity
-            ) || 0
-          }
-        </td>
-
-        <td>
-          ₹${
-            (
-              Number(
-                order.grandTotal
-              ) || 0
-            ).toFixed(2)
-          }
-        </td>
-
-        <td>
-          ${safe(
-            order.status ||
-            "Pending"
-          )}
-        </td>
-
-      `;
+}
 
 
-      table.appendChild(
-        row
-      );
+/* =====================================================
+   LOGIN ERROR
+===================================================== */
+
+function getLoginError(error){
+
+    if(
+        error.code ===
+        "auth/invalid-credential"
+    ){
+
+        return "❌ Email या Password गलत है।";
 
     }
-  );
-
-}
 
 
-/* =====================================================
-   PRINT SINGLE ORDER
-===================================================== */
+    if(
+        error.code ===
+        "auth/user-not-found"
+    ){
 
-function printSingleOrder(
-  order
-){
+        return "❌ यह Admin account मौजूद नहीं है।";
 
-  const popup =
-    window.open(
-      "",
-      "_blank",
-      "width=700,height=700"
+    }
+
+
+    if(
+        error.code ===
+        "auth/wrong-password"
+    ){
+
+        return "❌ Password गलत है।";
+
+    }
+
+
+    if(
+        error.code ===
+        "auth/too-many-requests"
+    ){
+
+        return "⚠️ बहुत अधिक प्रयास हुए हैं। कुछ देर बाद प्रयास करें।";
+
+    }
+
+
+    if(
+        error.code ===
+        "auth/operation-not-allowed"
+    ){
+
+        return "⚠️ Firebase में Email/Password Login Enable करें।";
+
+    }
+
+
+    return (
+        "❌ Login Error: " +
+        error.message
     );
 
-
-  if(!popup){
-
-    alert(
-      "Popup blocked है। Browser में popup allow करें।"
-    );
-
-    return;
-
-  }
-
-
-  popup.document.write(`
-
-    <!DOCTYPE html>
-
-    <html>
-
-    <head>
-
-      <title>
-        Nectar Water Order
-      </title>
-
-      <style>
-
-        body{
-          font-family:Arial;
-          padding:30px;
-        }
-
-        h1,
-        h2{
-          text-align:center;
-        }
-
-        .box{
-          border:1px solid #333;
-          padding:15px;
-          margin-top:15px;
-        }
-
-        p{
-          margin:8px 0;
-        }
-
-      </style>
-
-    </head>
-
-    <body>
-
-      <h1>
-        💧 Nectar Water
-      </h1>
-
-      <h2>
-        Order Receipt
-      </h2>
-
-
-      <div class="box">
-
-        <p>
-          <b>Order:</b>
-          ${safe(
-            order.orderNumber ||
-            order.id
-          )}
-        </p>
-
-        <p>
-          <b>Customer:</b>
-          ${safe(
-            order.name ||
-            "-"
-          )}
-        </p>
-
-        <p>
-          <b>Mobile:</b>
-          ${safe(
-            order.mobile ||
-            "-"
-          )}
-        </p>
-
-        <p>
-          <b>Delivery Date:</b>
-          ${safe(
-            order.deliveryDateDisplay ||
-            order.deliveryDate ||
-            "-"
-          )}
-        </p>
-
-        <p>
-          <b>Jar:</b>
-          ${
-            Number(
-              order.quantity
-            ) || 0
-          }
-        </p>
-
-        <p>
-          <b>Distance:</b>
-          ${
-            Number(
-              order.distance
-            ) || 0
-          }
-          KM
-        </p>
-
-        <p>
-          <b>Delivery Charge:</b>
-          ₹${
-            (
-              Number(
-                order.deliveryCharge
-              ) || 0
-            ).toFixed(2)
-          }
-        </p>
-
-        <p>
-          <b>Jar Amount:</b>
-          ₹${
-            (
-              Number(
-                order.jarAmount
-              ) || 0
-            ).toFixed(2)
-          }
-        </p>
-
-        <p>
-          <b>Total:</b>
-          ₹${
-            (
-              Number(
-                order.grandTotal
-              ) || 0
-            ).toFixed(2)
-          }
-        </p>
-
-        <p>
-          <b>Address:</b>
-          ${safe(
-            order.address ||
-            "-"
-          )}
-        </p>
-
-        <p>
-          <b>Status:</b>
-          ${safe(
-            order.status ||
-            "Pending"
-          )}
-        </p>
-
-      </div>
-
-
-      <script>
-
-        window.onload=function(){
-
-          window.print();
-
-        };
-
-      <\/script>
-
-    </body>
-
-    </html>
-
-  `);
-
-
-  popup.document.close();
-
 }
 
 
 /* =====================================================
-   FORMAT DATE
+   HTML ESCAPE
 ===================================================== */
 
-function formatDate(
-  date
-){
+function escapeHtml(value){
 
-  if(!date){
-    return "-";
-  }
+    return String(value)
 
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
 
-  const parts =
-    date.split("-");
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
 
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
 
-  if(
-    parts.length !== 3
-  ){
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
 
-    return date;
-
-  }
-
-
-  return (
-    parts[2] +
-    "-" +
-    parts[1] +
-    "-" +
-    parts[0]
-  );
-
-}
-
-
-/* =====================================================
-   SAFE TEXT
-===================================================== */
-
-function safe(
-  value
-){
-
-  return String(
-    value ?? ""
-  )
-
-  .replaceAll(
-    "&",
-    "&amp;"
-  )
-
-  .replaceAll(
-    "<",
-    "&lt;"
-  )
-
-  .replaceAll(
-    ">",
-    "&gt;"
-  )
-
-  .replaceAll(
-    '"',
-    "&quot;"
-  )
-
-  .replaceAll(
-    "'",
-    "&#039;"
-  );
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
 
 }
 
