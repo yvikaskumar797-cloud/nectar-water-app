@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Nectar Water - Admin Panel</title>
 
 <style>
@@ -17,7 +18,17 @@ body{
   color:#1e293b;
 }
 
-/* LOGIN */
+button,
+input{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+/* ================= LOGIN ================= */
+
 #loginPage{
   min-height:100vh;
   display:flex;
@@ -30,7 +41,7 @@ body{
 .loginBox{
   width:100%;
   max-width:400px;
-  background:white;
+  background:#fff;
   padding:30px;
   border-radius:20px;
   box-shadow:0 15px 40px rgba(0,0,0,.25);
@@ -51,33 +62,35 @@ body{
   color:#64748b;
 }
 
-input,button{
+.loginBox input{
   width:100%;
   padding:13px;
-  margin-top:10px;
+  margin-top:12px;
+  border:1px solid #cbd5e1;
   border-radius:9px;
   font-size:16px;
 }
 
-input{
-  border:1px solid #cbd5e1;
-}
-
-button{
+.loginBtn{
+  width:100%;
+  padding:13px;
+  margin-top:15px;
   border:0;
+  border-radius:9px;
   background:#2563eb;
   color:white;
+  font-size:16px;
   font-weight:bold;
-  cursor:pointer;
 }
 
-.error{
+.loginError{
   color:#dc2626;
   text-align:center;
   margin-top:12px;
 }
 
-/* ADMIN */
+/* ================= ADMIN ================= */
+
 #adminPage{
   display:none;
 }
@@ -98,14 +111,23 @@ button{
 }
 
 .header h1{
-  margin:0;
+  margin:0 0 5px;
+  font-size:24px;
+}
+
+.adminEmail{
+  font-size:13px;
+  opacity:.9;
 }
 
 .logout{
   width:auto;
-  background:white;
-  color:#2563eb;
   padding:10px 18px;
+  border:0;
+  border-radius:8px;
+  background:#fff;
+  color:#2563eb;
+  font-weight:bold;
 }
 
 .container{
@@ -114,9 +136,10 @@ button{
   padding:20px;
 }
 
-/* FILTER */
+/* ================= FILTER ================= */
+
 .filter{
-  background:white;
+  background:#fff;
   padding:18px;
   border-radius:15px;
   box-shadow:0 2px 10px rgba(0,0,0,.08);
@@ -125,17 +148,45 @@ button{
 
 .filterGrid{
   display:grid;
-  grid-template-columns:1fr 1fr auto;
+  grid-template-columns:1fr 1fr auto auto;
   gap:12px;
   align-items:end;
 }
 
-.refresh{
-  width:auto;
-  padding:13px 20px;
+.filter label{
+  display:block;
+  font-weight:bold;
+  margin-bottom:5px;
 }
 
-/* STATS */
+.filter input{
+  width:100%;
+  padding:12px;
+  border:1px solid #cbd5e1;
+  border-radius:8px;
+  font-size:15px;
+}
+
+.refresh,
+.printReport{
+  width:auto;
+  padding:12px 18px;
+  border:0;
+  border-radius:8px;
+  color:white;
+  font-weight:bold;
+}
+
+.refresh{
+  background:#2563eb;
+}
+
+.printReport{
+  background:#475569;
+}
+
+/* ================= STATS ================= */
+
 .stats{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -162,9 +213,10 @@ button{
   margin-top:8px;
 }
 
-/* ORDER */
+/* ================= ORDERS ================= */
+
 .order{
-  background:white;
+  background:#fff;
   padding:20px;
   border-radius:15px;
   margin-bottom:15px;
@@ -175,8 +227,8 @@ button{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:10px;
   flex-wrap:wrap;
+  gap:10px;
   margin-bottom:15px;
 }
 
@@ -212,28 +264,29 @@ button{
   background:#f8fafc;
   padding:11px;
   border-radius:8px;
+  line-height:1.5;
 }
 
 .detail b{
   display:block;
-  margin-bottom:4px;
+  margin-bottom:3px;
 }
 
 .actions{
   display:flex;
-  gap:10px;
   flex-wrap:wrap;
+  gap:8px;
   margin-top:15px;
 }
 
 .action{
   width:auto;
-  text-decoration:none;
-  padding:10px 15px;
+  padding:10px 14px;
+  border:0;
   border-radius:8px;
   color:white;
   font-weight:bold;
-  border:0;
+  text-decoration:none;
 }
 
 .call{
@@ -252,21 +305,40 @@ button{
   background:#d97706;
 }
 
+.printOrder{
+  background:#475569;
+}
+
 .empty{
-  background:white;
+  background:#fff;
   padding:30px;
   border-radius:15px;
   text-align:center;
   color:#64748b;
 }
 
-@media(max-width:700px){
+.loading{
+  text-align:center;
+  padding:20px;
+}
+
+/* ================= REPORT ================= */
+
+#reportArea{
+  display:none;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:800px){
 
   .filterGrid{
     grid-template-columns:1fr;
   }
 
-  .refresh{
+  .refresh,
+  .printReport{
     width:100%;
   }
 
@@ -278,14 +350,75 @@ button{
     grid-template-columns:1fr;
   }
 
+  .headerInner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .logout{
+    width:100%;
+  }
+
+}
+
+
+/* ================= PRINT ================= */
+
+@media print{
+
+  body{
+    background:white;
+  }
+
+  #loginPage,
+  .header,
+  .filter,
+  .stats,
+  #ordersList{
+    display:none !important;
+  }
+
+  #adminPage{
+    display:block !important;
+  }
+
+  #reportArea{
+    display:block !important;
+  }
+
+  .printReportPage{
+    padding:20px;
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+  }
+
+  th,
+  td{
+    border:1px solid #333;
+    padding:8px;
+    text-align:left;
+  }
+
+  h1,
+  h2{
+    text-align:center;
+  }
+
 }
 </style>
 </head>
 
+
 <body>
 
 
-<!-- ================= LOGIN ================= -->
+<!-- =====================================================
+     LOGIN PAGE
+===================================================== -->
 
 <div id="loginPage">
 
@@ -301,21 +434,27 @@ button{
       id="email"
       type="email"
       placeholder="Admin Email"
+      autocomplete="username"
     >
 
     <input
       id="password"
       type="password"
       placeholder="Password"
+      autocomplete="current-password"
     >
 
-    <button id="loginBtn">
+    <button
+      id="loginBtn"
+      class="loginBtn">
+
       🔐 Login
+
     </button>
 
     <div
       id="loginError"
-      class="error">
+      class="loginError">
     </div>
 
   </div>
@@ -323,23 +462,35 @@ button{
 </div>
 
 
-<!-- ================= ADMIN ================= -->
+<!-- =====================================================
+     ADMIN PAGE
+===================================================== -->
 
 <div id="adminPage">
+
 
   <div class="header">
 
     <div class="headerInner">
 
       <div>
+
         <h1>💧 Nectar Water Admin</h1>
-        <div id="adminEmail"></div>
+
+        <div
+          id="adminEmail"
+          class="adminEmail">
+        </div>
+
       </div>
+
 
       <button
         id="logoutBtn"
         class="logout">
+
         🚪 Logout
+
       </button>
 
     </div>
@@ -355,6 +506,7 @@ button{
     <div class="filter">
 
       <div class="filterGrid">
+
 
         <div>
 
@@ -379,7 +531,7 @@ button{
           <input
             id="search"
             type="text"
-            placeholder="नाम / मोबाइल / Order No."
+            placeholder="Order / Mobile / Name"
           >
 
         </div>
@@ -393,14 +545,25 @@ button{
 
         </button>
 
+
+        <button
+          id="printReportBtn"
+          class="printReport">
+
+          🖨️ Daily Report
+
+        </button>
+
+
       </div>
 
     </div>
 
 
-    <!-- STATS -->
+    <!-- STATISTICS -->
 
     <div class="stats">
+
 
       <div class="stat">
 
@@ -446,11 +609,12 @@ button{
           id="salesTotal"
           class="statValue">
 
-          ₹0
+          ₹0.00
 
         </div>
 
       </div>
+
 
     </div>
 
@@ -462,8 +626,77 @@ button{
 
     <div id="ordersList">
 
-      <div class="empty">
+      <div class="loading">
         ⏳ Orders load हो रहे हैं...
+      </div>
+
+    </div>
+
+
+    <!-- PRINT REPORT -->
+
+    <div id="reportArea">
+
+      <div class="printReportPage">
+
+        <h1>
+          💧 Nectar Water
+        </h1>
+
+        <h2>
+          Daily Order Report
+        </h2>
+
+        <p>
+          <b>Delivery Date:</b>
+          <span id="reportDate"></span>
+        </p>
+
+        <p>
+          <b>Total Orders:</b>
+          <span id="reportOrders"></span>
+        </p>
+
+        <p>
+          <b>Total Jar:</b>
+          <span id="reportJars"></span>
+        </p>
+
+        <p>
+          <b>Total Sales:</b>
+          ₹<span id="reportSales"></span>
+        </p>
+
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>Order</th>
+
+              <th>Customer</th>
+
+              <th>Mobile</th>
+
+              <th>Jar</th>
+
+              <th>Total</th>
+
+              <th>Status</th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody id="reportTable">
+
+          </tbody>
+
+        </table>
+
       </div>
 
     </div>
@@ -473,13 +706,17 @@ button{
 </div>
 
 
-<!-- ================= FIREBASE ================= -->
+<!-- =====================================================
+     FIREBASE
+===================================================== -->
 
 <script type="module">
 
+
 import {
   initializeApp
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
 import {
@@ -487,7 +724,8 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
 import {
@@ -499,10 +737,13 @@ import {
   doc,
   getDoc,
   updateDoc
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* ================= FIREBASE CONFIG ================= */
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
 
 const firebaseConfig = {
 
@@ -530,96 +771,135 @@ const firebaseConfig = {
 };
 
 
-/* ================= INITIALIZE ================= */
+/* =====================================================
+   INITIALIZE FIREBASE
+===================================================== */
 
 const app =
   initializeApp(firebaseConfig);
 
+
 const auth =
   getAuth(app);
+
 
 const db =
   getFirestore(app);
 
 
-/* ================= ELEMENTS ================= */
+/* =====================================================
+   ELEMENTS
+===================================================== */
 
 const loginPage =
-  document.getElementById("loginPage");
+  document.getElementById(
+    "loginPage"
+  );
+
 
 const adminPage =
-  document.getElementById("adminPage");
+  document.getElementById(
+    "adminPage"
+  );
+
 
 const emailInput =
-  document.getElementById("email");
+  document.getElementById(
+    "email"
+  );
+
 
 const passwordInput =
-  document.getElementById("password");
+  document.getElementById(
+    "password"
+  );
+
 
 const loginBtn =
-  document.getElementById("loginBtn");
+  document.getElementById(
+    "loginBtn"
+  );
+
 
 const loginError =
-  document.getElementById("loginError");
+  document.getElementById(
+    "loginError"
+  );
+
 
 const deliveryDate =
-  document.getElementById("deliveryDate");
+  document.getElementById(
+    "deliveryDate"
+  );
+
 
 const searchInput =
-  document.getElementById("search");
+  document.getElementById(
+    "search"
+  );
+
 
 const ordersList =
-  document.getElementById("ordersList");
+  document.getElementById(
+    "ordersList"
+  );
 
 
-/* ================= TODAY ================= */
+/* =====================================================
+   TODAY DATE
+===================================================== */
 
 function getToday(){
 
   const d =
     new Date();
 
-  const year =
-    d.getFullYear();
+  return (
 
-  const month =
+    d.getFullYear()
+    + "-"
+    +
     String(
       d.getMonth()+1
-    ).padStart(2,"0");
-
-  const day =
+    ).padStart(2,"0")
+    + "-"
+    +
     String(
       d.getDate()
-    ).padStart(2,"0");
+    ).padStart(2,"0")
 
-  return (
-    year +
-    "-" +
-    month +
-    "-" +
-    day
   );
 
 }
+
 
 deliveryDate.value =
   getToday();
 
 
-/* ================= LOGIN ================= */
+/* =====================================================
+   LOGIN
+===================================================== */
 
 loginBtn.addEventListener(
   "click",
   async()=>{
 
     const email =
-      emailInput.value.trim();
+      emailInput
+      .value
+      .trim();
+
 
     const password =
-      passwordInput.value;
+      passwordInput
+      .value;
 
 
-    if(!email || !password){
+    if(
+      !email ||
+      !password
+    ){
 
       loginError.innerText =
         "Email और Password डालें।";
@@ -632,8 +912,9 @@ loginBtn.addEventListener(
     loginBtn.disabled =
       true;
 
+
     loginBtn.innerText =
-      "⏳ Login...";
+      "⏳ Login हो रहा है...";
 
 
     try{
@@ -644,6 +925,7 @@ loginBtn.addEventListener(
         password
       );
 
+
       loginError.innerText =
         "";
 
@@ -653,14 +935,16 @@ loginBtn.addEventListener(
 
       console.error(error);
 
+
       loginError.innerText =
-        "❌ Email या Password गलत है।";
+        "❌ Login नहीं हुआ। Email/Password जाँचें।";
 
     }
 
 
     loginBtn.disabled =
       false;
+
 
     loginBtn.innerText =
       "🔐 Login";
@@ -669,21 +953,30 @@ loginBtn.addEventListener(
 );
 
 
-/* ================= ENTER LOGIN ================= */
+/* =====================================================
+   ENTER TO LOGIN
+===================================================== */
 
 passwordInput.addEventListener(
   "keydown",
-  e=>{
+  event=>{
 
-    if(e.key === "Enter"){
+    if(
+      event.key ===
+      "Enter"
+    ){
+
       loginBtn.click();
+
     }
 
   }
 );
 
 
-/* ================= AUTH ================= */
+/* =====================================================
+   AUTH STATE
+===================================================== */
 
 onAuthStateChanged(
   auth,
@@ -694,21 +987,28 @@ onAuthStateChanged(
       loginPage.style.display =
         "none";
 
+
       adminPage.style.display =
         "block";
 
+
       document
-      .getElementById("adminEmail")
+      .getElementById(
+        "adminEmail"
+      )
       .innerText =
         user.email || "";
+
 
       loadOrders();
 
     }
+
     else{
 
       loginPage.style.display =
         "flex";
+
 
       adminPage.style.display =
         "none";
@@ -719,10 +1019,14 @@ onAuthStateChanged(
 );
 
 
-/* ================= LOGOUT ================= */
+/* =====================================================
+   LOGOUT
+===================================================== */
 
 document
-.getElementById("logoutBtn")
+.getElementById(
+  "logoutBtn"
+)
 .addEventListener(
   "click",
   async()=>{
@@ -733,10 +1037,16 @@ document
 );
 
 
-/* ================= ORDERS ================= */
+/* =====================================================
+   ALL ORDERS
+===================================================== */
 
 let allOrders = [];
 
+
+/* =====================================================
+   LOAD ORDERS
+===================================================== */
 
 async function loadOrders(){
 
@@ -745,7 +1055,11 @@ async function loadOrders(){
 
 
   ordersList.innerHTML =
-    '<div class="empty">⏳ Orders load हो रहे हैं...</div>';
+    `
+      <div class="loading">
+        ⏳ Orders load हो रहे हैं...
+      </div>
+    `;
 
 
   try{
@@ -759,12 +1073,15 @@ async function loadOrders(){
 
     const q =
       query(
+
         ordersRef,
+
         where(
           "deliveryDate",
           "==",
           date
         )
+
       );
 
 
@@ -780,7 +1097,8 @@ async function loadOrders(){
 
         allOrders.push({
 
-          id:item.id,
+          id:
+            item.id,
 
           ...item.data()
 
@@ -793,36 +1111,42 @@ async function loadOrders(){
     displayOrders();
 
 
-    loadBookingCount(date);
+    await loadBookingCount(
+      date
+    );
 
   }
 
   catch(error){
 
     console.error(
-      "Firebase Error:",
+      "Firestore Error:",
       error
     );
 
 
-    ordersList.innerHTML = `
+    ordersList.innerHTML =
+      `
+        <div class="empty">
 
-      <div class="empty">
+          ❌ Orders load नहीं हुए।
 
-        ❌ Orders load नहीं हो पाए।<br><br>
+          <br><br>
 
-        Firebase Firestore Rules check करें।
+          Firebase Rules या
+          deliveryDate field check करें।
 
-      </div>
-
-    `;
+        </div>
+      `;
 
   }
 
 }
 
 
-/* ================= DISPLAY ================= */
+/* =====================================================
+   DISPLAY ORDERS
+===================================================== */
 
 function displayOrders(){
 
@@ -831,7 +1155,8 @@ function displayOrders(){
 
 
   const search =
-    searchInput.value
+    searchInput
+    .value
     .trim()
     .toLowerCase();
 
@@ -843,27 +1168,43 @@ function displayOrders(){
         order=>{
 
           const text =
-            (
+
+            String(
               order.name || ""
-            ) +
-            " " +
-            (
+            )
+
+            + " "
+
+            +
+
+            String(
               order.mobile || ""
-            ) +
-            " " +
-            (
+            )
+
+            + " "
+
+            +
+
+            String(
               order.orderNumber || ""
             );
 
+
           return text
             .toLowerCase()
-            .includes(search);
+            .includes(
+              search
+            );
 
         }
       );
 
   }
 
+
+  /* =================
+     TOTALS
+  ================= */
 
   let jars = 0;
 
@@ -878,6 +1219,7 @@ function displayOrders(){
           order.quantity
         ) || 0;
 
+
       sales +=
         Number(
           order.grandTotal
@@ -888,28 +1230,46 @@ function displayOrders(){
 
 
   document
-  .getElementById("jarTotal")
+  .getElementById(
+    "jarTotal"
+  )
   .innerText =
-    jars + " / 300";
+    jars +
+    " / 300";
 
 
   document
-  .getElementById("orderTotal")
+  .getElementById(
+    "orderTotal"
+  )
   .innerText =
     allOrders.length;
 
 
   document
-  .getElementById("salesTotal")
+  .getElementById(
+    "salesTotal"
+  )
   .innerText =
     "₹" +
     sales.toFixed(2);
 
 
-  if(orders.length === 0){
+  /* =================
+     NO ORDERS
+  ================= */
+
+  if(
+    orders.length ===
+    0
+  ){
 
     ordersList.innerHTML =
-      '<div class="empty">📭 कोई order नहीं मिला।</div>';
+      `
+        <div class="empty">
+          📭 कोई order नहीं मिला।
+        </div>
+      `;
 
     return;
 
@@ -920,6 +1280,10 @@ function displayOrders(){
     "";
 
 
+  /* =================
+     CREATE ORDER CARDS
+  ================= */
+
   orders.forEach(
     order=>{
 
@@ -928,9 +1292,19 @@ function displayOrders(){
         "Pending";
 
 
-      const delivered =
+      const isDelivered =
         status ===
         "Delivered";
+
+
+      const mobile =
+        String(
+          order.mobile || ""
+        )
+        .replace(
+          /\D/g,
+          ""
+        );
 
 
       const card =
@@ -959,13 +1333,13 @@ function displayOrders(){
 
 
           <div class="status ${
-            delivered
+            isDelivered
             ? "delivered"
             : "pending"
           }">
 
             ${
-              delivered
+              isDelivered
               ? "🟢 Delivered"
               : "🟡 Pending"
             }
@@ -1019,9 +1393,11 @@ function displayOrders(){
 
             <b>🪣 Jar</b>
 
-            ${Number(
-              order.quantity
-            ) || 0}
+            ${
+              Number(
+                order.quantity
+              ) || 0
+            }
 
           </div>
 
@@ -1030,9 +1406,11 @@ function displayOrders(){
 
             <b>📍 Distance</b>
 
-            ${Number(
-              order.distance
-            ) || 0}
+            ${
+              Number(
+                order.distance
+              ) || 0
+            }
             KM
 
           </div>
@@ -1042,11 +1420,13 @@ function displayOrders(){
 
             <b>🚚 Delivery Charge</b>
 
-            ₹${(
-              Number(
-                order.deliveryCharge
-              ) || 0
-            ).toFixed(2)}
+            ₹${
+              (
+                Number(
+                  order.deliveryCharge
+                ) || 0
+              ).toFixed(2)
+            }
 
           </div>
 
@@ -1055,11 +1435,13 @@ function displayOrders(){
 
             <b>💰 Jar Amount</b>
 
-            ₹${(
-              Number(
-                order.jarAmount
-              ) || 0
-            ).toFixed(2)}
+            ₹${
+              (
+                Number(
+                  order.jarAmount
+                ) || 0
+              ).toFixed(2)
+            }
 
           </div>
 
@@ -1068,11 +1450,13 @@ function displayOrders(){
 
             <b>💵 Grand Total</b>
 
-            ₹${(
-              Number(
-                order.grandTotal
-              ) || 0
-            ).toFixed(2)}
+            ₹${
+              (
+                Number(
+                  order.grandTotal
+                ) || 0
+              ).toFixed(2)
+            }
 
           </div>
 
@@ -1113,9 +1497,7 @@ function displayOrders(){
 
           <a
             class="action call"
-            href="tel:${safe(
-              order.mobile || ""
-            )}">
+            href="tel:${safe(mobile)}">
 
             📞 Call
 
@@ -1125,9 +1507,7 @@ function displayOrders(){
           <a
             class="action whatsapp"
             target="_blank"
-            href="https://wa.me/91${safe(
-              order.mobile || ""
-            )}">
+            href="https://wa.me/91${safe(mobile)}">
 
             📱 WhatsApp
 
@@ -1135,20 +1515,22 @@ function displayOrders(){
 
 
           <button
+            class="action printOrder">
+
+            🖨️ Print
+
+          </button>
+
+
+          <button
             class="action ${
-              delivered
+              isDelivered
               ? "markPending"
               : "deliver"
-            }"
-            data-id="${safe(order.id)}"
-            data-status="${
-              delivered
-              ? "Pending"
-              : "Delivered"
             }">
 
             ${
-              delivered
+              isDelivered
               ? "↩️ Pending करें"
               : "✅ Delivered करें"
             }
@@ -1161,10 +1543,32 @@ function displayOrders(){
       `;
 
 
-      const statusButton =
-        card.querySelector(
-          "button[data-id]"
+      /* STATUS BUTTON */
+
+      const buttons =
+        card.querySelectorAll(
+          "button"
         );
+
+
+      const printButton =
+        buttons[0];
+
+
+      const statusButton =
+        buttons[1];
+
+
+      printButton.addEventListener(
+        "click",
+        ()=>{
+
+          printSingleOrder(
+            order
+          );
+
+        }
+      );
 
 
       statusButton.addEventListener(
@@ -1172,8 +1576,10 @@ function displayOrders(){
         ()=>{
 
           changeStatus(
-            statusButton.dataset.id,
-            statusButton.dataset.status
+            order.id,
+            isDelivered
+            ? "Pending"
+            : "Delivered"
           );
 
         }
@@ -1190,7 +1596,71 @@ function displayOrders(){
 }
 
 
-/* ================= STATUS ================= */
+/* =====================================================
+   BOOKING COUNT
+===================================================== */
+
+async function loadBookingCount(
+  date
+){
+
+  try{
+
+    const bookingRef =
+      doc(
+        db,
+        "dailyBookings",
+        date
+      );
+
+
+    const bookingSnap =
+      await getDoc(
+        bookingRef
+      );
+
+
+    if(
+      bookingSnap.exists()
+    ){
+
+      const data =
+        bookingSnap.data();
+
+
+      const booked =
+        Number(
+          data.bookedJar
+        ) || 0;
+
+
+      document
+      .getElementById(
+        "jarTotal"
+      )
+      .innerText =
+        booked +
+        " / 300";
+
+    }
+
+  }
+
+  catch(error){
+
+    console.log(
+      "dailyBookings error:",
+      error
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   UPDATE STATUS
+===================================================== */
 
 async function changeStatus(
   id,
@@ -1223,6 +1693,7 @@ async function changeStatus(
 
     console.error(error);
 
+
     alert(
       "❌ Status update नहीं हो पाया।"
     );
@@ -1232,69 +1703,9 @@ async function changeStatus(
 }
 
 
-/* ================= BOOKING COUNT ================= */
-
-async function loadBookingCount(
-  date
-){
-
-  try{
-
-    const ref =
-      doc(
-        db,
-        "dailyBookings",
-        date
-      );
-
-
-    const snap =
-      await getDoc(ref);
-
-
-    if(snap.exists()){
-
-      const data =
-        snap.data();
-
-
-      const booked =
-        Number(
-          data.bookedJar
-        ) || 0;
-
-
-      document
-      .getElementById("jarTotal")
-      .innerText =
-        booked +
-        " / 300";
-
-    }
-
-  }
-
-  catch(error){
-
-    console.log(
-      "dailyBookings:",
-      error
-    );
-
-  }
-
-}
-
-
-/* ================= SEARCH ================= */
-
-searchInput.addEventListener(
-  "input",
-  displayOrders
-);
-
-
-/* ================= DATE ================= */
+/* =====================================================
+   DATE CHANGE
+===================================================== */
 
 deliveryDate.addEventListener(
   "change",
@@ -1302,39 +1713,465 @@ deliveryDate.addEventListener(
 );
 
 
-/* ================= REFRESH ================= */
+/* =====================================================
+   SEARCH
+===================================================== */
+
+searchInput.addEventListener(
+  "input",
+  displayOrders
+);
+
+
+/* =====================================================
+   REFRESH
+===================================================== */
 
 document
-.getElementById("refreshBtn")
+.getElementById(
+  "refreshBtn"
+)
 .addEventListener(
   "click",
   loadOrders
 );
 
 
-/* ================= SAFE TEXT ================= */
+/* =====================================================
+   DAILY REPORT
+===================================================== */
 
-function safe(value){
+document
+.getElementById(
+  "printReportBtn"
+)
+.addEventListener(
+  "click",
+  ()=>{
+
+    createReport();
+
+    window.print();
+
+  }
+);
+
+
+function createReport(){
+
+  const date =
+    deliveryDate.value;
+
+
+  let jars = 0;
+
+  let sales = 0;
+
+
+  allOrders.forEach(
+    order=>{
+
+      jars +=
+        Number(
+          order.quantity
+        ) || 0;
+
+
+      sales +=
+        Number(
+          order.grandTotal
+        ) || 0;
+
+    }
+  );
+
+
+  document
+  .getElementById(
+    "reportDate"
+  )
+  .innerText =
+    formatDate(date);
+
+
+  document
+  .getElementById(
+    "reportOrders"
+  )
+  .innerText =
+    allOrders.length;
+
+
+  document
+  .getElementById(
+    "reportJars"
+  )
+  .innerText =
+    jars;
+
+
+  document
+  .getElementById(
+    "reportSales"
+  )
+  .innerText =
+    sales.toFixed(2);
+
+
+  const table =
+    document
+    .getElementById(
+      "reportTable"
+    );
+
+
+  table.innerHTML =
+    "";
+
+
+  allOrders.forEach(
+    order=>{
+
+      const row =
+        document.createElement(
+          "tr"
+        );
+
+
+      row.innerHTML = `
+
+        <td>
+          ${safe(
+            order.orderNumber ||
+            order.id
+          )}
+        </td>
+
+        <td>
+          ${safe(
+            order.name ||
+            "-"
+          )}
+        </td>
+
+        <td>
+          ${safe(
+            order.mobile ||
+            "-"
+          )}
+        </td>
+
+        <td>
+          ${
+            Number(
+              order.quantity
+            ) || 0
+          }
+        </td>
+
+        <td>
+          ₹${
+            (
+              Number(
+                order.grandTotal
+              ) || 0
+            ).toFixed(2)
+          }
+        </td>
+
+        <td>
+          ${safe(
+            order.status ||
+            "Pending"
+          )}
+        </td>
+
+      `;
+
+
+      table.appendChild(
+        row
+      );
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   PRINT SINGLE ORDER
+===================================================== */
+
+function printSingleOrder(
+  order
+){
+
+  const popup =
+    window.open(
+      "",
+      "_blank",
+      "width=700,height=700"
+    );
+
+
+  if(!popup){
+
+    alert(
+      "Popup blocked है। Browser में popup allow करें।"
+    );
+
+    return;
+
+  }
+
+
+  popup.document.write(`
+
+    <!DOCTYPE html>
+
+    <html>
+
+    <head>
+
+      <title>
+        Nectar Water Order
+      </title>
+
+      <style>
+
+        body{
+          font-family:Arial;
+          padding:30px;
+        }
+
+        h1,
+        h2{
+          text-align:center;
+        }
+
+        .box{
+          border:1px solid #333;
+          padding:15px;
+          margin-top:15px;
+        }
+
+        p{
+          margin:8px 0;
+        }
+
+      </style>
+
+    </head>
+
+    <body>
+
+      <h1>
+        💧 Nectar Water
+      </h1>
+
+      <h2>
+        Order Receipt
+      </h2>
+
+
+      <div class="box">
+
+        <p>
+          <b>Order:</b>
+          ${safe(
+            order.orderNumber ||
+            order.id
+          )}
+        </p>
+
+        <p>
+          <b>Customer:</b>
+          ${safe(
+            order.name ||
+            "-"
+          )}
+        </p>
+
+        <p>
+          <b>Mobile:</b>
+          ${safe(
+            order.mobile ||
+            "-"
+          )}
+        </p>
+
+        <p>
+          <b>Delivery Date:</b>
+          ${safe(
+            order.deliveryDateDisplay ||
+            order.deliveryDate ||
+            "-"
+          )}
+        </p>
+
+        <p>
+          <b>Jar:</b>
+          ${
+            Number(
+              order.quantity
+            ) || 0
+          }
+        </p>
+
+        <p>
+          <b>Distance:</b>
+          ${
+            Number(
+              order.distance
+            ) || 0
+          }
+          KM
+        </p>
+
+        <p>
+          <b>Delivery Charge:</b>
+          ₹${
+            (
+              Number(
+                order.deliveryCharge
+              ) || 0
+            ).toFixed(2)
+          }
+        </p>
+
+        <p>
+          <b>Jar Amount:</b>
+          ₹${
+            (
+              Number(
+                order.jarAmount
+              ) || 0
+            ).toFixed(2)
+          }
+        </p>
+
+        <p>
+          <b>Total:</b>
+          ₹${
+            (
+              Number(
+                order.grandTotal
+              ) || 0
+            ).toFixed(2)
+          }
+        </p>
+
+        <p>
+          <b>Address:</b>
+          ${safe(
+            order.address ||
+            "-"
+          )}
+        </p>
+
+        <p>
+          <b>Status:</b>
+          ${safe(
+            order.status ||
+            "Pending"
+          )}
+        </p>
+
+      </div>
+
+
+      <script>
+
+        window.onload=function(){
+
+          window.print();
+
+        };
+
+      <\/script>
+
+    </body>
+
+    </html>
+
+  `);
+
+
+  popup.document.close();
+
+}
+
+
+/* =====================================================
+   FORMAT DATE
+===================================================== */
+
+function formatDate(
+  date
+){
+
+  if(!date){
+    return "-";
+  }
+
+
+  const parts =
+    date.split("-");
+
+
+  if(
+    parts.length !== 3
+  ){
+
+    return date;
+
+  }
+
+
+  return (
+    parts[2] +
+    "-" +
+    parts[1] +
+    "-" +
+    parts[0]
+  );
+
+}
+
+
+/* =====================================================
+   SAFE TEXT
+===================================================== */
+
+function safe(
+  value
+){
 
   return String(
     value ?? ""
   )
+
   .replaceAll(
     "&",
     "&amp;"
   )
+
   .replaceAll(
     "<",
     "&lt;"
   )
+
   .replaceAll(
     ">",
     "&gt;"
   )
+
   .replaceAll(
     '"',
     "&quot;"
   )
+
   .replaceAll(
     "'",
     "&#039;"
