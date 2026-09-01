@@ -1,10 +1,10 @@
-```html
 <!DOCTYPE html>
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nectar Water - Online Booking</title>
+
+<title>Nectar Water - 20 Liter Jar</title>
 
 <style>
 *{
@@ -15,47 +15,82 @@
 
 body{
     font-family:Arial,sans-serif;
-    background:linear-gradient(135deg,#e0f2fe,#f8fafc);
-    color:#1e293b;
+    background:#eef7ff;
+    color:#172554;
+}
+
+.header{
+    background:linear-gradient(135deg,#0878f9,#00a6ff);
+    color:white;
+    text-align:center;
+    padding:28px 15px;
+}
+
+.logo{
+    font-size:65px;
+}
+
+.header h1{
+    font-size:32px;
+    margin:5px 0;
+}
+
+.header p{
+    font-size:17px;
 }
 
 .container{
-    width:100%;
-    max-width:600px;
+    max-width:700px;
     margin:auto;
     padding:20px;
 }
 
-.header{
-    text-align:center;
-    padding:20px 10px;
-}
-
-.logo{
-    font-size:60px;
-}
-
-.header h1{
-    color:#0f67b1;
-    font-size:32px;
-    margin:8px 0;
-}
-
-.header p{
-    color:#64748b;
-}
-
 .card{
     background:white;
-    padding:22px;
     border-radius:20px;
-    box-shadow:0 8px 30px rgba(0,0,0,.10);
-    margin-bottom:20px;
+    padding:22px;
+    margin-bottom:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.price-box{
+    text-align:center;
+    background:#f0f9ff;
+    border:2px solid #bae6fd;
+}
+
+.price-box h2{
+    color:#0369a1;
+    margin-bottom:8px;
+}
+
+.price{
+    font-size:30px;
+    font-weight:bold;
+    color:#0284c7;
+}
+
+.capacity{
+    text-align:center;
+    background:#ecfdf5;
+    border:2px solid #bbf7d0;
+}
+
+.capacity h3{
+    color:#166534;
+    margin-bottom:8px;
+}
+
+.capacity-number{
+    font-size:26px;
+    font-weight:bold;
+    color:#15803d;
 }
 
 label{
     display:block;
     font-weight:bold;
+    margin-bottom:7px;
     margin-top:15px;
 }
 
@@ -63,10 +98,15 @@ input,
 textarea{
     width:100%;
     padding:13px;
-    margin-top:7px;
     border:1px solid #cbd5e1;
     border-radius:10px;
     font-size:16px;
+    outline:none;
+}
+
+input:focus,
+textarea:focus{
+    border-color:#0284c7;
 }
 
 textarea{
@@ -74,92 +114,69 @@ textarea{
     resize:vertical;
 }
 
-.info{
-    background:#eff6ff;
-    border-radius:12px;
-    padding:14px;
-    margin-bottom:15px;
-}
-
-.info strong{
-    color:#075985;
-}
-
-.limit-box{
-    background:#f0fdf4;
-    padding:14px;
-    border-radius:12px;
-    margin-top:15px;
-    text-align:center;
-    font-weight:bold;
-}
-
-#availableJar{
-    color:#15803d;
-    font-size:20px;
-    margin-top:5px;
-}
-
-.price-box{
+.summary{
     background:#f8fafc;
-    padding:15px;
-    border-radius:12px;
-    margin-top:18px;
+    border-radius:14px;
+    padding:16px;
+    margin-top:20px;
 }
 
-.price-row{
+.summary-row{
     display:flex;
     justify-content:space-between;
-    padding:7px 0;
+    padding:9px 0;
+    border-bottom:1px solid #e2e8f0;
+}
+
+.summary-row:last-child{
+    border-bottom:0;
 }
 
 .total{
-    border-top:1px solid #cbd5e1;
-    margin-top:8px;
-    padding-top:12px;
-    font-size:21px;
+    font-size:22px;
     font-weight:bold;
+    color:#047857;
 }
 
-.booking-btn{
+.order-btn{
     width:100%;
+    padding:16px;
     margin-top:20px;
-    padding:15px;
     border:0;
     border-radius:12px;
-    background:#0f67b1;
+    background:linear-gradient(135deg,#16a34a,#059669);
     color:white;
     font-size:18px;
     font-weight:bold;
     cursor:pointer;
 }
 
-.booking-btn:disabled{
+.order-btn:disabled{
     background:#94a3b8;
     cursor:not-allowed;
 }
 
 .whatsapp-btn{
-    display:none;
     width:100%;
+    padding:15px;
     margin-top:12px;
-    padding:14px;
+    border:0;
     border-radius:12px;
     background:#25D366;
     color:white;
-    text-align:center;
-    text-decoration:none;
+    font-size:17px;
     font-weight:bold;
+    cursor:pointer;
+    display:none;
 }
 
 .message{
     display:none;
-    padding:13px;
-    border-radius:10px;
+    padding:15px;
     margin-top:15px;
+    border-radius:12px;
     text-align:center;
     font-weight:bold;
-    line-height:1.5;
 }
 
 .success{
@@ -172,148 +189,269 @@ textarea{
     color:#991b1b;
 }
 
+.info{
+    background:#dbeafe;
+    color:#1e40af;
+}
+
+.note{
+    font-size:13px;
+    color:#64748b;
+    margin-top:6px;
+}
+
 .footer{
     text-align:center;
+    padding:20px;
     color:#64748b;
-    padding:15px;
-    font-size:13px;
+    font-size:14px;
 }
 
 @media(max-width:500px){
+
+    .header h1{
+        font-size:27px;
+    }
+
     .container{
         padding:12px;
     }
 
     .card{
-        padding:17px;
+        padding:18px;
     }
 
-    .header h1{
-        font-size:28px;
-    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
+
+<div class="header">
+
+    <div class="logo">💧</div>
+
+    <h1>Nectar Water</h1>
+
+    <p>शुद्ध पानी • आपके घर तक</p>
+
+</div>
+
+
 <div class="container">
 
-    <div class="header">
-        <div class="logo">💧</div>
-        <h1>Nectar Water</h1>
-        <p>शुद्ध पानी • आपके घर तक</p>
-    </div>
+    <!-- PRICE -->
 
-    <div class="card">
+    <div class="card price-box">
 
-        <div class="info">
-            <strong>💧 20 Liter Jar</strong><br>
+        <h2>💧 20 Liter Jar</h2>
+
+        <div class="price">
             ₹20 प्रति Jar
         </div>
 
-        <div class="limit-box">
-            📅 चुनी गई तारीख की उपलब्ध क्षमता:
-            <div id="availableJar">लोड हो रहा है...</div>
+    </div>
+
+
+    <!-- CAPACITY -->
+
+    <div class="card capacity">
+
+        <h3>
+            📅 चुनी गई तारीख की उपलब्ध क्षमता
+        </h3>
+
+        <div
+            id="capacityText"
+            class="capacity-number">
+
+            300 / 300 Jar बाकी
+
         </div>
 
-        <label>👤 आपका नाम</label>
+    </div>
+
+
+    <!-- ORDER FORM -->
+
+    <div class="card">
+
+        <h2>📝 Order करें</h2>
+
+
+        <label for="name">
+            👤 आपका नाम
+        </label>
+
         <input
             id="name"
             type="text"
             placeholder="अपना नाम लिखें"
-            autocomplete="name"
         >
 
-        <label>📱 मोबाइल नंबर</label>
+
+        <label for="mobile">
+            📱 मोबाइल नंबर
+        </label>
+
         <input
             id="mobile"
             type="tel"
             maxlength="10"
-            inputmode="numeric"
             placeholder="10 अंकों का मोबाइल नंबर"
-            autocomplete="tel"
         >
 
-        <label>📅 Delivery Date</label>
+
+        <label for="deliveryDate">
+            📅 Delivery Date
+        </label>
+
         <input
             id="deliveryDate"
             type="date"
         >
 
-        <label>🪣 कितने Jar चाहिए?</label>
+
+        <label for="quantity">
+            🪣 कितने Jar चाहिए?
+        </label>
+
         <input
             id="quantity"
             type="number"
             min="1"
             max="300"
-            placeholder="उदाहरण: 10"
+            value="1"
+            placeholder="Jar की संख्या"
         >
 
-        <label>📏 दूरी (KM)</label>
+        <div class="note">
+            अधिकतम 300 Jar प्रतिदिन
+        </div>
+
+
+        <label for="distance">
+            📏 दूरी (KM)
+        </label>
+
         <input
             id="distance"
             type="number"
             min="0"
             step="0.1"
-            placeholder="उदाहरण: 7"
+            value="0"
+            placeholder="जैसे 7"
         >
 
-        <label>📍 पूरा Address</label>
+
+        <label for="address">
+            📍 पूरा Address
+        </label>
+
         <textarea
             id="address"
-            placeholder="घर/दुकान/स्थान का पूरा पता"
+            placeholder="पूरा पता लिखें"
         ></textarea>
 
-        <label>📝 Extra जानकारी (वैकल्पिक)</label>
+
+        <label for="extra">
+            📝 Extra जानकारी (वैकल्पिक)
+        </label>
+
         <textarea
             id="extra"
             placeholder="कोई अतिरिक्त जानकारी"
         ></textarea>
 
-        <div class="price-box">
 
-            <div class="price-row">
-                <span>🪣 Jar Amount</span>
-                <span id="jarAmount">₹0.00</span>
+        <!-- SUMMARY -->
+
+        <div class="summary">
+
+            <div class="summary-row">
+
+                <span>
+                    🪣 Jar Amount
+                </span>
+
+                <strong id="jarAmount">
+                    ₹20.00
+                </strong>
+
             </div>
 
-            <div class="price-row">
-                <span>🚚 Delivery Charge</span>
-                <span id="deliveryCharge">₹0.00</span>
+
+            <div class="summary-row">
+
+                <span>
+                    🚚 Delivery Charge
+                </span>
+
+                <strong id="deliveryCharge">
+                    ₹0.00
+                </strong>
+
             </div>
 
-            <div class="price-row total">
-                <span>💰 Grand Total</span>
-                <span id="grandTotal">₹0.00</span>
+
+            <div class="summary-row total">
+
+                <span>
+                    💰 Grand Total
+                </span>
+
+                <strong id="grandTotal">
+                    ₹20.00
+                </strong>
+
             </div>
 
         </div>
 
+
+        <!-- ORDER BUTTON -->
+
         <button
-            id="bookingButton"
-            class="booking-btn">
-            🛒 Order Book करें
+            id="orderButton"
+            class="order-btn">
+
+            🪣 Order Confirm करें
+
         </button>
 
-        <div id="message" class="message"></div>
 
-        <a
+        <!-- WHATSAPP -->
+
+        <button
             id="whatsappButton"
-            class="whatsapp-btn"
-            target="_blank"
-            rel="noopener">
+            class="whatsapp-btn">
+
             📱 WhatsApp पर Order भेजें
-        </a>
+
+        </button>
+
+
+        <div
+            id="message"
+            class="message">
+        </div>
 
     </div>
 
+
     <div class="footer">
+
         © Nectar Water • 20 Liter Drinking Water
+
     </div>
 
 </div>
 
+
+
+<!-- FIREBASE -->
 
 <script type="module">
 
@@ -325,14 +463,13 @@ import {
     getFirestore,
     doc,
     getDoc,
-    runTransaction,
-    serverTimestamp
+    runTransaction
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* =====================================
+/* =========================
    FIREBASE CONFIG
-===================================== */
+========================= */
 
 const firebaseConfig = {
 
@@ -359,9 +496,9 @@ const firebaseConfig = {
 };
 
 
-/* =====================================
-   FIREBASE INITIALIZE
-===================================== */
+/* =========================
+   INITIALIZE FIREBASE
+========================= */
 
 const app =
     initializeApp(firebaseConfig);
@@ -370,26 +507,17 @@ const db =
     getFirestore(app);
 
 
-/* =====================================
-   SETTINGS
-===================================== */
+/* =========================
+   WHATSAPP NUMBER
+========================= */
 
-const JAR_PRICE = 20;
-
-const DAILY_LIMIT = 300;
-
-
-/*
-   Nectar Water WhatsApp Number
-*/
-
-const BUSINESS_WHATSAPP =
+const WHATSAPP_NUMBER =
     "918604970943";
 
 
-/* =====================================
+/* =========================
    ELEMENTS
-===================================== */
+========================= */
 
 const nameInput =
     document.getElementById("name");
@@ -412,36 +540,35 @@ const addressInput =
 const extraInput =
     document.getElementById("extra");
 
-const bookingButton =
-    document.getElementById("bookingButton");
-
-const messageBox =
-    document.getElementById("message");
-
-const availableJar =
-    document.getElementById("availableJar");
-
-const jarAmountBox =
-    document.getElementById("jarAmount");
-
-const deliveryChargeBox =
-    document.getElementById("deliveryCharge");
-
-const grandTotalBox =
-    document.getElementById("grandTotal");
+const orderButton =
+    document.getElementById("orderButton");
 
 const whatsappButton =
     document.getElementById("whatsappButton");
 
+const messageBox =
+    document.getElementById("message");
 
-/* =====================================
+const capacityText =
+    document.getElementById("capacityText");
+
+const jarAmountText =
+    document.getElementById("jarAmount");
+
+const deliveryChargeText =
+    document.getElementById("deliveryCharge");
+
+const grandTotalText =
+    document.getElementById("grandTotal");
+
+
+/* =========================
    TODAY DATE
-===================================== */
+========================= */
 
 function getTodayDate(){
 
-    const now =
-        new Date();
+    const now = new Date();
 
     const year =
         now.getFullYear();
@@ -456,142 +583,26 @@ function getTodayDate(){
             now.getDate()
         ).padStart(2,"0");
 
-    return (
-        year +
-        "-" +
-        month +
-        "-" +
-        day
-    );
+    return `${year}-${month}-${day}`;
 }
 
 
-/* =====================================
-   FORMAT DATE
-===================================== */
-
-function formatDate(date){
-
-    if(!date){
-        return "";
-    }
-
-    const parts =
-        date.split("-");
-
-    if(parts.length !== 3){
-        return date;
-    }
-
-    return (
-        parts[2] +
-        "-" +
-        parts[1] +
-        "-" +
-        parts[0]
-    );
-}
-
-
-/* =====================================
-   SET DATE
-===================================== */
-
-dateInput.min =
-    getTodayDate();
+/* =========================
+   DEFAULT DATE
+========================= */
 
 dateInput.value =
     getTodayDate();
 
-
-/* =====================================
-   DELIVERY CHARGE
-=====================================
-
-1-29 Jar:
-0-5 KM = FREE
-5-15 KM = ₹1.50 per Jar
-
-30+ Jar:
-15 KM तक = FREE
-
-15 KM से अधिक:
-₹7 per KM
-
-===================================== */
-
-function calculateDeliveryCharge(
-    quantity,
-    distance
-){
-
-    quantity =
-        Number(quantity) || 0;
-
-    distance =
-        Number(distance) || 0;
+dateInput.min =
+    getTodayDate();
 
 
-    if(quantity <= 0){
-        return 0;
-    }
+/* =========================
+   DELIVERY CALCULATION
+========================= */
 
-
-    /*
-       30 या अधिक Jar
-       15 KM तक FREE
-    */
-
-    if(
-        quantity >= 30 &&
-        distance <= 15
-    ){
-
-        return 0;
-
-    }
-
-
-    /*
-       1 से 29 Jar
-       5 KM से अधिक
-       और 15 KM तक
-       ₹1.50 प्रति Jar
-    */
-
-    if(
-        quantity >= 1 &&
-        quantity <= 29 &&
-        distance > 5 &&
-        distance <= 15
-    ){
-
-        return quantity * 1.5;
-
-    }
-
-
-    /*
-       15 KM से अधिक
-       ₹7 प्रति KM
-    */
-
-    if(distance > 15){
-
-        return distance * 7;
-
-    }
-
-
-    return 0;
-}
-
-
-/* =====================================
-   UPDATE TOTAL
-===================================== */
-
-function updateTotal(){
+function calculateDelivery(){
 
     const quantity =
         Number(
@@ -605,14 +616,65 @@ function updateTotal(){
 
 
     const jarAmount =
-        quantity * JAR_PRICE;
+        quantity * 20;
 
 
-    const deliveryCharge =
-        calculateDeliveryCharge(
-            quantity,
-            distance
-        );
+    let deliveryCharge = 0;
+
+
+    /*
+       30 से ज्यादा Jar:
+       15 KM तक FREE
+    */
+
+    if(quantity >= 30){
+
+        if(distance > 15){
+
+            deliveryCharge =
+                (distance - 15) * 7;
+
+        }
+
+        else{
+
+            deliveryCharge = 0;
+
+        }
+
+    }
+
+    /*
+       1 से 29 Jar:
+       5 KM तक FREE
+       5-15 KM = ₹1.50 प्रति Jar
+       15 KM से ऊपर = ₹7 प्रति KM
+    */
+
+    else{
+
+        if(distance <= 5){
+
+            deliveryCharge = 0;
+
+        }
+
+        else if(distance <= 15){
+
+            deliveryCharge =
+                quantity * 1.5;
+
+        }
+
+        else{
+
+            deliveryCharge =
+                quantity * 1.5 +
+                (distance - 15) * 7;
+
+        }
+
+    }
 
 
     const grandTotal =
@@ -620,36 +682,160 @@ function updateTotal(){
         deliveryCharge;
 
 
-    jarAmountBox.innerText =
-        "₹" +
-        jarAmount.toFixed(2);
+    jarAmountText.innerText =
+        "₹" + jarAmount.toFixed(2);
+
+    deliveryChargeText.innerText =
+        "₹" + deliveryCharge.toFixed(2);
+
+    grandTotalText.innerText =
+        "₹" + grandTotal.toFixed(2);
 
 
-    deliveryChargeBox.innerText =
-        "₹" +
-        deliveryCharge.toFixed(2);
+    return {
 
+        jarAmount,
+        deliveryCharge,
+        grandTotal
 
-    grandTotalBox.innerText =
-        "₹" +
-        grandTotal.toFixed(2);
+    };
+
 }
 
 
+/* =========================
+   CALCULATION EVENTS
+========================= */
+
 quantityInput.addEventListener(
     "input",
-    updateTotal
+    calculateDelivery
 );
 
 distanceInput.addEventListener(
     "input",
-    updateTotal
+    calculateDelivery
+);
+
+calculateDelivery();
+
+
+/* =========================
+   LOAD DAILY CAPACITY
+========================= */
+
+async function loadCapacity(){
+
+    const selectedDate =
+        dateInput.value;
+
+
+    if(!selectedDate){
+
+        return;
+
+    }
+
+
+    try{
+
+        const bookingRef =
+            doc(
+                db,
+                "dailyBookings",
+                selectedDate
+            );
+
+
+        const bookingSnap =
+            await getDoc(
+                bookingRef
+            );
+
+
+        let bookedJar = 0;
+
+
+        if(
+            bookingSnap.exists()
+        ){
+
+            bookedJar =
+                Number(
+                    bookingSnap
+                    .data()
+                    .bookedJar
+                ) || 0;
+
+        }
+
+
+        const remaining =
+            Math.max(
+                0,
+                300 - bookedJar
+            );
+
+
+        capacityText.innerText =
+            `${remaining} / 300 Jar बाकी`;
+
+
+        if(remaining === 0){
+
+            capacityText.innerText =
+                "❌ आज की Booking Full है";
+
+            capacityText.style.color =
+                "#dc2626";
+
+        }
+
+        else{
+
+            capacityText.style.color =
+                "#15803d";
+
+        }
+
+    }
+
+    catch(error){
+
+        console.error(
+            "Capacity Error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================
+   DATE CHANGE
+========================= */
+
+dateInput.addEventListener(
+    "change",
+    function(){
+
+        loadCapacity();
+
+    }
 );
 
 
-/* =====================================
-   SHOW MESSAGE
-===================================== */
+/* =========================
+   LOAD INITIAL CAPACITY
+========================= */
+
+loadCapacity();
+
+
+/* =========================
+   MESSAGE
+========================= */
 
 function showMessage(
     text,
@@ -664,168 +850,140 @@ function showMessage(
 
     messageBox.style.display =
         "block";
+
 }
 
 
-/* =====================================
-   CHECK DAILY JAR
-===================================== */
+/* =========================
+   VALIDATE FORM
+========================= */
 
-async function checkAvailableJars(){
+function validateForm(){
 
-    const date =
+    const name =
+        nameInput.value.trim();
+
+    const mobile =
+        mobileInput.value.trim();
+
+    const deliveryDate =
         dateInput.value;
 
-
-    if(!date){
-
-        availableJar.innerText =
-            "पहले तारीख चुनें";
-
-        return 300;
-    }
-
-
-    try{
-
-        const bookingRef =
-            doc(
-                db,
-                "dailyBookings",
-                date
-            );
-
-
-        const snapshot =
-            await getDoc(
-                bookingRef
-            );
-
-
-        let bookedJar =
-            0;
-
-
-        if(snapshot.exists()){
-
-            bookedJar =
-                Number(
-                    snapshot.data().bookedJar
-                ) || 0;
-
-        }
-
-
-        const remaining =
-            Math.max(
-                0,
-                DAILY_LIMIT - bookedJar
-            );
-
-
-        availableJar.innerText =
-            remaining +
-            " / " +
-            DAILY_LIMIT +
-            " Jar बाकी";
-
-
-        if(remaining <= 0){
-
-            availableJar.style.color =
-                "#dc2626";
-
-            bookingButton.disabled =
-                true;
-
-            bookingButton.innerText =
-                "❌ इस तारीख की Booking Full है";
-
-        }
-        else{
-
-            availableJar.style.color =
-                "#15803d";
-
-            bookingButton.disabled =
-                false;
-
-            bookingButton.innerText =
-                "🛒 Order Book करें";
-
-        }
-
-
-        return remaining;
-
-    }
-
-    catch(error){
-
-        console.error(
-            "Availability Error:",
-            error
+    const quantity =
+        Number(
+            quantityInput.value
         );
 
+    const distance =
+        Number(
+            distanceInput.value
+        );
 
-        availableJar.innerText =
-            "⚠️ उपलब्धता check नहीं हो सकी";
-
-
-        /*
-           Firebase error में booking
-           को सुरक्षित रखने के लिए
-           button बंद रहेगा.
-        */
-
-        bookingButton.disabled =
-            true;
-
-        bookingButton.innerText =
-            "⚠️ Firebase Connection Check करें";
+    const address =
+        addressInput.value.trim();
 
 
-        return null;
+    if(!name){
+
+        showMessage(
+            "❌ कृपया अपना नाम डालें।",
+            "error"
+        );
+
+        return false;
 
     }
+
+
+    if(!/^[0-9]{10}$/.test(mobile)){
+
+        showMessage(
+            "❌ कृपया सही 10 अंकों का मोबाइल नंबर डालें।",
+            "error"
+        );
+
+        return false;
+
+    }
+
+
+    if(!deliveryDate){
+
+        showMessage(
+            "❌ Delivery Date चुनें।",
+            "error"
+        );
+
+        return false;
+
+    }
+
+
+    if(deliveryDate < getTodayDate()){
+
+        showMessage(
+            "❌ पिछली तारीख में Order नहीं किया जा सकता।",
+            "error"
+        );
+
+        return false;
+
+    }
+
+
+    if(
+        !Number.isInteger(quantity) ||
+        quantity < 1 ||
+        quantity > 300
+    ){
+
+        showMessage(
+            "❌ Jar की संख्या 1 से 300 के बीच रखें।",
+            "error"
+        );
+
+        return false;
+
+    }
+
+
+    if(
+        isNaN(distance) ||
+        distance < 0
+    ){
+
+        showMessage(
+            "❌ दूरी सही डालें।",
+            "error"
+        );
+
+        return false;
+
+    }
+
+
+    if(!address){
+
+        showMessage(
+            "❌ पूरा Address डालें।",
+            "error"
+        );
+
+        return false;
+
+    }
+
+
+    return true;
+
 }
 
 
-/* =====================================
-   DATE CHANGE
-===================================== */
-
-dateInput.addEventListener(
-    "change",
-    async function(){
-
-        whatsappButton.style.display =
-            "none";
-
-        await checkAvailableJars();
-
-    }
-);
-
-
-/* =====================================
-   MOBILE VALIDATION
-===================================== */
-
-function validMobile(mobile){
-
-    return /^[6-9]\d{9}$/.test(
-        mobile
-    );
-
-}
-
-
-/* =====================================
+/* =========================
    ORDER NUMBER
-===================================== */
+========================= */
 
-function createOrderNumber(){
+function generateOrderNumber(){
 
     const year =
         new Date()
@@ -835,8 +993,7 @@ function createOrderNumber(){
     const random =
         Math.floor(
             10000000 +
-            Math.random() *
-            90000000
+            Math.random() * 90000000
         );
 
 
@@ -850,16 +1007,94 @@ function createOrderNumber(){
 }
 
 
-/* =====================================
-   BOOK ORDER
-===================================== */
+/* =========================
+   FORMAT DATE
+========================= */
 
-bookingButton.addEventListener(
+function formatDate(date){
+
+    const parts =
+        date.split("-");
+
+
+    if(parts.length !== 3){
+
+        return date;
+
+    }
+
+
+    return (
+        parts[2] +
+        "-" +
+        parts[1] +
+        "-" +
+        parts[0]
+    );
+
+}
+
+
+/* =========================
+   WHATSAPP MESSAGE
+========================= */
+
+function createWhatsAppMessage(
+    order
+){
+
+    return `💧 *NECTAR WATER ORDER*
+
+🆔 Order No: ${order.orderNumber}
+
+👤 Name: ${order.name}
+
+📱 Mobile: ${order.mobile}
+
+📅 Delivery Date: ${formatDate(order.deliveryDate)}
+
+🪣 Jar: ${order.quantity}
+
+📏 Distance: ${order.distance} KM
+
+🚚 Delivery Charge: ₹${order.deliveryCharge.toFixed(2)}
+
+💰 Jar Amount: ₹${order.jarAmount.toFixed(2)}
+
+💵 *Grand Total: ₹${order.grandTotal.toFixed(2)}*
+
+📍 Address:
+${order.address}
+
+📝 Extra:
+${order.extra || "कोई जानकारी नहीं"}
+
+धन्यवाद।
+*Nectar Water* 💧`;
+
+}
+
+
+/* =========================
+   LAST ORDER
+========================= */
+
+let lastOrder = null;
+
+
+/* =========================
+   CREATE ORDER
+========================= */
+
+orderButton.addEventListener(
     "click",
     async function(){
 
-        whatsappButton.style.display =
-            "none";
+        if(!validateForm()){
+
+            return;
+
+        }
 
 
         const name =
@@ -879,7 +1114,7 @@ bookingButton.addEventListener(
         const distance =
             Number(
                 distanceInput.value
-            ) || 0;
+            );
 
         const address =
             addressInput.value.trim();
@@ -888,124 +1123,27 @@ bookingButton.addEventListener(
             extraInput.value.trim();
 
 
-        /* ================================
-           VALIDATION
-        ================================= */
-
-        if(!name){
-
-            showMessage(
-                "❌ कृपया नाम डालें।",
-                "error"
-            );
-
-            return;
-        }
+        const amounts =
+            calculateDelivery();
 
 
-        if(!validMobile(mobile)){
-
-            showMessage(
-                "❌ सही 10 अंकों का मोबाइल नंबर डालें।",
-                "error"
-            );
-
-            return;
-        }
+        const orderNumber =
+            generateOrderNumber();
 
 
-        if(!deliveryDate){
-
-            showMessage(
-                "❌ Delivery Date चुनें।",
-                "error"
-            );
-
-            return;
-        }
-
-
-        if(
-            deliveryDate <
-            getTodayDate()
-        ){
-
-            showMessage(
-                "❌ पुरानी तारीख की Booking नहीं हो सकती।",
-                "error"
-            );
-
-            return;
-        }
-
-
-        if(
-            !quantity ||
-            quantity < 1
-        ){
-
-            showMessage(
-                "❌ कम से कम 1 Jar चुनें।",
-                "error"
-            );
-
-            return;
-        }
-
-
-        if(
-            quantity >
-            DAILY_LIMIT
-        ){
-
-            showMessage(
-                "❌ एक order में अधिकतम 300 Jar हो सकते हैं।",
-                "error"
-            );
-
-            return;
-        }
-
-
-        if(
-            distance < 0
-        ){
-
-            showMessage(
-                "❌ Distance सही डालें।",
-                "error"
-            );
-
-            return;
-        }
-
-
-        if(!address){
-
-            showMessage(
-                "❌ कृपया पूरा Address डालें।",
-                "error"
-            );
-
-            return;
-        }
-
-
-        /* ================================
-           DISABLE BUTTON
-        ================================= */
-
-        bookingButton.disabled =
+        orderButton.disabled =
             true;
 
-        bookingButton.innerText =
-            "⏳ Booking हो रही है...";
+        orderButton.innerText =
+            "⏳ Order Save हो रहा है...";
 
 
         try{
 
             /*
                Daily booking document
+               और order document को
+               एक transaction में save किया जा रहा है।
             */
 
             const bookingRef =
@@ -1016,42 +1154,13 @@ bookingButton.addEventListener(
                 );
 
 
-            /*
-               Unique order document
-            */
-
             const orderRef =
                 doc(
                     db,
                     "orders",
-                    crypto.randomUUID()
+                    orderNumber
                 );
 
-
-            const orderNumber =
-                createOrderNumber();
-
-
-            const jarAmount =
-                quantity *
-                JAR_PRICE;
-
-
-            const deliveryCharge =
-                calculateDeliveryCharge(
-                    quantity,
-                    distance
-                );
-
-
-            const grandTotal =
-                jarAmount +
-                deliveryCharge;
-
-
-            /* ================================
-               FIRESTORE TRANSACTION
-            ================================= */
 
             await runTransaction(
                 db,
@@ -1063,8 +1172,7 @@ bookingButton.addEventListener(
                         );
 
 
-                    let bookedJar =
-                        0;
+                    let bookedJar = 0;
 
 
                     if(
@@ -1087,23 +1195,21 @@ bookingButton.addEventListener(
 
 
                     /*
-                       HARD 300 LIMIT
+                       300 Jar से ज्यादा
+                       बिल्कुल allow नहीं
                     */
 
-                    if(
-                        newTotal >
-                        DAILY_LIMIT
-                    ){
+                    if(newTotal > 300){
 
                         throw new Error(
-                            "LIMIT_REACHED"
+                            `BOOKING_FULL:${bookedJar}`
                         );
 
                     }
 
 
                     /*
-                       Daily booking update
+                       Daily Booking Update
                     */
 
                     transaction.set(
@@ -1117,7 +1223,8 @@ bookingButton.addEventListener(
                                 quantity,
 
                             updatedAt:
-                                serverTimestamp()
+                                new Date()
+                                .toISOString()
 
                         },
                         {
@@ -1127,7 +1234,7 @@ bookingButton.addEventListener(
 
 
                     /*
-                       Order save
+                       Order Save
                     */
 
                     transaction.set(
@@ -1143,24 +1250,6 @@ bookingButton.addEventListener(
                             mobile:
                                 mobile,
 
-                            quantity:
-                                quantity,
-
-                            jarPrice:
-                                JAR_PRICE,
-
-                            distance:
-                                distance,
-
-                            deliveryCharge:
-                                deliveryCharge,
-
-                            jarAmount:
-                                jarAmount,
-
-                            grandTotal:
-                                grandTotal,
-
                             deliveryDate:
                                 deliveryDate,
 
@@ -1169,17 +1258,36 @@ bookingButton.addEventListener(
                                     deliveryDate
                                 ),
 
+                            quantity:
+                                quantity,
+
+                            distance:
+                                distance,
+
                             address:
                                 address,
 
                             extra:
                                 extra,
 
+                            jarPrice:
+                                20,
+
+                            jarAmount:
+                                amounts.jarAmount,
+
+                            deliveryCharge:
+                                amounts.deliveryCharge,
+
+                            grandTotal:
+                                amounts.grandTotal,
+
                             status:
                                 "Pending",
 
                             createdAt:
-                                serverTimestamp()
+                                new Date()
+                                .toISOString()
 
                         }
                     );
@@ -1188,101 +1296,71 @@ bookingButton.addEventListener(
             );
 
 
-            /* ================================
-               SUCCESS
-            ================================= */
+            /*
+               Successful order
+            */
+
+            lastOrder = {
+
+                orderNumber:
+                    orderNumber,
+
+                name:
+                    name,
+
+                mobile:
+                    mobile,
+
+                deliveryDate:
+                    deliveryDate,
+
+                quantity:
+                    quantity,
+
+                distance:
+                    distance,
+
+                address:
+                    address,
+
+                extra:
+                    extra,
+
+                jarAmount:
+                    amounts.jarAmount,
+
+                deliveryCharge:
+                    amounts.deliveryCharge,
+
+                grandTotal:
+                    amounts.grandTotal
+
+            };
+
 
             showMessage(
-                "✅ आपका Order सफलतापूर्वक Book हो गया। Order No: " +
-                orderNumber,
+                `✅ Order सफलतापूर्वक दर्ज हो गया। Order No: ${orderNumber}`,
                 "success"
             );
 
 
-            /*
-               WhatsApp message
-            */
-
-            const whatsappText =
-
-                "💧 Nectar Water Order\n\n" +
-
-                "🆔 Order No: " +
-                orderNumber +
-                "\n" +
-
-                "👤 Name: " +
-                name +
-                "\n" +
-
-                "📱 Mobile: " +
-                mobile +
-                "\n" +
-
-                "📅 Delivery Date: " +
-                formatDate(
-                    deliveryDate
-                ) +
-                "\n" +
-
-                "🪣 Jar: " +
-                quantity +
-                "\n" +
-
-                "📍 Distance: " +
-                distance +
-                " KM\n" +
-
-                "🚚 Delivery Charge: ₹" +
-                deliveryCharge.toFixed(2) +
-                "\n" +
-
-                "💰 Jar Amount: ₹" +
-                jarAmount.toFixed(2) +
-                "\n" +
-
-                "💵 Grand Total: ₹" +
-                grandTotal.toFixed(2) +
-                "\n\n" +
-
-                "📍 Address: " +
-                address +
-                "\n" +
-
-                "📝 Extra: " +
-                (
-                    extra ||
-                    "कोई जानकारी नहीं"
-                );
-
-
-            /*
-               WhatsApp business number:
-               8604970943
-            */
-
-            whatsappButton.href =
-                "https://wa.me/" +
-                BUSINESS_WHATSAPP +
-                "?text=" +
-                encodeURIComponent(
-                    whatsappText
-                );
+            orderButton.innerText =
+                "✅ Order Saved";
 
 
             whatsappButton.style.display =
                 "block";
 
 
-            bookingButton.innerText =
-                "✅ Booking Complete";
+            loadCapacity();
 
 
             /*
-               Refresh available jars
+               Automatically WhatsApp
+               खोलें
             */
 
-            await checkAvailableJars();
+            openWhatsApp();
 
 
         }
@@ -1290,37 +1368,58 @@ bookingButton.addEventListener(
         catch(error){
 
             console.error(
-                "BOOKING ERROR:",
+                "Order Error:",
                 error
             );
 
 
             if(
-                error.message ===
-                "LIMIT_REACHED"
+                error.message &&
+                error.message.startsWith(
+                    "BOOKING_FULL:"
+                )
             ){
 
+                const booked =
+                    Number(
+                        error.message
+                        .split(":")[1]
+                    ) || 0;
+
+
+                const remaining =
+                    Math.max(
+                        0,
+                        300 - booked
+                    );
+
+
                 showMessage(
-                    "❌ इस तारीख पर 300 Jar की limit पूरी हो चुकी है। कृपया दूसरी तारीख चुनें।",
+                    `❌ इस तारीख में केवल ${remaining} Jar बाकी हैं।`,
                     "error"
                 );
 
+
+                capacityText.innerText =
+                    `${remaining} / 300 Jar बाकी`;
+
             }
+
             else{
 
                 showMessage(
-                    "❌ Booking नहीं हो पाई। Firebase connection या Rules check करें।",
+                    "❌ Order save नहीं हो पाया। Internet और Firebase Rules check करें।",
                     "error"
                 );
 
             }
 
 
-            bookingButton.disabled =
+            orderButton.disabled =
                 false;
 
-            bookingButton.innerText =
-                "🛒 Order Book करें";
+            orderButton.innerText =
+                "🪣 Order Confirm करें";
 
         }
 
@@ -1328,16 +1427,117 @@ bookingButton.addEventListener(
 );
 
 
-/* =====================================
-   INITIAL LOAD
-===================================== */
+/* =========================
+   OPEN WHATSAPP
+========================= */
 
-updateTotal();
+function openWhatsApp(){
 
-checkAvailableJars();
+    if(!lastOrder){
+
+        return;
+
+    }
+
+
+    const message =
+        createWhatsAppMessage(
+            lastOrder
+        );
+
+
+    const url =
+        "https://wa.me/" +
+        WHATSAPP_NUMBER +
+        "?text=" +
+        encodeURIComponent(
+            message
+        );
+
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+}
+
+
+/* =========================
+   WHATSAPP BUTTON
+========================= */
+
+whatsappButton.addEventListener(
+    "click",
+    function(){
+
+        openWhatsApp();
+
+    }
+);
+
+
+/* =========================
+   MOBILE NUMBER ONLY
+========================= */
+
+mobileInput.addEventListener(
+    "input",
+    function(){
+
+        this.value =
+            this.value
+            .replace(
+                /[^0-9]/g,
+                ""
+            )
+            .slice(
+                0,
+                10
+            );
+
+    }
+);
+
+
+/* =========================
+   QUANTITY LIMIT
+========================= */
+
+quantityInput.addEventListener(
+    "input",
+    function(){
+
+        let value =
+            Number(
+                this.value
+            ) || 1;
+
+
+        if(value < 1){
+
+            value = 1;
+
+        }
+
+
+        if(value > 300){
+
+            value = 300;
+
+        }
+
+
+        this.value =
+            value;
+
+
+        calculateDelivery();
+
+    }
+);
 
 </script>
 
 </body>
 </html>
-```
