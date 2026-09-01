@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Nectar Water - Online Booking</title>
 
 <style>
@@ -98,6 +97,7 @@ textarea{
 #availableJar{
     color:#15803d;
     font-size:20px;
+    margin-top:5px;
 }
 
 .price-box{
@@ -159,6 +159,7 @@ textarea{
     margin-top:15px;
     text-align:center;
     font-weight:bold;
+    line-height:1.5;
 }
 
 .success{
@@ -229,6 +230,7 @@ textarea{
             id="mobile"
             type="tel"
             maxlength="10"
+            inputmode="numeric"
             placeholder="10 अंकों का मोबाइल नंबर"
             autocomplete="tel"
         >
@@ -291,24 +293,17 @@ textarea{
         <button
             id="bookingButton"
             class="booking-btn">
-
             🛒 Order Book करें
-
         </button>
 
-        <div
-            id="message"
-            class="message">
-        </div>
+        <div id="message" class="message"></div>
 
         <a
             id="whatsappButton"
             class="whatsapp-btn"
             target="_blank"
             rel="noopener">
-
             📱 WhatsApp पर Order भेजें
-
         </a>
 
     </div>
@@ -329,14 +324,15 @@ import {
 import {
     getFirestore,
     doc,
+    getDoc,
     runTransaction,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* =========================
+/* =====================================
    FIREBASE CONFIG
-========================= */
+===================================== */
 
 const firebaseConfig = {
 
@@ -363,9 +359,9 @@ const firebaseConfig = {
 };
 
 
-/* =========================
-   INITIALIZE FIREBASE
-========================= */
+/* =====================================
+   FIREBASE INITIALIZE
+===================================== */
 
 const app =
     initializeApp(firebaseConfig);
@@ -374,9 +370,26 @@ const db =
     getFirestore(app);
 
 
-/* =========================
+/* =====================================
+   SETTINGS
+===================================== */
+
+const JAR_PRICE = 20;
+
+const DAILY_LIMIT = 300;
+
+
+/*
+   Nectar Water WhatsApp Number
+*/
+
+const BUSINESS_WHATSAPP =
+    "918604970943";
+
+
+/* =====================================
    ELEMENTS
-========================= */
+===================================== */
 
 const nameInput =
     document.getElementById("name");
@@ -421,18 +434,9 @@ const whatsappButton =
     document.getElementById("whatsappButton");
 
 
-/* =========================
-   CONSTANTS
-========================= */
-
-const JAR_PRICE = 20;
-
-const DAILY_LIMIT = 300;
-
-
-/* =========================
-   TODAY
-========================= */
+/* =====================================
+   TODAY DATE
+===================================== */
 
 function getTodayDate(){
 
@@ -462,13 +466,15 @@ function getTodayDate(){
 }
 
 
-/* =========================
-   DATE DISPLAY
-========================= */
+/* =====================================
+   FORMAT DATE
+===================================== */
 
 function formatDate(date){
 
-    if(!date) return "";
+    if(!date){
+        return "";
+    }
 
     const parts =
         date.split("-");
@@ -487,9 +493,9 @@ function formatDate(date){
 }
 
 
-/* =========================
-   MIN DATE
-========================= */
+/* =====================================
+   SET DATE
+===================================== */
 
 dateInput.min =
     getTodayDate();
@@ -498,23 +504,21 @@ dateInput.value =
     getTodayDate();
 
 
-/* =========================
+/* =====================================
    DELIVERY CHARGE
-=========================
-
-Rules:
+=====================================
 
 1-29 Jar:
-0-5 KM       = Free
-5-15 KM      = ₹1.50 per Jar
+0-5 KM = FREE
+5-15 KM = ₹1.50 per Jar
 
 30+ Jar:
-15 KM तक     = Free
+15 KM तक = FREE
 
 15 KM से अधिक:
 ₹7 per KM
 
-========================= */
+===================================== */
 
 function calculateDeliveryCharge(
     quantity,
@@ -534,8 +538,8 @@ function calculateDeliveryCharge(
 
 
     /*
-       30 या उससे अधिक Jar
-       और 15 KM तक = Free
+       30 या अधिक Jar
+       15 KM तक FREE
     */
 
     if(
@@ -550,7 +554,8 @@ function calculateDeliveryCharge(
 
     /*
        1 से 29 Jar
-       5 से 15 KM
+       5 KM से अधिक
+       और 15 KM तक
        ₹1.50 प्रति Jar
     */
 
@@ -582,9 +587,9 @@ function calculateDeliveryCharge(
 }
 
 
-/* =========================
-   CALCULATE TOTAL
-========================= */
+/* =====================================
+   UPDATE TOTAL
+===================================== */
 
 function updateTotal(){
 
@@ -628,7 +633,6 @@ function updateTotal(){
     grandTotalBox.innerText =
         "₹" +
         grandTotal.toFixed(2);
-
 }
 
 
@@ -643,9 +647,9 @@ distanceInput.addEventListener(
 );
 
 
-/* =========================
+/* =====================================
    SHOW MESSAGE
-========================= */
+===================================== */
 
 function showMessage(
     text,
@@ -660,13 +664,12 @@ function showMessage(
 
     messageBox.style.display =
         "block";
-
 }
 
 
-/* =========================
-   CHECK AVAILABLE JARS
-========================= */
+/* =====================================
+   CHECK DAILY JAR
+===================================== */
 
 async function checkAvailableJars(){
 
@@ -693,29 +696,19 @@ async function checkAvailableJars(){
             );
 
 
-        /*
-           Transaction के बाहर read
-           केवल display के लिए है.
-        */
-
         const snapshot =
-            await import(
-                "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js"
-            ).then(
-                module =>
-                    module.getDoc(
-                        bookingRef
-                    )
+            await getDoc(
+                bookingRef
             );
 
 
-        let booked =
+        let bookedJar =
             0;
 
 
         if(snapshot.exists()){
 
-            booked =
+            bookedJar =
                 Number(
                     snapshot.data().bookedJar
                 ) || 0;
@@ -726,7 +719,7 @@ async function checkAvailableJars(){
         const remaining =
             Math.max(
                 0,
-                DAILY_LIMIT - booked
+                DAILY_LIMIT - bookedJar
             );
 
 
@@ -770,18 +763,37 @@ async function checkAvailableJars(){
     catch(error){
 
         console.error(
+            "Availability Error:",
             error
         );
 
+
         availableJar.innerText =
-            "उपलब्धता नहीं मिल सकी";
+            "⚠️ उपलब्धता check नहीं हो सकी";
+
+
+        /*
+           Firebase error में booking
+           को सुरक्षित रखने के लिए
+           button बंद रहेगा.
+        */
+
+        bookingButton.disabled =
+            true;
+
+        bookingButton.innerText =
+            "⚠️ Firebase Connection Check करें";
+
 
         return null;
 
     }
-
 }
 
+
+/* =====================================
+   DATE CHANGE
+===================================== */
 
 dateInput.addEventListener(
     "change",
@@ -796,9 +808,9 @@ dateInput.addEventListener(
 );
 
 
-/* =========================
+/* =====================================
    MOBILE VALIDATION
-========================= */
+===================================== */
 
 function validMobile(mobile){
 
@@ -809,9 +821,9 @@ function validMobile(mobile){
 }
 
 
-/* =========================
+/* =====================================
    ORDER NUMBER
-========================= */
+===================================== */
 
 function createOrderNumber(){
 
@@ -838,9 +850,9 @@ function createOrderNumber(){
 }
 
 
-/* =========================
+/* =====================================
    BOOK ORDER
-========================= */
+===================================== */
 
 bookingButton.addEventListener(
     "click",
@@ -876,9 +888,9 @@ bookingButton.addEventListener(
             extraInput.value.trim();
 
 
-        /* =====================
+        /* ================================
            VALIDATION
-        ===================== */
+        ================================= */
 
         if(!name){
 
@@ -894,7 +906,7 @@ bookingButton.addEventListener(
         if(!validMobile(mobile)){
 
             showMessage(
-                "❌ कृपया सही 10 अंकों का मोबाइल नंबर डालें।",
+                "❌ सही 10 अंकों का मोबाइल नंबर डालें।",
                 "error"
             );
 
@@ -913,7 +925,10 @@ bookingButton.addEventListener(
         }
 
 
-        if(deliveryDate < getTodayDate()){
+        if(
+            deliveryDate <
+            getTodayDate()
+        ){
 
             showMessage(
                 "❌ पुरानी तारीख की Booking नहीं हो सकती।",
@@ -938,10 +953,26 @@ bookingButton.addEventListener(
         }
 
 
-        if(quantity > DAILY_LIMIT){
+        if(
+            quantity >
+            DAILY_LIMIT
+        ){
 
             showMessage(
                 "❌ एक order में अधिकतम 300 Jar हो सकते हैं।",
+                "error"
+            );
+
+            return;
+        }
+
+
+        if(
+            distance < 0
+        ){
+
+            showMessage(
+                "❌ Distance सही डालें।",
                 "error"
             );
 
@@ -960,9 +991,9 @@ bookingButton.addEventListener(
         }
 
 
-        /* =====================
-           BUTTON LOCK
-        ===================== */
+        /* ================================
+           DISABLE BUTTON
+        ================================= */
 
         bookingButton.disabled =
             true;
@@ -973,6 +1004,10 @@ bookingButton.addEventListener(
 
         try{
 
+            /*
+               Daily booking document
+            */
+
             const bookingRef =
                 doc(
                     db,
@@ -980,6 +1015,10 @@ bookingButton.addEventListener(
                     deliveryDate
                 );
 
+
+            /*
+               Unique order document
+            */
 
             const orderRef =
                 doc(
@@ -994,7 +1033,8 @@ bookingButton.addEventListener(
 
 
             const jarAmount =
-                quantity * JAR_PRICE;
+                quantity *
+                JAR_PRICE;
 
 
             const deliveryCharge =
@@ -1009,13 +1049,9 @@ bookingButton.addEventListener(
                 deliveryCharge;
 
 
-            /*
-               IMPORTANT:
-               Firebase Transaction
-
-               यही 300 Jar Limit को
-               सुरक्षित तरीके से लागू करता है.
-            */
+            /* ================================
+               FIRESTORE TRANSACTION
+            ================================= */
 
             await runTransaction(
                 db,
@@ -1051,8 +1087,7 @@ bookingButton.addEventListener(
 
 
                     /*
-                       300 से ऊपर जाने
-                       नहीं देंगे.
+                       HARD 300 LIMIT
                     */
 
                     if(
@@ -1066,6 +1101,10 @@ bookingButton.addEventListener(
 
                     }
 
+
+                    /*
+                       Daily booking update
+                    */
 
                     transaction.set(
                         bookingRef,
@@ -1086,6 +1125,10 @@ bookingButton.addEventListener(
                         }
                     );
 
+
+                    /*
+                       Order save
+                    */
 
                     transaction.set(
                         orderRef,
@@ -1145,9 +1188,9 @@ bookingButton.addEventListener(
             );
 
 
-            /* =====================
+            /* ================================
                SUCCESS
-            ===================== */
+            ================================= */
 
             showMessage(
                 "✅ आपका Order सफलतापूर्वक Book हो गया। Order No: " +
@@ -1160,51 +1203,51 @@ bookingButton.addEventListener(
                WhatsApp message
             */
 
-            const whatsappMessage =
+            const whatsappText =
 
-                "💧 *Nectar Water Order*%0A%0A" +
+                "💧 Nectar Water Order\n\n" +
 
                 "🆔 Order No: " +
                 orderNumber +
-                "%0A" +
+                "\n" +
 
                 "👤 Name: " +
                 name +
-                "%0A" +
+                "\n" +
 
                 "📱 Mobile: " +
                 mobile +
-                "%0A" +
+                "\n" +
 
                 "📅 Delivery Date: " +
                 formatDate(
                     deliveryDate
                 ) +
-                "%0A" +
+                "\n" +
 
                 "🪣 Jar: " +
                 quantity +
-                "%0A" +
+                "\n" +
 
                 "📍 Distance: " +
                 distance +
-                " KM%0A" +
+                " KM\n" +
 
                 "🚚 Delivery Charge: ₹" +
                 deliveryCharge.toFixed(2) +
-                "%0A" +
+                "\n" +
 
                 "💰 Jar Amount: ₹" +
                 jarAmount.toFixed(2) +
-                "%0A" +
+                "\n" +
 
                 "💵 Grand Total: ₹" +
                 grandTotal.toFixed(2) +
-                "%0A%0A" +
+                "\n\n" +
 
                 "📍 Address: " +
                 address +
-                "%0A" +
+                "\n" +
 
                 "📝 Extra: " +
                 (
@@ -1214,26 +1257,17 @@ bookingButton.addEventListener(
 
 
             /*
-               नीचे Nectar Water का
-               WhatsApp number डालें.
-               
-               उदाहरण:
-               919876543210
-               
-               अभी आपके लिए
-               customer का WhatsApp
-               button बनाया गया है.
+               WhatsApp business number:
+               8604970943
             */
-
-            const businessWhatsApp =
-                "919555421126";
-
 
             whatsappButton.href =
                 "https://wa.me/" +
-                businessWhatsApp +
+                BUSINESS_WHATSAPP +
                 "?text=" +
-                whatsappMessage;
+                encodeURIComponent(
+                    whatsappText
+                );
 
 
             whatsappButton.style.display =
@@ -1243,6 +1277,10 @@ bookingButton.addEventListener(
             bookingButton.innerText =
                 "✅ Booking Complete";
 
+
+            /*
+               Refresh available jars
+            */
 
             await checkAvailableJars();
 
@@ -1268,11 +1306,10 @@ bookingButton.addEventListener(
                 );
 
             }
-
             else{
 
                 showMessage(
-                    "❌ Booking नहीं हो पाई। कृपया Internet/Firebase connection check करें।",
+                    "❌ Booking नहीं हो पाई। Firebase connection या Rules check करें।",
                     "error"
                 );
 
@@ -1291,9 +1328,9 @@ bookingButton.addEventListener(
 );
 
 
-/* =========================
+/* =====================================
    INITIAL LOAD
-========================= */
+===================================== */
 
 updateTotal();
 
