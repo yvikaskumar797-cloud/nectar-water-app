@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
@@ -19,7 +20,9 @@ body{
     color:#1e293b;
 }
 
-/* ================= LOGIN ================= */
+button,a{
+    font-family:inherit;
+}
 
 .login-page{
     min-height:100vh;
@@ -41,13 +44,13 @@ body{
 
 .logo{
     text-align:center;
-    font-size:58px;
-    margin-bottom:5px;
+    font-size:55px;
+    margin-bottom:10px;
 }
 
 .login-box h1{
     text-align:center;
-    margin-bottom:5px;
+    margin-bottom:8px;
 }
 
 .login-box p{
@@ -69,11 +72,6 @@ input{
     border:1px solid #cbd5e1;
     border-radius:10px;
     font-size:16px;
-    outline:none;
-}
-
-input:focus{
-    border-color:#4776f5;
 }
 
 button{
@@ -87,14 +85,9 @@ button{
     padding:14px;
     border-radius:10px;
     background:#4776f5;
-    color:#fff;
+    color:white;
     font-size:17px;
     font-weight:bold;
-}
-
-.login-btn:disabled{
-    opacity:.6;
-    cursor:not-allowed;
 }
 
 .message{
@@ -110,13 +103,6 @@ button{
     background:#fee2e2;
     color:#b91c1c;
 }
-
-.success{
-    background:#dcfce7;
-    color:#15803d;
-}
-
-/* ================= ADMIN ================= */
 
 #adminPage{
     display:none;
@@ -144,7 +130,6 @@ button{
 .admin-email{
     margin-top:5px;
     opacity:.9;
-    font-size:14px;
 }
 
 .logout{
@@ -160,8 +145,6 @@ button{
     margin:auto;
     padding:20px;
 }
-
-/* ================= FILTER ================= */
 
 .filter-box{
     background:white;
@@ -191,10 +174,7 @@ button{
     color:white;
     border-radius:10px;
     font-weight:bold;
-    min-width:110px;
 }
-
-/* ================= STATS ================= */
 
 .cards{
     display:grid;
@@ -224,8 +204,6 @@ button{
 .limit{
     color:#4776f5;
 }
-
-/* ================= ORDERS ================= */
 
 .orders{
     display:grid;
@@ -269,6 +247,11 @@ button{
     color:#166534;
 }
 
+.cancelled{
+    background:#fee2e2;
+    color:#b91c1c;
+}
+
 .order-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -300,7 +283,6 @@ button{
     color:white;
     font-weight:bold;
     text-decoration:none;
-    display:inline-block;
 }
 
 .call-btn{
@@ -319,8 +301,8 @@ button{
     background:#f59e0b;
 }
 
-.print-btn{
-    background:#475569;
+.cancel-btn{
+    background:#dc2626;
 }
 
 .empty{
@@ -337,16 +319,14 @@ button{
     color:#64748b;
 }
 
-/* ================= FOOTER ================= */
-
-.footer{
-    text-align:center;
-    padding:25px;
-    color:#64748b;
-    font-size:13px;
+.notice{
+    background:#fff7ed;
+    color:#9a3412;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:15px;
+    display:none;
 }
-
-/* ================= MOBILE ================= */
 
 @media(max-width:700px){
 
@@ -367,97 +347,114 @@ button{
         align-items:flex-start;
     }
 
-    .header h1{
-        font-size:21px;
-    }
-
-    .logout{
-        padding:9px 12px;
-    }
-
 }
 </style>
+
 </head>
 
 <body>
 
-<!-- =====================================================
-     LOGIN PAGE
-===================================================== -->
+<!-- LOGIN -->
 
 <div id="loginPage" class="login-page">
 
-    <div class="login-box">
+```
+<div class="login-box">
 
-        <div class="logo">💧</div>
+    <div class="logo">💧</div>
 
-        <h1>Nectar Water</h1>
+    <h1>Nectar Water</h1>
 
-        <p>Admin Panel Login</p>
+    <p>Admin Panel Login</p>
 
-        <label>📧 Email</label>
+    <label>📧 Email</label>
 
-        <input
-            id="email"
-            type="email"
-            placeholder="Admin Email"
-            autocomplete="username"
-        >
+    <input
+        id="email"
+        type="email"
+        placeholder="Admin Email"
+        autocomplete="username"
+    >
 
-        <label>🔒 Password</label>
+    <label>🔒 Password</label>
 
-        <input
-            id="password"
-            type="password"
-            placeholder="Password"
-            autocomplete="current-password"
-        >
+    <input
+        id="password"
+        type="password"
+        placeholder="Password"
+        autocomplete="current-password"
+    >
 
-        <button
-            id="loginButton"
-            class="login-btn">
+    <button id="loginButton" class="login-btn">
+        🔐 Login
+    </button>
 
-            🔐 Login
+    <div id="loginMessage" class="message"></div>
 
-        </button>
+</div>
+```
 
-        <div
-            id="loginMessage"
-            class="message">
+</div>
+
+<!-- ADMIN -->
+
+<div id="adminPage">
+
+```
+<div class="header">
+
+    <div class="header-inner">
+
+        <div>
+            <h1>💧 Nectar Water Admin</h1>
+            <div id="adminEmail" class="admin-email"></div>
         </div>
+
+        <button id="logoutButton" class="logout">
+            🚪 Logout
+        </button>
 
     </div>
 
 </div>
 
 
-<!-- =====================================================
-     ADMIN PAGE
-===================================================== -->
+<div class="container">
 
-<div id="adminPage">
+    <div id="notice" class="notice"></div>
 
-    <div class="header">
 
-        <div class="header-inner">
+    <!-- FILTER -->
 
-            <div>
+    <div class="filter-box">
 
-                <h1>💧 Nectar Water Admin</h1>
+        <div class="filter-row">
 
-                <div
-                    id="adminEmail"
-                    class="admin-email">
-                </div>
+            <div class="filter-item">
+
+                <label>📅 Delivery Date</label>
+
+                <input
+                    id="filterDate"
+                    type="date"
+                >
 
             </div>
 
-            <button
-                id="logoutButton"
-                class="logout">
+            <div class="filter-item">
 
-                🚪 Logout
+                <label>🔎 Search</label>
 
+                <input
+                    id="searchBox"
+                    type="text"
+                    placeholder="Order / Mobile / Name"
+                >
+
+            </div>
+
+            <button id="refreshButton" class="refresh">
+                🔄 Refresh
             </button>
 
         </div>
@@ -465,136 +462,65 @@ button{
     </div>
 
 
-    <div class="container">
+    <!-- STATS -->
 
-        <!-- ================= FILTER ================= -->
+    <div class="cards">
 
-        <div class="filter-box">
+        <div class="stat">
 
-            <div class="filter-row">
+            <div class="stat-title">
+                🪣 Booked Jar
+            </div>
 
-                <div class="filter-item">
-
-                    <label>📅 Delivery Date</label>
-
-                    <input
-                        id="filterDate"
-                        type="date"
-                    >
-
-                </div>
-
-
-                <div class="filter-item">
-
-                    <label>
-                        🔎 Search Order / Mobile / Name
-                    </label>
-
-                    <input
-                        id="searchBox"
-                        type="text"
-                        placeholder="Order No / Mobile / Name"
-                    >
-
-                </div>
-
-
-                <button
-                    id="refreshButton"
-                    class="refresh">
-
-                    🔄 Refresh
-
-                </button>
-
+            <div id="bookedJar" class="stat-value limit">
+                0 / 300
             </div>
 
         </div>
 
 
-        <!-- ================= STATS ================= -->
+        <div class="stat">
 
-        <div class="cards">
-
-            <div class="stat">
-
-                <div class="stat-title">
-                    🪣 Booked Jar
-                </div>
-
-                <div
-                    id="bookedJar"
-                    class="stat-value limit">
-
-                    0 / 300
-
-                </div>
-
+            <div class="stat-title">
+                📦 Total Orders
             </div>
 
-
-            <div class="stat">
-
-                <div class="stat-title">
-                    📦 Total Orders
-                </div>
-
-                <div
-                    id="totalOrders"
-                    class="stat-value">
-
-                    0
-
-                </div>
-
-            </div>
-
-
-            <div class="stat">
-
-                <div class="stat-title">
-                    💰 Total Sales
-                </div>
-
-                <div
-                    id="totalSales"
-                    class="stat-value">
-
-                    ₹0.00
-
-                </div>
-
+            <div id="totalOrders" class="stat-value">
+                0
             </div>
 
         </div>
 
 
-        <!-- ================= ORDERS ================= -->
+        <div class="stat">
 
-        <div
-            id="orders"
-            class="orders">
+            <div class="stat-title">
+                💰 Total Sales
+            </div>
 
-            <div class="loading">
-                ⏳ Orders load हो रहे हैं...
+            <div id="totalSales" class="stat-value">
+                ₹0.00
             </div>
 
         </div>
 
+    </div>
 
-        <div class="footer">
-            💧 Nectar Water • 20 Liter Drinking Water
+
+    <!-- ORDERS -->
+
+    <div id="orders" class="orders">
+
+        <div class="loading">
+            ⏳ Orders load हो रहे हैं...
         </div>
 
     </div>
 
 </div>
+```
 
-
-<!-- =====================================================
-     FIREBASE
-===================================================== -->
+</div>
 
 <script type="module">
 
@@ -602,14 +528,12 @@ import {
     initializeApp
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
-
 import {
     getAuth,
     signInWithEmailAndPassword,
     onAuthStateChanged,
     signOut
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
 
 import {
     getFirestore,
@@ -619,13 +543,12 @@ import {
     getDocs,
     doc,
     updateDoc,
-    getDoc
+    getDoc,
+    runTransaction
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* =====================================================
-   FIREBASE CONFIG
-===================================================== */
+/* FIREBASE CONFIG */
 
 const firebaseConfig = {
 
@@ -649,366 +572,261 @@ const firebaseConfig = {
 
     measurementId:
     "G-P40N8EEDRC"
-
 };
 
 
-/* =====================================================
-   INITIALIZE FIREBASE
-===================================================== */
+/* INITIALIZE */
 
-const app =
-    initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-const auth =
-    getAuth(app);
+const auth = getAuth(app);
 
-const db =
-    getFirestore(app);
+const db = getFirestore(app);
 
 
-/* =====================================================
-   ELEMENTS
-===================================================== */
+/* ELEMENTS */
 
 const loginPage =
-    document.getElementById("loginPage");
+document.getElementById("loginPage");
 
 const adminPage =
-    document.getElementById("adminPage");
+document.getElementById("adminPage");
 
 const loginButton =
-    document.getElementById("loginButton");
+document.getElementById("loginButton");
 
 const logoutButton =
-    document.getElementById("logoutButton");
+document.getElementById("logoutButton");
 
 const loginMessage =
-    document.getElementById("loginMessage");
+document.getElementById("loginMessage");
 
 const adminEmail =
-    document.getElementById("adminEmail");
+document.getElementById("adminEmail");
 
 const filterDate =
-    document.getElementById("filterDate");
+document.getElementById("filterDate");
 
 const searchBox =
-    document.getElementById("searchBox");
+document.getElementById("searchBox");
 
 const ordersBox =
-    document.getElementById("orders");
+document.getElementById("orders");
 
-const refreshButton =
-    document.getElementById("refreshButton");
+const notice =
+document.getElementById("notice");
 
 
-/* =====================================================
-   TODAY DATE
-===================================================== */
+/* TODAY */
 
 function getTodayDate(){
 
     const now = new Date();
 
     const year =
-        now.getFullYear();
+    now.getFullYear();
 
     const month =
-        String(
-            now.getMonth() + 1
-        ).padStart(2,"0");
+    String(now.getMonth()+1)
+    .padStart(2,"0");
 
     const day =
-        String(
-            now.getDate()
-        ).padStart(2,"0");
+    String(now.getDate())
+    .padStart(2,"0");
 
     return `${year}-${month}-${day}`;
-
 }
 
-
-/* =====================================================
-   DISPLAY DATE
-===================================================== */
-
-function formatDate(date){
-
-    if(!date){
-        return "-";
-    }
-
-    const parts =
-        String(date).split("-");
-
-    if(parts.length === 3){
-
-        return `${parts[2]}-${parts[1]}-${parts[0]}`;
-
-    }
-
-    return date;
-
-}
+filterDate.value = getTodayDate();
 
 
-/* =====================================================
-   SET DEFAULT DATE
-===================================================== */
-
-filterDate.value =
-    getTodayDate();
-
-
-/* =====================================================
-   LOGIN
-===================================================== */
+/* LOGIN */
 
 loginButton.addEventListener(
-    "click",
-    async function(){
+"click",
+async function(){
 
-        const email =
-            document
-            .getElementById("email")
-            .value
-            .trim();
+    const email =
+    document.getElementById("email")
+    .value
+    .trim();
 
-        const password =
-            document
-            .getElementById("password")
-            .value;
+    const password =
+    document.getElementById("password")
+    .value;
 
+    if(!email || !password){
 
-        if(!email || !password){
+        showMessage(
+            "Email और Password दोनों डालें।"
+        );
 
-            showLoginMessage(
-                "Email और Password दोनों डालें।",
-                false
-            );
+        return;
+    }
 
-            return;
+    loginButton.disabled = true;
 
-        }
+    loginButton.innerText =
+    "⏳ Login हो रहा है...";
 
+    try{
 
-        loginButton.disabled = true;
-
-        loginButton.innerText =
-            "⏳ Login हो रहा है...";
-
-
-        try{
-
-            await signInWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
-
-        }
-
-        catch(error){
-
-            console.error(error);
-
-            showLoginMessage(
-                getLoginError(error),
-                false
-            );
-
-            loginButton.disabled = false;
-
-            loginButton.innerText =
-                "🔐 Login";
-
-        }
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
 
     }
-);
+
+    catch(error){
+
+        console.error(error);
+
+        showMessage(
+            getLoginError(error)
+        );
+
+        loginButton.disabled = false;
+
+        loginButton.innerText =
+        "🔐 Login";
+
+    }
+
+});
 
 
-/* =====================================================
-   ENTER KEY
-===================================================== */
+/* ENTER LOGIN */
 
 document
 .getElementById("password")
 .addEventListener(
-    "keydown",
-    function(event){
+"keydown",
+function(event){
 
-        if(event.key === "Enter"){
-
-            loginButton.click();
-
-        }
-
+    if(event.key === "Enter"){
+        loginButton.click();
     }
-);
+
+});
 
 
-/* =====================================================
-   AUTH STATE
-===================================================== */
+/* AUTH */
 
 onAuthStateChanged(
-    auth,
-    function(user){
+auth,
+function(user){
 
-        if(user){
+    if(user){
 
-            loginPage.style.display =
-                "none";
+        loginPage.style.display =
+        "none";
 
-            adminPage.style.display =
-                "block";
+        adminPage.style.display =
+        "block";
 
-            adminEmail.innerText =
-                user.email || "";
+        adminEmail.innerText =
+        user.email || "";
 
-            loginButton.disabled = false;
-
-            loginButton.innerText =
-                "🔐 Login";
-
-            loadOrders();
-
-        }
-        else{
-
-            loginPage.style.display =
-                "flex";
-
-            adminPage.style.display =
-                "none";
-
-        }
+        loadOrders();
 
     }
-);
+
+    else{
+
+        loginPage.style.display =
+        "flex";
+
+        adminPage.style.display =
+        "none";
+
+    }
+
+});
 
 
-/* =====================================================
-   LOGOUT
-===================================================== */
+/* LOGOUT */
 
 logoutButton.addEventListener(
-    "click",
-    async function(){
+"click",
+async function(){
 
-        try{
+    await signOut(auth);
 
-            await signOut(auth);
-
-        }
-        catch(error){
-
-            console.error(error);
-
-        }
-
-    }
-);
+});
 
 
-/* =====================================================
-   LOAD ORDERS
-===================================================== */
+/* LOAD ORDERS */
 
 async function loadOrders(){
 
     ordersBox.innerHTML =
-        `
-        <div class="loading">
-            ⏳ Orders load हो रहे हैं...
-        </div>
-        `;
+    '<div class="loading">⏳ Orders load हो रहे हैं...</div>';
 
+    notice.style.display = "none";
 
     const selectedDate =
-        filterDate.value;
-
+    filterDate.value;
 
     if(!selectedDate){
 
         ordersBox.innerHTML =
-            `
-            <div class="empty">
-                📅 Delivery Date चुनें।
-            </div>
-            `;
+        '<div class="empty">📅 Delivery Date चुनें।</div>';
 
         return;
-
     }
-
 
     try{
 
         const ordersRef =
-            collection(
-                db,
-                "orders"
-            );
-
+        collection(db,"orders");
 
         const ordersQuery =
-            query(
-                ordersRef,
-                where(
-                    "deliveryDate",
-                    "==",
-                    selectedDate
-                )
-            );
-
+        query(
+            ordersRef,
+            where(
+                "deliveryDate",
+                "==",
+                selectedDate
+            )
+        );
 
         const snapshot =
-            await getDocs(
-                ordersQuery
-            );
-
+        await getDocs(ordersQuery);
 
         let orders = [];
 
-
         snapshot.forEach(
-            function(docSnap){
+        function(docSnap){
 
-                orders.push({
+            orders.push({
 
-                    id:
-                        docSnap.id,
+                id:docSnap.id,
 
-                    ...docSnap.data()
+                ...docSnap.data()
 
-                });
+            });
 
-            }
-        );
+        });
 
-
-        /* Newest first */
 
         orders.sort(
-            function(a,b){
+        function(a,b){
 
-                return String(
-                    b.orderNumber || ""
-                ).localeCompare(
-                    String(
-                        a.orderNumber || ""
-                    )
-                );
+            return String(
+                b.orderNumber || ""
+            ).localeCompare(
+                String(
+                    a.orderNumber || ""
+                )
+            );
 
-            }
-        );
+        });
 
 
         window.currentOrders =
-            orders;
-
+        orders;
 
         renderOrders();
 
@@ -1025,159 +843,137 @@ async function loadOrders(){
             error
         );
 
-
         ordersBox.innerHTML =
-            `
-            <div class="empty">
-                ❌ Orders load नहीं हो पाए।<br><br>
-                Firestore Rules या Firebase configuration check करें।
-            </div>
-            `;
+        '<div class="empty">❌ Orders load नहीं हो पाए। Firestore Rules check करें।</div>';
 
     }
 
 }
 
 
-/* =====================================================
-   DAILY STATS
-===================================================== */
+/* DAILY STATS */
 
 async function loadDailyStats(date){
 
     try{
 
         const bookingRef =
-            doc(
-                db,
-                "dailyBookings",
-                date
-            );
-
+        doc(
+            db,
+            "dailyBookings",
+            date
+        );
 
         const bookingSnap =
-            await getDoc(
-                bookingRef
-            );
+        await getDoc(bookingRef);
 
+        let booked = 0;
 
-        let booked =
-            0;
-
-
-        if(
-            bookingSnap.exists()
-        ){
+        if(bookingSnap.exists()){
 
             booked =
-                Number(
-                    bookingSnap
-                    .data()
-                    .bookedJar
-                ) || 0;
+            Number(
+                bookingSnap.data().bookedJar
+            ) || 0;
 
         }
 
 
         const orders =
-            window.currentOrders || [];
+        window.currentOrders || [];
 
 
         let sales = 0;
 
 
         orders.forEach(
-            function(order){
+        function(order){
+
+            if(
+                order.status !== "Cancelled"
+            ){
 
                 sales +=
-                    Number(
-                        order.grandTotal || 0
-                    );
+                Number(
+                    order.grandTotal
+                ) || 0;
 
             }
-        );
+
+        });
 
 
-        document
-        .getElementById("bookedJar")
-        .innerText =
-            `${booked} / 300`;
+        document.getElementById(
+            "bookedJar"
+        ).innerText =
+        `${booked} / 300`;
 
 
-        document
-        .getElementById("totalOrders")
-        .innerText =
-            orders.length;
+        document.getElementById(
+            "totalOrders"
+        ).innerText =
+        orders.length;
 
 
-        document
-        .getElementById("totalSales")
-        .innerText =
-            "₹" +
-            sales.toFixed(2);
+        document.getElementById(
+            "totalSales"
+        ).innerText =
+        "₹" + sales.toFixed(2);
 
     }
 
     catch(error){
 
-        console.error(
-            "Stats Error:",
-            error
-        );
+        console.error(error);
 
     }
 
 }
 
 
-/* =====================================================
-   RENDER ORDERS
-===================================================== */
+/* RENDER */
 
 function renderOrders(){
 
     let orders =
-        window.currentOrders || [];
+    window.currentOrders || [];
 
 
     const search =
-        searchBox
-        .value
-        .trim()
-        .toLowerCase();
+    searchBox.value
+    .trim()
+    .toLowerCase();
 
 
     if(search){
 
         orders =
-            orders.filter(
-                function(order){
+        orders.filter(
+        function(order){
 
-                    const text =
+            const text =
 
-                        String(
-                            order.orderNumber || ""
-                        ) + " " +
+            String(
+                order.orderNumber || ""
+            ) + " " +
 
-                        String(
-                            order.name || ""
-                        ) + " " +
+            String(
+                order.name || ""
+            ) + " " +
 
-                        String(
-                            order.mobile || ""
-                        ) + " " +
+            String(
+                order.mobile || ""
+            ) + " " +
 
-                        String(
-                            order.address || ""
-                        );
-
-
-                    return text
-                        .toLowerCase()
-                        .includes(search);
-
-                }
+            String(
+                order.address || ""
             );
+
+            return text
+            .toLowerCase()
+            .includes(search);
+
+        });
 
     }
 
@@ -1185,15 +981,7 @@ function renderOrders(){
     if(orders.length === 0){
 
         ordersBox.innerHTML =
-            `
-            <div class="empty">
-                📭 इस तारीख के लिए कोई order नहीं मिला।
-            </div>
-            `;
-
-        document
-        .getElementById("totalOrders")
-        .innerText = "0";
+        '<div class="empty">📭 इस तारीख के लिए कोई order नहीं मिला।</div>';
 
         return;
 
@@ -1204,718 +992,484 @@ function renderOrders(){
 
 
     orders.forEach(
-        function(order){
+    function(order){
 
-            const status =
-                order.status || "Pending";
-
-
-            const isDelivered =
-                status === "Delivered";
+        const status =
+        order.status || "Pending";
 
 
-            const mobile =
-                String(
+        const isDelivered =
+        status === "Delivered";
+
+        const isCancelled =
+        status === "Cancelled";
+
+
+        const card =
+        document.createElement("div");
+
+        card.className = "order";
+
+
+        let statusClass = "pending";
+
+        let statusText = "🟡 Pending";
+
+
+        if(isDelivered){
+
+            statusClass = "delivered";
+
+            statusText = "🟢 Delivered";
+
+        }
+
+
+        if(isCancelled){
+
+            statusClass = "cancelled";
+
+            statusText = "❌ Cancelled";
+
+        }
+
+
+        card.innerHTML = `
+
+        <div class="order-head">
+
+            <div class="order-number">
+
+                🆔 ${escapeHtml(
+                    order.orderNumber || "-"
+                )}
+
+            </div>
+
+            <div class="status ${statusClass}">
+
+                ${statusText}
+
+            </div>
+
+        </div>
+
+
+        <div class="order-grid">
+
+
+            <div class="detail">
+
+                <b>👤 Customer</b>
+
+                ${escapeHtml(
+                    order.name || "-"
+                )}
+
+            </div>
+
+
+            <div class="detail">
+
+                <b>📱 Mobile</b>
+
+                ${escapeHtml(
+                    order.mobile || "-"
+                )}
+
+            </div>
+
+
+            <div class="detail">
+
+                <b>📅 Delivery Date</b>
+
+                ${escapeHtml(
+                    order.deliveryDateDisplay ||
+                    order.deliveryDate ||
+                    "-"
+                )}
+
+            </div>
+
+
+            <div class="detail">
+
+                <b>🪣 Jar</b>
+
+                ${Number(
+                    order.quantity || 0
+                )}
+
+            </div>
+
+
+            <div class="detail">
+
+                <b>📍 Distance</b>
+
+                ${Number(
+                    order.distance || 0
+                )} KM
+
+            </div>
+
+
+            <div class="detail">
+
+                <b>🚚 Delivery Charge</b>
+
+                ₹${Number(
+                    order.deliveryCharge || 0
+                ).toFixed(2)}
+
+            </div>
+
+
+            <div class="detail">
+
+                <b>💰 Jar Amount</b>
+
+                ₹${Number(
+                    order.jarAmount || 0
+                ).toFixed(2)}
+
+            </div>
+
+
+            <div class="detail">
+
+                <b>💵 Grand Total</b>
+
+                ₹${Number(
+                    order.grandTotal || 0
+                ).toFixed(2)}
+
+            </div>
+
+
+            <div
+                class="detail"
+                style="grid-column:1/-1"
+            >
+
+                <b>📍 Address</b>
+
+                ${escapeHtml(
+                    order.address || "-"
+                )}
+
+            </div>
+
+
+            <div
+                class="detail"
+                style="grid-column:1/-1"
+            >
+
+                <b>📝 Extra Information</b>
+
+                ${escapeHtml(
+                    order.extra ||
+                    "कोई जानकारी नहीं"
+                )}
+
+            </div>
+
+        </div>
+
+
+        <div class="actions">
+
+
+            <a
+                class="action-btn call-btn"
+                href="tel:${escapeHtml(
                     order.mobile || ""
-                )
-                .replace(/\D/g,"");
+                )}"
+            >
+
+                📞 Call
+
+            </a>
 
 
-            const whatsappNumber =
-                mobile.length === 10
-                ? "91" + mobile
-                : mobile;
+            <a
+                class="action-btn whatsapp-btn"
+                target="_blank"
+                href="https://wa.me/91${escapeHtml(
+                    order.mobile || ""
+                )}?text=${encodeURIComponent(
+                    "नमस्ते, Nectar Water से आपके Order " +
+                    (order.orderNumber || "") +
+                    " के संबंध में संपर्क कर रहे हैं।"
+                )}"
+            >
+
+                📱 WhatsApp
+
+            </a>
 
 
-            const card =
-                document.createElement("div");
-
-
-            card.className =
-                "order";
-
-
-            card.innerHTML = `
-
-                <div class="order-head">
-
-                    <div class="order-number">
-
-                        🆔 Order:
-                        ${escapeHtml(
-                            order.orderNumber || "-"
-                        )}
-
-                    </div>
-
-
-                    <div class="status ${
+            ${
+                !isCancelled
+                ? `
+                <button
+                    class="action-btn ${
                         isDelivered
-                        ? "delivered"
-                        : "pending"
-                    }">
-
-                        ${
-                            isDelivered
-                            ? "🟢 Delivered"
-                            : "🟡 Pending"
-                        }
-
-                    </div>
-
-                </div>
-
-
-                <div class="order-grid">
-
-
-                    <div class="detail">
-
-                        <b>👤 Customer</b>
-
-                        ${escapeHtml(
-                            order.name || "-"
-                        )}
-
-                    </div>
-
-
-                    <div class="detail">
-
-                        <b>📱 Mobile</b>
-
-                        ${escapeHtml(
-                            order.mobile || "-"
-                        )}
-
-                    </div>
-
-
-                    <div class="detail">
-
-                        <b>📅 Delivery Date</b>
-
-                        ${escapeHtml(
-                            order.deliveryDateDisplay ||
-                            formatDate(order.deliveryDate)
-                        )}
-
-                    </div>
-
-
-                    <div class="detail">
-
-                        <b>🪣 Jar</b>
-
-                        ${Number(
-                            order.quantity || 0
-                        )}
-
-                    </div>
-
-
-                    <div class="detail">
-
-                        <b>📍 Distance</b>
-
-                        ${Number(
-                            order.distance || 0
-                        )} KM
-
-                    </div>
-
-
-                    <div class="detail">
-
-                        <b>🚚 Delivery Charge</b>
-
-                        ₹${Number(
-                            order.deliveryCharge || 0
-                        ).toFixed(2)}
-
-                    </div>
-
-
-                    <div class="detail">
-
-                        <b>💰 Jar Amount</b>
-
-                        ₹${Number(
-                            order.jarAmount || 0
-                        ).toFixed(2)}
-
-                    </div>
-
-
-                    <div class="detail">
-
-                        <b>💵 Grand Total</b>
-
-                        ₹${Number(
-                            order.grandTotal || 0
-                        ).toFixed(2)}
-
-                    </div>
-
-
-                    <div
-                        class="detail"
-                        style="grid-column:1/-1">
-
-                        <b>📍 Address</b>
-
-                        ${escapeHtml(
-                            order.address || "-"
-                        )}
-
-                    </div>
-
-
-                    <div
-                        class="detail"
-                        style="grid-column:1/-1">
-
-                        <b>📝 Extra Information</b>
-
-                        ${escapeHtml(
-                            order.extra ||
-                            "कोई जानकारी नहीं"
-                        )}
-
-                    </div>
-
-
-                </div>
-
-
-                <div class="actions">
-
+                        ? "pending-btn"
+                        : "deliver-btn"
+                    }"
+                    onclick="changeStatus(
+                        '${escapeHtml(order.id)}',
+                        '${isDelivered ? "Pending" : "Delivered"}'
+                    )"
+                >
 
                     ${
-                        mobile
-                        ?
-                        `
-                        <a
-                            class="action-btn call-btn"
-                            href="tel:${escapeHtml(
-                                mobile
-                            )}">
-
-                            📞 Call
-
-                        </a>
-                        `
-                        :
-                        ""
+                        isDelivered
+                        ? "↩️ Pending करें"
+                        : "✅ Delivered करें"
                     }
 
+                </button>
 
-                    ${
-                        whatsappNumber
-                        ?
-                        `
-                        <a
-                            class="action-btn whatsapp-btn"
-                            target="_blank"
-                            rel="noopener"
-                            href="https://wa.me/${escapeHtml(
-                                whatsappNumber
-                            )}?text=${encodeURIComponent(
-                                "नमस्ते " +
-                                (order.name || "") +
-                                " जी,\n\n" +
-                                "Nectar Water Order " +
-                                (order.orderNumber || "") +
-                                " के संबंध में संपर्क कर रहे हैं।\n\n" +
-                                "धन्यवाद।\nNectar Water"
-                            )}">
+                <button
+                    class="action-btn cancel-btn"
+                    onclick="cancelOrder(
+                        '${escapeHtml(order.id)}'
+                    )"
+                >
 
-                            📱 WhatsApp
+                    ❌ Cancel Order
 
-                        </a>
-                        `
-                        :
-                        ""
-                    }
+                </button>
+                `
+                : `
+                <button
+                    class="action-btn pending-btn"
+                    onclick="changeStatus(
+                        '${escapeHtml(order.id)}',
+                        'Pending'
+                    )"
+                >
 
+                    ↩️ Order वापस लाएँ
 
-                    <button
-                        class="action-btn ${
-                            isDelivered
-                            ? "pending-btn"
-                            : "deliver-btn"
-                        }"
-                        data-order-id="${escapeHtml(
-                            order.id
-                        )}"
-                        data-new-status="${
-                            isDelivered
-                            ? "Pending"
-                            : "Delivered"
-                        }">
+                </button>
+                `
+            }
 
-                        ${
-                            isDelivered
-                            ? "↩️ Pending करें"
-                            : "✅ Delivered करें"
-                        }
+        </div>
 
-                    </button>
+        `;
 
 
-                    <button
-                        class="action-btn print-btn"
-                        data-print-id="${escapeHtml(
-                            order.id
-                        )}">
+        ordersBox.appendChild(card);
 
-                        🖨️ Print
-
-                    </button>
+    });
 
 
-                </div>
-
-            `;
-
-
-            ordersBox.appendChild(card);
-
-        }
-    );
-
-
-    /* Status buttons */
-
-    document
-    .querySelectorAll(
-        "[data-order-id]"
-    )
-    .forEach(
-        function(button){
-
-            button.addEventListener(
-                "click",
-                async function(){
-
-                    const orderId =
-                        button.dataset.orderId;
-
-                    const newStatus =
-                        button.dataset.newStatus;
-
-                    await changeStatus(
-                        orderId,
-                        newStatus
-                    );
-
-                }
-            );
-
-        }
-    );
-
-
-    /* Print buttons */
-
-    document
-    .querySelectorAll(
-        "[data-print-id]"
-    )
-    .forEach(
-        function(button){
-
-            button.addEventListener(
-                "click",
-                function(){
-
-                    const orderId =
-                        button.dataset.printId;
-
-                    const order =
-                        window.currentOrders
-                        .find(
-                            function(item){
-                                return item.id === orderId;
-                            }
-                        );
-
-
-                    if(order){
-
-                        printOrder(order);
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
-
-    document
-    .getElementById("totalOrders")
-    .innerText =
-        orders.length;
+    document.getElementById(
+        "totalOrders"
+    ).innerText =
+    orders.length;
 
 }
 
 
-/* =====================================================
-   CHANGE STATUS
-===================================================== */
+/* CHANGE STATUS */
 
-async function changeStatus(
+window.changeStatus =
+async function(
     orderId,
     newStatus
 ){
 
     try{
 
-        const orderRef =
+        await updateDoc(
             doc(
                 db,
                 "orders",
                 orderId
-            );
-
-
-        await updateDoc(
-            orderRef,
+            ),
             {
-                status:
-                    newStatus
+                status:newStatus
             }
         );
 
 
         await loadOrders();
 
-
     }
 
     catch(error){
 
-        console.error(
-            "Status Error:",
-            error
-        );
-
+        console.error(error);
 
         alert(
-            "❌ Status update नहीं हो पाया।\n\nFirestore Rules check करें।"
+            "❌ Status update नहीं हो पाया। Firestore Rules में update की permission check करें।"
         );
 
     }
 
-}
+};
 
 
-/* =====================================================
-   PRINT ORDER
-===================================================== */
+/* CANCEL ORDER */
 
-function printOrder(order){
+window.cancelOrder =
+async function(orderId){
 
-    const printWindow =
-        window.open(
-            "",
-            "_blank",
-            "width=700,height=800"
-        );
+    const order =
+    (window.currentOrders || [])
+    .find(
+        o => o.id === orderId
+    );
 
 
-    if(!printWindow){
+    if(!order){
 
-        alert(
-            "⚠️ Popup blocked है। Browser में popup allow करें।"
-        );
+        alert("Order नहीं मिला।");
 
         return;
 
     }
 
 
-    const status =
-        order.status || "Pending";
+    const confirmCancel =
+    confirm(
+        "क्या आप इस Order को Cancel करना चाहते हैं?\n\n" +
+        "Order: " +
+        (order.orderNumber || "") +
+        "\n" +
+        "Jar: " +
+        (order.quantity || 0)
+    );
 
 
-    const html = `
+    if(!confirmCancel){
 
-<!DOCTYPE html>
+        return;
 
-<html lang="hi">
-
-<head>
-
-<meta charset="UTF-8">
-
-<title>Nectar Water Order</title>
-
-<style>
-
-body{
-    font-family:Arial,sans-serif;
-    padding:25px;
-    color:#111827;
-}
-
-.receipt{
-    max-width:600px;
-    margin:auto;
-    border:2px solid #111827;
-    padding:25px;
-    border-radius:12px;
-}
-
-h1{
-    text-align:center;
-    margin-bottom:5px;
-}
-
-.subtitle{
-    text-align:center;
-    margin-bottom:20px;
-}
-
-.line{
-    border-top:1px solid #ddd;
-    margin:15px 0;
-}
-
-.row{
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-    padding:7px 0;
-}
-
-.total{
-    font-size:20px;
-    font-weight:bold;
-}
-
-.footer{
-    text-align:center;
-    margin-top:25px;
-}
-
-@media print{
-
-    button{
-        display:none;
     }
 
-    body{
-        padding:0;
+
+    try{
+
+        await updateDoc(
+            doc(
+                db,
+                "orders",
+                orderId
+            ),
+            {
+                status:"Cancelled"
+            }
+        );
+
+
+        /*
+          ध्यान दें:
+          यहाँ dailyBookings का bookedJar
+          अपने आप कम नहीं किया जा रहा है।
+          इससे booking count सुरक्षित रहेगा।
+        */
+
+
+        await loadOrders();
+
+        showNotice(
+            "✅ Order Cancelled हो गया।"
+        );
+
     }
 
-}
+    catch(error){
 
-</style>
+        console.error(error);
 
-</head>
+        alert(
+            "❌ Order Cancel नहीं हो पाया। Firestore Rules check करें।"
+        );
 
-<body>
-
-<div class="receipt">
-
-<h1>💧 NECTAR WATER</h1>
-
-<div class="subtitle">
-राधे राधे 🙏<br>
-शुद्ध पानी • आपके घर तक
-</div>
-
-<div class="line"></div>
-
-<div class="row">
-<b>Order No.</b>
-<span>${escapeHtml(order.orderNumber || "-")}</span>
-</div>
-
-<div class="row">
-<b>Status</b>
-<span>${escapeHtml(status)}</span>
-</div>
-
-<div class="row">
-<b>Customer</b>
-<span>${escapeHtml(order.name || "-")}</span>
-</div>
-
-<div class="row">
-<b>Mobile</b>
-<span>${escapeHtml(order.mobile || "-")}</span>
-</div>
-
-<div class="row">
-<b>Delivery Date</b>
-<span>${escapeHtml(
-    order.deliveryDateDisplay ||
-    formatDate(order.deliveryDate)
-)}</span>
-</div>
-
-<div class="row">
-<b>Jar</b>
-<span>${Number(order.quantity || 0)}</span>
-</div>
-
-<div class="row">
-<b>Distance</b>
-<span>${Number(order.distance || 0)} KM</span>
-</div>
-
-<div class="row">
-<b>Delivery Charge</b>
-<span>₹${Number(
-    order.deliveryCharge || 0
-).toFixed(2)}</span>
-</div>
-
-<div class="row">
-<b>Jar Amount</b>
-<span>₹${Number(
-    order.jarAmount || 0
-).toFixed(2)}</span>
-</div>
-
-<div class="line"></div>
-
-<div class="row total">
-<b>Grand Total</b>
-<span>₹${Number(
-    order.grandTotal || 0
-).toFixed(2)}</span>
-</div>
-
-<div class="line"></div>
-
-<p>
-<b>Address:</b><br>
-${escapeHtml(order.address || "-")}
-</p>
-
-<br>
-
-<p>
-<b>Extra:</b><br>
-${escapeHtml(
-    order.extra || "कोई जानकारी नहीं"
-)}
-</p>
-
-<div class="footer">
-
-धन्यवाद 🙏<br>
-💧 Nectar Water<br>
-राधे राधे 🙏
-
-</div>
-
-</div>
-
-<script>
-
-window.onload = function(){
-
-    window.print();
+    }
 
 };
 
-<\/script>
 
-</body>
-
-</html>
-
-`;
-
-
-    printWindow.document.open();
-
-    printWindow.document.write(html);
-
-    printWindow.document.close();
-
-}
-
-
-/* =====================================================
-   SEARCH
-===================================================== */
+/* SEARCH */
 
 searchBox.addEventListener(
-    "input",
-    function(){
+"input",
+function(){
 
-        renderOrders();
+    renderOrders();
 
-    }
-);
+});
 
 
-/* =====================================================
-   DATE CHANGE
-===================================================== */
+/* DATE */
 
 filterDate.addEventListener(
-    "change",
+"change",
+function(){
+
+    loadOrders();
+
+});
+
+
+/* REFRESH */
+
+document.getElementById(
+"refreshButton"
+).addEventListener(
+"click",
+function(){
+
+    loadOrders();
+
+});
+
+
+/* NOTICE */
+
+function showNotice(text){
+
+    notice.innerText = text;
+
+    notice.style.display = "block";
+
+    setTimeout(
     function(){
 
-        searchBox.value = "";
+        notice.style.display = "none";
 
-        loadOrders();
-
-    }
-);
-
-
-/* =====================================================
-   REFRESH
-===================================================== */
-
-refreshButton.addEventListener(
-    "click",
-    function(){
-
-        loadOrders();
-
-    }
-);
-
-
-/* =====================================================
-   LOGIN MESSAGE
-===================================================== */
-
-function showLoginMessage(
-    text,
-    success
-){
-
-    loginMessage.innerText =
-        text;
-
-    loginMessage.className =
-        "message " +
-        (
-            success
-            ? "success"
-            : "error"
-        );
-
-    loginMessage.style.display =
-        "block";
+    },
+    3000
+    );
 
 }
 
 
-/* =====================================================
-   LOGIN ERROR
-===================================================== */
+/* LOGIN MESSAGE */
+
+function showMessage(text){
+
+    loginMessage.innerText = text;
+
+    loginMessage.className =
+    "message error";
+
+    loginMessage.style.display =
+    "block";
+
+}
+
+
+/* LOGIN ERRORS */
 
 function getLoginError(error){
 
@@ -1928,16 +1482,14 @@ function getLoginError(error){
 
     }
 
-
     if(
         error.code ===
         "auth/user-not-found"
     ){
 
-        return "❌ यह Admin account मौजूद नहीं है।";
+        return "❌ Admin account मौजूद नहीं है।";
 
     }
-
 
     if(
         error.code ===
@@ -1948,7 +1500,6 @@ function getLoginError(error){
 
     }
 
-
     if(
         error.code ===
         "auth/too-many-requests"
@@ -1957,7 +1508,6 @@ function getLoginError(error){
         return "⚠️ बहुत अधिक प्रयास हुए हैं। कुछ देर बाद प्रयास करें।";
 
     }
-
 
     if(
         error.code ===
@@ -1968,47 +1518,21 @@ function getLoginError(error){
 
     }
 
-
-    return (
-        "❌ Login Error: " +
-        error.message
-    );
+    return "❌ Login Error: " + error.message;
 
 }
 
 
-/* =====================================================
-   HTML ESCAPE
-===================================================== */
+/* HTML ESCAPE */
 
 function escapeHtml(value){
 
     return String(value)
-
-        .replaceAll(
-            "&",
-            "&amp;"
-        )
-
-        .replaceAll(
-            "<",
-            "&lt;"
-        )
-
-        .replaceAll(
-            ">",
-            "&gt;"
-        )
-
-        .replaceAll(
-            '"',
-            "&quot;"
-        )
-
-        .replaceAll(
-            "'",
-            "&#039;"
-        );
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 
 }
 
