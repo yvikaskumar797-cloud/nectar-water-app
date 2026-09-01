@@ -1,222 +1,279 @@
-```html
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>💧 Nectar Water</title>
+    <title>Nectar Water - 20 Liter Jar</title>
 
-<style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
+    <meta name="theme-color" content="#08a9d4">
 
-body{
-    font-family:Arial,"Noto Sans Devanagari",sans-serif;
-    background:#eef7ff;
-    color:#172033;
-}
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-.container{
-    max-width:600px;
-    margin:auto;
-    padding:18px;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-.header{
-    text-align:center;
-    padding:25px 10px 20px;
-}
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, "Noto Sans Devanagari", sans-serif;
+            background: linear-gradient(180deg, #dff8ff, #f5fcff);
+            color: #073b57;
+        }
 
-.logo{
-    font-size:58px;
-    line-height:1;
-}
+        .container {
+            width: 100%;
+            max-width: 560px;
+            margin: auto;
+            padding: 14px;
+        }
 
-h1{
-    margin-top:10px;
-    color:#0878d1;
-    font-size:32px;
-}
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #079bd0, #0bb8cf);
+            color: white;
+            border-radius: 24px;
+            padding: 28px 16px 25px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 120, 160, 0.20);
+        }
 
-.radhe{
-    margin-top:7px;
-    font-size:20px;
-    font-weight:bold;
-    color:#d14a00;
-}
+        .water-drop {
+            font-size: 58px;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
 
-.tagline{
-    margin-top:8px;
-    color:#64748b;
-    font-size:16px;
-}
+        .header h1 {
+            margin: 0;
+            font-size: clamp(30px, 8vw, 46px);
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
 
-.card{
-    background:white;
-    border-radius:20px;
-    padding:20px;
-    margin-bottom:18px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-}
+        .tagline {
+            font-size: 19px;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
 
-.price-box{
-    text-align:center;
-    background:#e6f5ff;
-    padding:15px;
-    border-radius:15px;
-    margin-bottom:15px;
-}
+        .price {
+            margin-top: 20px;
+            font-size: clamp(24px, 6.5vw, 34px);
+            font-weight: 800;
 
-.price{
-    font-size:25px;
-    font-weight:bold;
-    color:#0878d1;
-}
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: nowrap;
 
-.capacity{
-    text-align:center;
-    background:#f8fafc;
-    padding:13px;
-    border-radius:12px;
-    margin-bottom:18px;
-    font-weight:bold;
-}
+            white-space: nowrap;
+        }
 
-.capacity span{
-    color:#0878d1;
-}
+        /* FORM CARD */
+        .card {
+            background: white;
+            margin-top: 18px;
+            border-radius: 25px;
+            padding: 22px 18px 28px;
+            box-shadow: 0 7px 25px rgba(0, 90, 120, 0.12);
+        }
 
-label{
-    display:block;
-    font-weight:bold;
-    margin-top:15px;
-    margin-bottom:6px;
-}
+        /* CAPACITY */
+        .capacity {
+            background: #eefaff;
+            border-radius: 18px;
+            text-align: center;
+            padding: 15px 10px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.45;
+        }
 
-input,
-textarea{
-    width:100%;
-    border:1px solid #cbd5e1;
-    border-radius:11px;
-    padding:13px;
-    font-size:16px;
-    outline:none;
-}
+        .capacity strong {
+            color: #007da9;
+            font-size: 22px;
+        }
 
-input:focus,
-textarea:focus{
-    border-color:#0878d1;
-}
+        /* FORM */
+        .field {
+            margin-bottom: 17px;
+        }
 
-textarea{
-    min-height:90px;
-    resize:vertical;
-}
+        label {
+            display: block;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #073b57;
+        }
 
-.summary{
-    margin-top:20px;
-}
+        input,
+        textarea,
+        select {
+            width: 100%;
+            border: 1.5px solid #cbdce5;
+            border-radius: 15px;
+            padding: 15px 14px;
+            font-size: 17px;
+            background: #fff;
+            color: #173d4d;
+            outline: none;
+            transition: 0.2s;
+        }
 
-.summary-row{
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-    padding:11px 0;
-    border-bottom:1px solid #e2e8f0;
-}
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #08a9d4;
+            box-shadow: 0 0 0 3px rgba(8, 169, 212, 0.12);
+        }
 
-.summary-row:last-child{
-    border-bottom:0;
-}
+        textarea {
+            min-height: 95px;
+            resize: vertical;
+        }
 
-.total{
-    font-size:21px;
-    font-weight:bold;
-    color:#0878d1;
-}
+        /* SUMMARY */
+        .summary {
+            margin-top: 8px;
+            background: #f1fbff;
+            border: 1px solid #d4edf6;
+            border-radius: 18px;
+            padding: 17px;
+        }
 
-.order-btn{
-    width:100%;
-    border:0;
-    border-radius:13px;
-    padding:15px;
-    margin-top:20px;
-    background:#0878d1;
-    color:white;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-}
+        .summary h2 {
+            margin: 0 0 12px;
+            font-size: 20px;
+        }
 
-.order-btn:disabled{
-    background:#94a3b8;
-    cursor:not-allowed;
-}
+        .row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 8px 0;
+            font-size: 16px;
+        }
 
-.whatsapp-btn{
-    display:none;
-    width:100%;
-    text-align:center;
-    text-decoration:none;
-    border-radius:13px;
-    padding:14px;
-    margin-top:12px;
-    background:#25D366;
-    color:white;
-    font-size:17px;
-    font-weight:bold;
-}
+        .row span:last-child {
+            font-weight: 700;
+            text-align: right;
+        }
 
-.message{
-    display:none;
-    padding:13px;
-    margin-top:15px;
-    border-radius:11px;
-    text-align:center;
-    font-weight:bold;
-}
+        .total {
+            border-top: 1px solid #cce5ee;
+            margin-top: 8px;
+            padding-top: 14px;
+            font-size: 21px;
+            font-weight: 800;
+            color: #0081ac;
+        }
 
-.success{
-    background:#dcfce7;
-    color:#166534;
-}
+        /* BUTTON */
+        .order-btn {
+            width: 100%;
+            border: none;
+            border-radius: 16px;
+            padding: 17px;
+            margin-top: 20px;
 
-.error{
-    background:#fee2e2;
-    color:#b91c1c;
-}
+            background: linear-gradient(135deg, #079bd0, #08b6c8);
+            color: white;
 
-.footer{
-    text-align:center;
-    padding:20px;
-    color:#64748b;
-    font-size:14px;
-}
+            font-size: 20px;
+            font-weight: 800;
+            cursor: pointer;
 
-.small{
-    font-size:13px;
-    color:#64748b;
-    margin-top:6px;
-}
+            box-shadow: 0 7px 18px rgba(0, 150, 190, 0.25);
+        }
 
-@media(max-width:500px){
-    h1{
-        font-size:28px;
-    }
+        .order-btn:active {
+            transform: scale(0.98);
+        }
 
-    .container{
-        padding:12px;
-    }
+        .order-btn:disabled {
+            background: #9bb3bc;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
 
-    .card{
-        padding:17px;
-    }
-}
-</style>
+        /* SUCCESS */
+        .success {
+            display: none;
+            margin-top: 18px;
+            background: #eafbf0;
+            border: 1px solid #a9e4bd;
+            color: #126b35;
+            padding: 18px;
+            border-radius: 17px;
+            text-align: center;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .success h3 {
+            margin: 0 0 7px;
+            font-size: 23px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 22px 10px 35px;
+            color: #52717e;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* SMALL MOBILE */
+        @media (max-width: 380px) {
+
+            .container {
+                padding: 9px;
+            }
+
+            .header {
+                border-radius: 20px;
+                padding: 23px 10px;
+            }
+
+            .header h1 {
+                font-size: 29px;
+            }
+
+            .tagline {
+                font-size: 16px;
+            }
+
+            .price {
+                font-size: 22px;
+                gap: 5px;
+            }
+
+            .card {
+                padding: 18px 13px 23px;
+                border-radius: 20px;
+            }
+
+            label {
+                font-size: 17px;
+            }
+
+            input,
+            textarea,
+            select {
+                font-size: 16px;
+                padding: 14px 12px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -224,1304 +281,468 @@ textarea{
 <div class="container">
 
     <!-- HEADER -->
+    <header class="header">
 
-    <div class="header">
+        <div class="water-drop">💧</div>
 
-        <div class="logo">💧</div>
-
-        <h1>💧 NECTAR WATER</h1>
-
-        <div class="radhe">
-            राधे राधे 🙏
-        </div>
+        <h1>NECTAR WATER</h1>
 
         <div class="tagline">
+            राधे राधे 🙏<br>
             शुद्ध पानी • आपके घर तक
         </div>
 
-    </div>
+        <div class="price">
+            💧 20 Liter Jar • ₹20 प्रति Jar
+        </div>
+
+    </header>
 
 
     <!-- ORDER CARD -->
+    <main class="card">
 
-    <div class="card">
-
-        <div class="price-box">
-
-            <div>
-                💧 20 Liter Jar
-            </div>
-
-            <div class="price">
-                ₹20 प्रति Jar
-            </div>
-
-        </div>
-
-
+        <!-- CAPACITY -->
         <div class="capacity">
-
-            📅 चुनी गई तारीख की उपलब्ध क्षमता:
-
-            <br><br>
-
-            <span id="capacityText">
-                300 / 300 Jar बाकी
-            </span>
-
+            📅 चुनी गई तारीख की उपलब्ध क्षमता:<br>
+            <strong>
+                <span id="availableJars">300</span> / 300 Jar बाकी
+            </strong>
         </div>
 
 
         <!-- NAME -->
+        <div class="field">
+            <label>👤 आपका नाम</label>
 
-        <label for="name">
-            👤 आपका नाम
-        </label>
-
-        <input
-            id="name"
-            type="text"
-            placeholder="अपना नाम लिखें"
-            maxlength="100"
-        >
+            <input
+                type="text"
+                id="name"
+                placeholder="अपना नाम लिखें"
+                autocomplete="name"
+            >
+        </div>
 
 
         <!-- MOBILE -->
+        <div class="field">
+            <label>📱 मोबाइल नंबर</label>
 
-        <label for="mobile">
-            📱 मोबाइल नंबर
-        </label>
-
-        <input
-            id="mobile"
-            type="tel"
-            inputmode="numeric"
-            placeholder="10 अंकों का मोबाइल नंबर"
-            maxlength="10"
-        >
+            <input
+                type="tel"
+                id="mobile"
+                placeholder="10 अंकों का मोबाइल नंबर"
+                maxlength="10"
+                inputmode="numeric"
+            >
+        </div>
 
 
         <!-- DATE -->
+        <div class="field">
+            <label>📅 Delivery Date</label>
 
-        <label for="deliveryDate">
-            📅 Delivery Date
-        </label>
-
-        <input
-            id="deliveryDate"
-            type="date"
-        >
+            <input
+                type="date"
+                id="deliveryDate"
+            >
+        </div>
 
 
-        <!-- QUANTITY -->
+        <!-- JAR -->
+        <div class="field">
+            <label>🪣 कितने Jar चाहिए?</label>
 
-        <label for="quantity">
-            🪣 कितने Jar चाहिए?
-        </label>
-
-        <input
-            id="quantity"
-            type="number"
-            min="1"
-            max="300"
-            value="1"
-            placeholder="Jar की संख्या"
-        >
+            <input
+                type="number"
+                id="quantity"
+                value="1"
+                min="1"
+                max="300"
+                inputmode="numeric"
+            >
+        </div>
 
 
         <!-- DISTANCE -->
+        <div class="field">
+            <label>📏 दूरी (KM)</label>
 
-        <label for="distance">
-            📏 दूरी (KM)
-        </label>
-
-        <input
-            id="distance"
-            type="number"
-            min="0"
-            step="0.1"
-            placeholder="जैसे 5"
-        >
+            <input
+                type="number"
+                id="distance"
+                value="0"
+                min="0"
+                step="0.1"
+                inputmode="decimal"
+            >
+        </div>
 
 
         <!-- ADDRESS -->
+        <div class="field">
+            <label>📍 पूरा Address</label>
 
-        <label for="address">
-            📍 पूरा Address
-        </label>
-
-        <textarea
-            id="address"
-            placeholder="घर/दुकान/स्थान का पूरा पता"
-            maxlength="500"
-        ></textarea>
-
-
-        <!-- EXTRA -->
-
-        <label for="extra">
-            📝 Extra जानकारी (वैकल्पिक)
-        </label>
-
-        <textarea
-            id="extra"
-            placeholder="कोई अतिरिक्त जानकारी हो तो लिखें"
-            maxlength="500"
-        ></textarea>
+            <textarea
+                id="address"
+                placeholder="अपना पूरा पता लिखें"
+            ></textarea>
+        </div>
 
 
         <!-- SUMMARY -->
-
         <div class="summary">
 
-            <div class="summary-row">
+            <h2>🧾 Order Summary</h2>
 
-                <span>
-                    🪣 Jar Amount
-                </span>
-
-                <strong id="jarAmount">
-                    ₹0.00
-                </strong>
-
+            <div class="row">
+                <span>Jar Price</span>
+                <span id="jarPrice">₹20 × 1</span>
             </div>
 
-
-            <div class="summary-row">
-
-                <span>
-                    🚚 Delivery Charge
-                </span>
-
-                <strong id="deliveryCharge">
-                    ₹0.00
-                </strong>
-
+            <div class="row">
+                <span>Water Amount</span>
+                <span id="waterAmount">₹20</span>
             </div>
 
+            <div class="row">
+                <span>Delivery Charge</span>
+                <span id="deliveryCharge">₹0</span>
+            </div>
 
-            <div class="summary-row total">
-
-                <span>
-                    💰 Grand Total
-                </span>
-
-                <strong id="grandTotal">
-                    ₹0.00
-                </strong>
-
+            <div class="row total">
+                <span>कुल राशि</span>
+                <span id="totalAmount">₹20</span>
             </div>
 
         </div>
 
 
         <!-- ORDER BUTTON -->
-
         <button
-            id="orderButton"
-            class="order-btn">
-
-            🪣 Order करें
-
+            class="order-btn"
+            id="orderBtn"
+            onclick="placeOrder()"
+        >
+            🛒 Order करें
         </button>
 
 
-        <!-- WHATSAPP BUTTON -->
+        <!-- SUCCESS MESSAGE -->
+        <div class="success" id="successBox">
 
-        <a
-            id="whatsappButton"
-            class="whatsapp-btn"
-            href="#"
-            target="_blank"
-            rel="noopener">
+            <h3>✅ Order सफल हुआ!</h3>
 
-            📱 WhatsApp पर Order भेजें
+            <div id="successText"></div>
 
-        </a>
-
-
-        <!-- MESSAGE -->
-
-        <div
-            id="message"
-            class="message">
         </div>
 
-    </div>
+    </main>
 
 
-    <div class="footer">
-
-        © Nectar Water • 20 Liter Drinking Water
-
-        <div class="small">
-            💧 शुद्ध पानी • आपके घर तक
-        </div>
-
-    </div>
+    <footer>
+        Nectar Water<br>
+        शुद्ध पानी • आपके घर तक
+    </footer>
 
 </div>
 
 
-<!-- FIREBASE -->
+<script>
 
-<script type="module">
+    /* ==============================
+       DEFAULT DATE
+    ============================== */
 
-import {
-    initializeApp
-}
-from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+    const dateInput = document.getElementById("deliveryDate");
 
+    const today = new Date();
 
-import {
-    getFirestore,
-    doc,
-    getDoc,
-    runTransaction
-}
-from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+    const year = today.getFullYear();
 
+    const month = String(today.getMonth() + 1).padStart(2, "0");
 
-/* =========================================
-   FIREBASE CONFIG
-========================================= */
+    const day = String(today.getDate()).padStart(2, "0");
 
-const firebaseConfig = {
+    const todayString = `${year}-${month}-${day}`;
 
-    apiKey:
-    "AIzaSyC3qW2tnclJO65ziiptBAWxzifPoSLcKTw",
+    dateInput.value = todayString;
 
-    authDomain:
-    "nectar-water-e42b4.firebaseapp.com",
+    dateInput.min = todayString;
 
-    projectId:
-    "nectar-water",
 
-    storageBucket:
-    "nectar-water.firebasestorage.app",
+    /* ==============================
+       ELEMENTS
+    ============================== */
 
-    messagingSenderId:
-    "292708650665",
+    const quantityInput =
+        document.getElementById("quantity");
 
-    appId:
-    "1:292708650665:web:f8ec60a21665e70867a3b8",
+    const distanceInput =
+        document.getElementById("distance");
 
-    measurementId:
-    "G-P40N8EEDRC"
-};
 
+    /* ==============================
+       CALCULATE ORDER
+    ============================== */
 
-/* =========================================
-   INITIALIZE FIREBASE
-========================================= */
+    function calculateTotal() {
 
-const app =
-    initializeApp(firebaseConfig);
+        let quantity =
+            parseInt(quantityInput.value) || 0;
 
-const db =
-    getFirestore(app);
+        let distance =
+            parseFloat(distanceInput.value) || 0;
 
 
-/* =========================================
-   CONSTANTS
-========================================= */
+        if (quantity < 0) {
+            quantity = 0;
+        }
 
-const JAR_PRICE = 20;
 
-const MAX_DAILY_JARS = 300;
+        /* Jar price */
 
-const WHATSAPP_NUMBER =
-    "918604970943";
+        const jarPrice = 20;
 
+        const waterAmount =
+            quantity * jarPrice;
 
-/* =========================================
-   ELEMENTS
-========================================= */
 
-const nameInput =
-    document.getElementById("name");
+        /* ==============================
+           DELIVERY RULE
 
-const mobileInput =
-    document.getElementById("mobile");
+           30 से ज्यादा Jar:
+           15 KM तक FREE
 
-const dateInput =
-    document.getElementById("deliveryDate");
+           1 से 29 Jar:
+           5 KM से 15 KM तक
+           ₹1.50 प्रति Jar
 
-const quantityInput =
-    document.getElementById("quantity");
+           15 KM से ज्यादा:
+           ₹7 प्रति KM
+        ============================== */
 
-const distanceInput =
-    document.getElementById("distance");
+        let deliveryCharge = 0;
 
-const addressInput =
-    document.getElementById("address");
 
-const extraInput =
-    document.getElementById("extra");
+        if (quantity > 30) {
 
-const jarAmountEl =
-    document.getElementById("jarAmount");
+            if (distance <= 15) {
 
-const deliveryChargeEl =
-    document.getElementById("deliveryCharge");
+                deliveryCharge = 0;
 
-const grandTotalEl =
-    document.getElementById("grandTotal");
+            } else {
 
-const capacityText =
-    document.getElementById("capacityText");
+                deliveryCharge =
+                    Math.ceil(distance - 15) * 7;
+            }
 
-const orderButton =
-    document.getElementById("orderButton");
+        } else {
 
-const messageBox =
-    document.getElementById("message");
+            if (distance > 5 && distance <= 15) {
 
-const whatsappButton =
-    document.getElementById("whatsappButton");
+                deliveryCharge =
+                    quantity * 1.5;
 
+            } else if (distance > 15) {
 
-/* =========================================
-   TODAY
-========================================= */
+                deliveryCharge =
+                    quantity * 1.5;
 
-function getToday(){
+                deliveryCharge +=
+                    Math.ceil(distance - 15) * 7;
+            }
+        }
 
-    const now =
-        new Date();
 
-    const year =
-        now.getFullYear();
+        const total =
+            waterAmount + deliveryCharge;
 
-    const month =
-        String(
-            now.getMonth() + 1
-        ).padStart(2,"0");
 
-    const day =
-        String(
-            now.getDate()
-        ).padStart(2,"0");
+        /* Display */
 
-    return (
-        year +
-        "-" +
-        month +
-        "-" +
-        day
-    );
-}
+        document.getElementById("jarPrice").textContent =
+            `₹20 × ${quantity}`;
 
+        document.getElementById("waterAmount").textContent =
+            `₹${waterAmount}`;
 
-/* =========================================
-   DISPLAY DATE
-========================================= */
+        document.getElementById("deliveryCharge").textContent =
+            `₹${deliveryCharge}`;
 
-function displayDate(date){
+        document.getElementById("totalAmount").textContent =
+            `₹${total}`;
 
-    if(!date){
-        return "";
-    }
 
-    const parts =
-        date.split("-");
-
-    if(parts.length !== 3){
-        return date;
-    }
-
-    return (
-        parts[2] +
-        "-" +
-        parts[1] +
-        "-" +
-        parts[0]
-    );
-}
-
-
-/* =========================================
-   SET MIN DATE
-========================================= */
-
-dateInput.min =
-    getToday();
-
-dateInput.value =
-    getToday();
-
-
-/* =========================================
-   DELIVERY CHARGE
-========================================= */
-
-function calculateDeliveryCharge(
-    quantity,
-    distance
-){
-
-    quantity =
-        Number(quantity) || 0;
-
-    distance =
-        Number(distance) || 0;
-
-
-    /*
-       30 से अधिक Jar:
-       15 KM तक FREE
-    */
-
-    if(
-        quantity >= 30 &&
-        distance <= 15
-    ){
-
-        return 0;
-    }
-
-
-    /*
-       1 से 29 Jar:
-       5 KM तक FREE
-       5 से अधिक और 15 KM तक
-       ₹1.50 प्रति Jar
-    */
-
-    if(
-        quantity >= 1 &&
-        quantity <= 29 &&
-        distance > 5 &&
-        distance <= 15
-    ){
-
-        return quantity * 1.50;
-    }
-
-
-    /*
-       5 KM तक FREE
-    */
-
-    if(distance <= 5){
-
-        return 0;
-    }
-
-
-    /*
-       15 KM से अधिक के लिए
-       ₹7 प्रति KM
-    */
-
-    if(distance > 15){
-
-        return distance * 7;
-    }
-
-
-    return 0;
-}
-
-
-/* =========================================
-   CALCULATE TOTAL
-========================================= */
-
-function updateTotal(){
-
-    const quantity =
-        Number(
-            quantityInput.value
-        ) || 0;
-
-    const distance =
-        Number(
-            distanceInput.value
-        ) || 0;
-
-
-    const jarAmount =
-        quantity * JAR_PRICE;
-
-
-    const deliveryCharge =
-        calculateDeliveryCharge(
+        return {
             quantity,
-            distance
-        );
-
-
-    const grandTotal =
-        jarAmount +
-        deliveryCharge;
-
-
-    jarAmountEl.innerText =
-        "₹" +
-        jarAmount.toFixed(2);
-
-
-    deliveryChargeEl.innerText =
-        "₹" +
-        deliveryCharge.toFixed(2);
-
-
-    grandTotalEl.innerText =
-        "₹" +
-        grandTotal.toFixed(2);
-}
-
-
-/* =========================================
-   INPUT EVENTS
-========================================= */
-
-quantityInput.addEventListener(
-    "input",
-    updateTotal
-);
-
-distanceInput.addEventListener(
-    "input",
-    updateTotal
-);
-
-
-/* =========================================
-   MESSAGE
-========================================= */
-
-function showMessage(
-    text,
-    type
-){
-
-    messageBox.innerText =
-        text;
-
-    messageBox.className =
-        "message " + type;
-
-    messageBox.style.display =
-        "block";
-}
-
-
-/* =========================================
-   LOAD DAILY CAPACITY
-========================================= */
-
-async function loadCapacity(){
-
-    const selectedDate =
-        dateInput.value;
-
-    if(!selectedDate){
-
-        capacityText.innerText =
-            "पहले Delivery Date चुनें";
-
-        return;
+            distance,
+            waterAmount,
+            deliveryCharge,
+            total
+        };
     }
 
 
-    try{
+    /* ==============================
+       LIVE CALCULATION
+    ============================== */
 
-        const bookingRef =
-            doc(
-                db,
-                "dailyBookings",
-                selectedDate
-            );
-
-
-        const bookingSnap =
-            await getDoc(
-                bookingRef
-            );
-
-
-        let bookedJar =
-            0;
-
-
-        if(
-            bookingSnap.exists()
-        ){
-
-            bookedJar =
-                Number(
-                    bookingSnap
-                    .data()
-                    .bookedJar
-                ) || 0;
-
-        }
-
-
-        const remaining =
-            Math.max(
-                0,
-                MAX_DAILY_JARS -
-                bookedJar
-            );
-
-
-        capacityText.innerText =
-            remaining +
-            " / 300 Jar बाकी";
-
-
-        if(remaining <= 0){
-
-            orderButton.disabled =
-                true;
-
-            orderButton.innerText =
-                "❌ इस तारीख की Booking Full है";
-
-        }
-
-        else{
-
-            orderButton.disabled =
-                false;
-
-            orderButton.innerText =
-                "🪣 Order करें";
-
-        }
-
-    }
-
-    catch(error){
-
-        console.error(error);
-
-        capacityText.innerText =
-            "क्षमता लोड नहीं हो पाई";
-
-    }
-}
-
-
-/* =========================================
-   DATE CHANGE
-========================================= */
-
-dateInput.addEventListener(
-    "change",
-    loadCapacity
-);
-
-
-/* =========================================
-   INITIAL CAPACITY
-========================================= */
-
-loadCapacity();
-
-
-/* =========================================
-   GENERATE ORDER NUMBER
-========================================= */
-
-function generateOrderNumber(){
-
-    const year =
-        new Date()
-        .getFullYear();
-
-    const random =
-        Math.floor(
-            10000000 +
-            Math.random() * 90000000
-        );
-
-
-    return (
-        "NW-" +
-        year +
-        "-" +
-        random
+    quantityInput.addEventListener(
+        "input",
+        calculateTotal
     );
-}
 
-
-/* =========================================
-   CREATE WHATSAPP MESSAGE
-========================================= */
-
-function createWhatsAppMessage(
-    order
-){
-
-    return (
-`💧 NECTAR WATER
-राधे राधे 🙏
-
-💧 ORDER DETAILS
-
-Order No: ${order.orderNumber}
-
-Name: ${order.name}
-
-Mobile: ${order.mobile}
-
-Delivery Date: ${order.deliveryDateDisplay}
-
-Jar: ${order.quantity}
-
-Distance: ${order.distance} KM
-
-Delivery Charge: ₹${Number(order.deliveryCharge).toFixed(2)}
-
-Jar Amount: ₹${Number(order.jarAmount).toFixed(2)}
-
-Grand Total: ₹${Number(order.grandTotal).toFixed(2)}
-
-Address:
-${order.address}
-
-Extra:
-${order.extra || "कोई जानकारी नहीं"}
-
-धन्यवाद।
-💧 NECTAR WATER
-राधे राधे 🙏`
+    distanceInput.addEventListener(
+        "input",
+        calculateTotal
     );
-}
 
 
-/* =========================================
-   ORDER
-========================================= */
+    calculateTotal();
 
-orderButton.addEventListener(
-    "click",
-    async function(){
 
-        messageBox.style.display =
-            "none";
+    /* ==============================
+       ORDER
+    ============================== */
 
-        whatsappButton.style.display =
-            "none";
-
+    function placeOrder() {
 
         const name =
-            nameInput.value.trim();
+            document.getElementById("name").value.trim();
 
         const mobile =
-            mobileInput.value.trim();
+            document.getElementById("mobile").value.trim();
 
-        const deliveryDate =
-            dateInput.value;
-
-        const quantity =
-            Number(
-                quantityInput.value
-            );
-
-        const distance =
-            Number(
-                distanceInput.value
-            );
+        const date =
+            document.getElementById("deliveryDate").value;
 
         const address =
-            addressInput.value.trim();
-
-        const extra =
-            extraInput.value.trim();
+            document.getElementById("address").value.trim();
 
 
-        /* =================================
-           VALIDATION
-        ================================= */
+        const result =
+            calculateTotal();
 
-        if(!name){
 
-            showMessage(
-                "❌ कृपया अपना नाम डालें।",
-                "error"
-            );
+        /* Name */
 
-            nameInput.focus();
+        if (!name) {
+
+            alert("कृपया अपना नाम लिखें।");
+
             return;
         }
 
 
-        if(!/^[0-9]{10}$/.test(mobile)){
+        /* Mobile */
 
-            showMessage(
-                "❌ कृपया सही 10 अंकों का मोबाइल नंबर डालें।",
-                "error"
-            );
+        if (!/^[6-9][0-9]{9}$/.test(mobile)) {
 
-            mobileInput.focus();
-            return;
-        }
-
-
-        if(!deliveryDate){
-
-            showMessage(
-                "❌ Delivery Date चुनें।",
-                "error"
+            alert(
+                "कृपया सही 10 अंकों का मोबाइल नंबर डालें।"
             );
 
             return;
         }
 
 
-        if(
-            deliveryDate <
-            getToday()
-        ){
+        /* Date */
 
-            showMessage(
-                "❌ पुरानी तारीख चुनना संभव नहीं है।",
-                "error"
+        if (!date) {
+
+            alert(
+                "कृपया Delivery Date चुनें।"
             );
 
             return;
         }
 
 
-        if(
-            !Number.isInteger(quantity) ||
-            quantity < 1 ||
-            quantity > 300
-        ){
+        /* Quantity */
 
-            showMessage(
-                "❌ Jar की संख्या 1 से 300 के बीच होनी चाहिए।",
-                "error"
+        if (
+            result.quantity < 1 ||
+            result.quantity > 300
+        ) {
+
+            alert(
+                "Jar की संख्या 1 से 300 के बीच होनी चाहिए।"
             );
 
-            quantityInput.focus();
             return;
         }
 
 
-        if(
-            !Number.isFinite(distance) ||
-            distance < 0
-        ){
+        /* Address */
 
-            showMessage(
-                "❌ सही दूरी डालें।",
-                "error"
+        if (!address) {
+
+            alert(
+                "कृपया अपना पूरा Address लिखें।"
             );
 
-            distanceInput.focus();
             return;
         }
 
 
-        if(!address){
+        /* Success */
 
-            showMessage(
-                "❌ कृपया पूरा Address डालें।",
-                "error"
-            );
+        const successBox =
+            document.getElementById("successBox");
 
-            addressInput.focus();
-            return;
-        }
+        const successText =
+            document.getElementById("successText");
 
 
-        /* =================================
-           TOTAL
-        ================================= */
+        successText.innerHTML =
 
-        const jarAmount =
-            quantity *
-            JAR_PRICE;
+            `धन्यवाद <b>${escapeHtml(name)}</b>!<br>
+            आपके लिए <b>${result.quantity} Jar</b> का Order दर्ज किया गया है।<br>
+            Delivery Date: <b>${formatDate(date)}</b><br>
+            कुल राशि: <b>₹${result.total}</b>`;
 
 
-        const deliveryCharge =
-            calculateDeliveryCharge(
-                quantity,
-                distance
-            );
+        successBox.style.display = "block";
 
 
-        const grandTotal =
-            jarAmount +
-            deliveryCharge;
+        /* Scroll */
 
-
-        const orderNumber =
-            generateOrderNumber();
-
-
-        const deliveryDateDisplay =
-            displayDate(
-                deliveryDate
-            );
-
-
-        /* =================================
-           BUTTON LOCK
-        ================================= */
-
-        orderButton.disabled =
-            true;
-
-        orderButton.innerText =
-            "⏳ Order save हो रहा है...";
-
-
-        try{
-
-            /*
-               Transaction का उपयोग किया गया है
-               ताकि एक ही समय पर कई orders आने पर
-               300 Jar limit सुरक्षित रहे।
-            */
-
-            const bookingRef =
-                doc(
-                    db,
-                    "dailyBookings",
-                    deliveryDate
-                );
-
-
-            const orderRef =
-                doc(
-                    db,
-                    "orders",
-                    orderNumber
-                );
-
-
-            await runTransaction(
-                db,
-                async function(transaction){
-
-                    const bookingSnap =
-                        await transaction.get(
-                            bookingRef
-                        );
-
-
-                    let bookedJar =
-                        0;
-
-
-                    if(
-                        bookingSnap.exists()
-                    ){
-
-                        bookedJar =
-                            Number(
-                                bookingSnap
-                                .data()
-                                .bookedJar
-                            ) || 0;
-
-                    }
-
-
-                    const remaining =
-                        MAX_DAILY_JARS -
-                        bookedJar;
-
-
-                    if(
-                        quantity >
-                        remaining
-                    ){
-
-                        throw new Error(
-                            "BOOKING_LIMIT"
-                        );
-
-                    }
-
-
-                    const newBookedJar =
-                        bookedJar +
-                        quantity;
-
-
-                    transaction.set(
-                        bookingRef,
-                        {
-                            bookedJar:
-                                newBookedJar,
-
-                            lastOrderQuantity:
-                                quantity,
-
-                            updatedAt:
-                                new Date()
-                                .toISOString()
-                        },
-                        {
-                            merge:true
-                        }
-                    );
-
-
-                    transaction.set(
-                        orderRef,
-                        {
-
-                            orderNumber:
-                                orderNumber,
-
-                            name:
-                                name,
-
-                            mobile:
-                                mobile,
-
-                            deliveryDate:
-                                deliveryDate,
-
-                            deliveryDateDisplay:
-                                deliveryDateDisplay,
-
-                            quantity:
-                                quantity,
-
-                            distance:
-                                distance,
-
-                            jarPrice:
-                                JAR_PRICE,
-
-                            jarAmount:
-                                jarAmount,
-
-                            deliveryCharge:
-                                deliveryCharge,
-
-                            grandTotal:
-                                grandTotal,
-
-                            address:
-                                address,
-
-                            extra:
-                                extra || "कोई जानकारी नहीं",
-
-                            status:
-                                "Pending",
-
-                            createdAt:
-                                new Date()
-                                .toISOString()
-
-                        }
-                    );
-
-                }
-            );
-
-
-            /* =================================
-               SUCCESS
-            ================================= */
-
-            const order = {
-
-                orderNumber:
-                    orderNumber,
-
-                name:
-                    name,
-
-                mobile:
-                    mobile,
-
-                deliveryDate:
-                    deliveryDate,
-
-                deliveryDateDisplay:
-                    deliveryDateDisplay,
-
-                quantity:
-                    quantity,
-
-                distance:
-                    distance,
-
-                deliveryCharge:
-                    deliveryCharge,
-
-                jarAmount:
-                    jarAmount,
-
-                grandTotal:
-                    grandTotal,
-
-                address:
-                    address,
-
-                extra:
-                    extra
-
-            };
-
-
-            const whatsappMessage =
-                createWhatsAppMessage(
-                    order
-                );
-
-
-            const whatsappUrl =
-                "https://wa.me/" +
-                WHATSAPP_NUMBER +
-                "?text=" +
-                encodeURIComponent(
-                    whatsappMessage
-                );
-
-
-            whatsappButton.href =
-                whatsappUrl;
-
-            whatsappButton.style.display =
-                "block";
-
-
-            showMessage(
-                "✅ आपका Order सफलतापूर्वक दर्ज हो गया है। Order No: " +
-                orderNumber,
-                "success"
-            );
-
-
-            orderButton.innerText =
-                "✅ Order Successfully Saved";
-
-
-            await loadCapacity();
-
-
-            /*
-               WhatsApp अपने आप खोलें
-            */
-
-            window.open(
-                whatsappUrl,
-                "_blank"
-            );
-
-
-        }
-
-        catch(error){
-
-            console.error(
-                "ORDER ERROR:",
-                error
-            );
-
-
-            if(
-                error.message ===
-                "BOOKING_LIMIT"
-            ){
-
-                showMessage(
-                    "❌ इस तारीख पर इतने Jar उपलब्ध नहीं हैं। कृपया कम Jar चुनें या दूसरी तारीख चुनें।",
-                    "error"
-                );
-
-            }
-
-            else{
-
-                showMessage(
-                    "❌ Order save नहीं हो पाया। Internet और Firebase Rules check करें।",
-                    "error"
-                );
-
-            }
-
-
-            orderButton.disabled =
-                false;
-
-            orderButton.innerText =
-                "🪣 Order करें";
-
-
-            await loadCapacity();
-
-        }
-
+        successBox.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
     }
-);
 
 
-/* =========================================
-   MOBILE ONLY NUMBERS
-========================================= */
+    /* ==============================
+       DATE FORMAT
+    ============================== */
 
-mobileInput.addEventListener(
-    "input",
-    function(){
+    function formatDate(dateString) {
 
-        this.value =
-            this.value
-            .replace(/\D/g,"")
-            .slice(0,10);
+        const parts =
+            dateString.split("-");
 
+        return `${parts[2]}/${parts[1]}/${parts[0]}`;
     }
-);
 
 
-/* =========================================
-   QUANTITY LIMIT
-========================================= */
+    /* ==============================
+       SECURITY
+    ============================== */
 
-quantityInput.addEventListener(
-    "input",
-    function(){
+    function escapeHtml(text) {
 
-        let value =
-            Number(this.value);
+        const div =
+            document.createElement("div");
 
+        div.textContent = text;
 
-        if(value > 300){
-
-            this.value =
-                300;
-
-        }
-
-
-        if(value < 1 && this.value !== ""){
-
-            this.value =
-                1;
-
-        }
-
-
-        updateTotal();
-
+        return div.innerHTML;
     }
-);
-
-
-/* =========================================
-   INITIAL TOTAL
-========================================= */
-
-updateTotal();
 
 </script>
 
 </body>
 </html>
-```
