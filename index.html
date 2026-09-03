@@ -1,730 +1,1330 @@
+```html
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no">
+
+<meta name="theme-color" content="#08a9d4">
+
+<title>Nectar Water</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial,
+        "Noto Sans Devanagari",
+        sans-serif;
+
+    background:
+        linear-gradient(
+            180deg,
+            #dff8ff,
+            #f7fdff
+        );
+
+    color: #073b57;
+}
+
+.container {
+    width: 100%;
+    max-width: 560px;
+    margin: auto;
+    padding: 12px;
+}
+
+/* =====================
+   HEADER
+===================== */
+
+.header {
+    background:
+        linear-gradient(
+            135deg,
+            #079bd0,
+            #08b8d0
+        );
+
+    color: white;
+    border-radius: 24px;
+    padding: 25px 12px;
+    text-align: center;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,120,160,0.20);
+}
+
+.water-drop {
+    font-size: 55px;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size:
+        clamp(30px, 8vw, 44px);
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.tagline {
+    margin-top: 9px;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.price {
+    margin-top: 16px;
+    font-size:
+        clamp(21px, 6vw, 31px);
+
+    font-weight: 800;
+    white-space: nowrap;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+/* =====================
+   LOGIN CARD
+===================== */
+
+.login-card {
+    background: white;
+    margin-top: 15px;
+    border-radius: 23px;
+    padding: 19px 15px 22px;
+
+    box-shadow:
+        0 7px 24px
+        rgba(0,90,120,0.12);
+}
+
+.login-title {
+    font-size: 21px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.login-info {
+    background: #eefaff;
+    border-radius: 14px;
+    padding: 11px;
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 14px;
+}
+
+.login-row {
+    display: flex;
+    gap: 8px;
+}
+
+.login-row input {
+    flex: 1;
+}
+
+.small-btn {
+    border: none;
+    border-radius: 13px;
+    padding: 0 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #079bd0,
+            #08b6c8
+        );
+
+    color: white;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.small-btn:disabled {
+    background: #9bb3bc;
+}
+
+#otpArea {
+    display: none;
+    margin-top: 12px;
+}
+
+#loginStatus {
+    margin-top: 12px;
+    text-align: center;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.logged-in {
+    display: none;
+    background: #eafbf0;
+    border: 1px solid #a9e4bd;
+    color: #126b35;
+    padding: 13px;
+    border-radius: 14px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.logout-btn {
+    border: none;
+    border-radius: 10px;
+    padding: 8px 15px;
+    margin-top: 8px;
+
+    background: #d9534f;
+    color: white;
+
+    font-weight: 700;
+}
+
+/* =====================
+   CARD
+===================== */
+
+.card {
+    background: white;
+    margin-top: 15px;
+    border-radius: 23px;
+    padding: 19px 15px 26px;
+
+    box-shadow:
+        0 7px 24px
+        rgba(0,90,120,0.12);
+}
+
+/* =====================
+   CAPACITY
+===================== */
+
+.capacity {
+    background: #eefaff;
+    border-radius: 17px;
+    text-align: center;
+
+    padding: 14px 8px;
+    margin-bottom: 19px;
+
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.capacity strong {
+    color: #007da9;
+    font-size: 21px;
+}
+
+/* =====================
+   FORM
+===================== */
+
+.field {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 7px;
+    color: #073b57;
+}
+
+input,
+textarea {
+    width: 100%;
+
+    border:
+        1.5px solid #cbdce5;
+
+    border-radius: 14px;
+
+    padding: 14px;
+
+    font-size: 17px;
+
+    background: #fff;
+
+    color: #173d4d;
+
+    outline: none;
+
+    -webkit-appearance: none;
+}
+
+input {
+    min-height: 52px;
+}
+
+textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #08a9d4;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(8,169,212,0.12);
+}
+
+/* =====================
+   SUMMARY
+===================== */
+
+.summary {
+    margin-top: 7px;
+
+    background: #f1fbff;
+
+    border:
+        1px solid #d4edf6;
+
+    border-radius: 17px;
+
+    padding: 15px;
+}
 
-    <meta name="viewport"
-          content="width=device-width,
-                   initial-scale=1.0,
-                   maximum-scale=1.0,
-                   user-scalable=no">
+.summary h2 {
+    margin: 0 0 9px;
+    font-size: 20px;
+}
 
-    <meta name="theme-color" content="#08a9d4">
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    <title>Nectar Water</title>
+    gap: 12px;
 
-    <style>
+    padding: 7px 0;
 
-        * {
-            box-sizing: border-box;
-        }
+    font-size: 16px;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+.row span:last-child {
+    font-weight: 700;
+    text-align: right;
+    white-space: nowrap;
+}
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial,
-                "Noto Sans Devanagari",
-                sans-serif;
+.total {
+    border-top:
+        1px solid #cce5ee;
 
-            background:
-                linear-gradient(
-                    180deg,
-                    #dff8ff,
-                    #f7fdff
-                );
+    margin-top: 7px;
+    padding-top: 12px;
 
-            color: #073b57;
-        }
+    font-size: 21px;
+    font-weight: 800;
 
-        .container {
-            width: 100%;
-            max-width: 560px;
-            margin: auto;
-            padding: 12px;
-        }
+    color: #0081ac;
+}
 
-        /* =====================
-           HEADER
-        ===================== */
+/* =====================
+   ORDER BUTTON
+===================== */
 
-        .header {
-            background:
-                linear-gradient(
-                    135deg,
-                    #079bd0,
-                    #08b8d0
-                );
+.order-btn {
+    width: 100%;
 
-            color: white;
+    border: none;
+    border-radius: 16px;
 
-            border-radius: 24px;
+    padding: 16px;
+    margin-top: 18px;
 
-            padding: 25px 12px;
+    background:
+        linear-gradient(
+            135deg,
+            #079bd0,
+            #08b6c8
+        );
 
-            text-align: center;
+    color: white;
 
-            box-shadow:
-                0 8px 25px
-                rgba(0,120,160,0.20);
-        }
+    font-size: 20px;
+    font-weight: 800;
 
-        .water-drop {
-            font-size: 55px;
-            line-height: 1;
-            margin-bottom: 8px;
-        }
+    cursor: pointer;
 
-        .header h1 {
-            margin: 0;
+    box-shadow:
+        0 7px 18px
+        rgba(0,150,190,0.25);
+}
 
-            font-size:
-                clamp(30px, 8vw, 44px);
+.order-btn:active {
+    transform: scale(0.98);
+}
 
-            font-weight: 800;
+.order-btn:disabled {
+    background: #9bb3bc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
 
-            letter-spacing: 1px;
-        }
+/* =====================
+   SUCCESS
+===================== */
+
+.success {
+    display: none;
+
+    margin-top: 17px;
 
-        .tagline {
-            margin-top: 9px;
+    background: #eafbf0;
+
+    border:
+        1px solid #a9e4bd;
 
-            font-size: 18px;
+    color: #126b35;
+
+    padding: 17px;
 
-            line-height: 1.5;
-        }
-
-        /*
-           PRICE को हमेशा एक लाइन में रखने
-           के लिए white-space nowrap
-        */
-
-        .price {
-            margin-top: 16px;
-
-            font-size:
-                clamp(21px, 6vw, 31px);
-
-            font-weight: 800;
-
-            white-space: nowrap;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            gap: 5px;
-        }
-
-
-        /* =====================
-           CARD
-        ===================== */
-
-        .card {
-            background: white;
-
-            margin-top: 15px;
-
-            border-radius: 23px;
-
-            padding: 19px 15px 26px;
-
-            box-shadow:
-                0 7px 24px
-                rgba(0,90,120,0.12);
-        }
-
-
-        /* =====================
-           CAPACITY
-        ===================== */
-
-        .capacity {
-            background: #eefaff;
-
-            border-radius: 17px;
-
-            text-align: center;
-
-            padding: 14px 8px;
-
-            margin-bottom: 19px;
-
-            font-size: 17px;
-
-            font-weight: 700;
-
-            line-height: 1.45;
-        }
-
-        .capacity strong {
-            color: #007da9;
-
-            font-size: 21px;
-        }
-
-
-        /* =====================
-           FORM
-        ===================== */
-
-        .field {
-            margin-bottom: 16px;
-        }
-
-        label {
-            display: block;
-
-            font-size: 17px;
-
-            font-weight: 700;
-
-            margin-bottom: 7px;
-
-            color: #073b57;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-
-            border:
-                1.5px solid #cbdce5;
-
-            border-radius: 14px;
-
-            padding: 14px;
-
-            font-size: 17px;
-
-            background: #fff;
-
-            color: #173d4d;
-
-            outline: none;
-
-            -webkit-appearance: none;
-        }
-
-        input {
-            min-height: 52px;
-        }
-
-        textarea {
-            min-height: 90px;
-
-            resize: vertical;
-        }
-
-        input:focus,
-        textarea:focus {
-            border-color: #08a9d4;
-
-            box-shadow:
-                0 0 0 3px
-                rgba(8,169,212,0.12);
-        }
-
-
-        /* =====================
-           SUMMARY
-        ===================== */
-
-        .summary {
-            margin-top: 7px;
-
-            background: #f1fbff;
-
-            border:
-                1px solid #d4edf6;
-
-            border-radius: 17px;
-
-            padding: 15px;
-        }
-
-        .summary h2 {
-            margin: 0 0 9px;
-
-            font-size: 20px;
-        }
-
-        .row {
-            display: flex;
-
-            justify-content:
-                space-between;
-
-            align-items: center;
-
-            gap: 12px;
-
-            padding: 7px 0;
-
-            font-size: 16px;
-        }
-
-        .row span:last-child {
-            font-weight: 700;
-
-            text-align: right;
-
-            white-space: nowrap;
-        }
-
-        .total {
-            border-top:
-                1px solid #cce5ee;
-
-            margin-top: 7px;
-
-            padding-top: 12px;
-
-            font-size: 21px;
-
-            font-weight: 800;
-
-            color: #0081ac;
-        }
-
-
-        /* =====================
-           ORDER BUTTON
-        ===================== */
-
-        .order-btn {
-            width: 100%;
-
-            border: none;
-
-            border-radius: 16px;
-
-            padding: 16px;
-
-            margin-top: 18px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #079bd0,
-                    #08b6c8
-                );
-
-            color: white;
-
-            font-size: 20px;
-
-            font-weight: 800;
-
-            cursor: pointer;
-
-            box-shadow:
-                0 7px 18px
-                rgba(0,150,190,0.25);
-        }
-
-        .order-btn:active {
-            transform: scale(0.98);
-        }
-
-        .order-btn:disabled {
-            background: #9bb3bc;
-
-            cursor: not-allowed;
-
-            box-shadow: none;
-        }
-
-
-        /* =====================
-           SUCCESS
-        ===================== */
-
-        .success {
-            display: none;
-
-            margin-top: 17px;
-
-            background: #eafbf0;
-
-            border:
-                1px solid #a9e4bd;
-
-            color: #126b35;
-
-            padding: 17px;
-
-            border-radius: 16px;
-
-            text-align: center;
-
-            font-size: 17px;
-
-            line-height: 1.6;
-        }
-
-        .success h3 {
-            margin: 0 0 6px;
-
-            font-size: 22px;
-        }
-
-
-        /* =====================
-           FOOTER
-        ===================== */
-
-        footer {
-            text-align: center;
-
-            padding: 20px 10px 30px;
-
-            color: #52717e;
-
-            font-size: 14px;
-
-            line-height: 1.6;
-        }
-
-
-        /* =====================
-           SMALL MOBILE
-        ===================== */
-
-        @media (max-width: 380px) {
-
-            .container {
-                padding: 8px;
-            }
-
-            .header {
-                border-radius: 20px;
-
-                padding:
-                    22px 8px;
-            }
-
-            .water-drop {
-                font-size: 50px;
-            }
-
-            .header h1 {
-                font-size: 28px;
-            }
-
-            .tagline {
-                font-size: 16px;
-            }
-
-            .price {
-                font-size: 20px;
-
-                gap: 3px;
-            }
-
-            .card {
-                border-radius: 20px;
-
-                padding:
-                    17px 12px 23px;
-            }
-
-            label {
-                font-size: 16px;
-            }
-
-            input,
-            textarea {
-                font-size: 16px;
-            }
-
-            .total {
-                font-size: 20px;
-            }
-        }
-
-    </style>
+    border-radius: 16px;
+
+    text-align: center;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+}
+
+.success h3 {
+    margin: 0 0 6px;
+    font-size: 22px;
+}
+
+/* =====================
+   FOOTER
+===================== */
+
+footer {
+    text-align: center;
+    padding: 20px 10px 30px;
+
+    color: #52717e;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* =====================
+   RECAPTCHA
+===================== */
+
+#recaptcha-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+/* =====================
+   MOBILE
+===================== */
+
+@media (max-width: 380px) {
+
+    .container {
+        padding: 8px;
+    }
+
+    .header {
+        border-radius: 20px;
+        padding: 22px 8px;
+    }
+
+    .water-drop {
+        font-size: 50px;
+    }
+
+    .header h1 {
+        font-size: 28px;
+    }
+
+    .tagline {
+        font-size: 16px;
+    }
+
+    .price {
+        font-size: 20px;
+        gap: 3px;
+    }
+
+    .card,
+    .login-card {
+        border-radius: 20px;
+        padding:
+            17px 12px 23px;
+    }
+
+    label {
+        font-size: 16px;
+    }
+
+    input,
+    textarea {
+        font-size: 16px;
+    }
+
+    .total {
+        font-size: 20px;
+    }
+
+    .login-row {
+        flex-direction: column;
+    }
+
+    .small-btn {
+        min-height: 50px;
+    }
+}
+
+</style>
 </head>
-
 
 <body>
 
 <div class="container">
 
+<!-- =====================
+     HEADER
+===================== -->
 
-    <!-- =====================
-         HEADER
-    ====================== -->
+<header class="header">
 
-    <header class="header">
+    <div class="water-drop">
+        💧
+    </div>
 
-        <div class="water-drop">
-            💧
+    <h1>
+        NECTAR WATER
+    </h1>
+
+    <div class="tagline">
+        राधे राधे 🙏<br>
+        शुद्ध पानी • आपके घर तक
+    </div>
+
+    <div class="price">
+        💧 20 Liter Jar • ₹20 प्रति Jar
+    </div>
+
+</header>
+
+
+<!-- =====================
+     LOGIN
+===================== -->
+
+<section class="login-card">
+
+    <div class="login-title">
+        📱 Customer Login
+    </div>
+
+    <div id="loginForm">
+
+        <div class="login-info">
+            Order करने के लिए मोबाइल नंबर से Login करें
         </div>
 
-        <h1>
-            NECTAR WATER
-        </h1>
-
-        <div class="tagline">
-            राधे राधे 🙏<br>
-            शुद्ध पानी • आपके घर तक
-        </div>
-
-        <div class="price">
-            💧 20 Liter Jar • ₹20 प्रति Jar
-        </div>
-
-    </header>
-
-
-    <!-- =====================
-         ORDER CARD
-    ====================== -->
-
-    <main class="card">
-
-
-        <!-- CAPACITY -->
-
-        <div class="capacity">
-
-            📅 चुनी गई तारीख की उपलब्ध क्षमता:
-
-            <br>
-
-            <strong>
-                <span id="availableJars">
-                    300
-                </span>
-
-                / 300 Jar बाकी
-            </strong>
-
-        </div>
-
-
-        <!-- =====================
-             FORM
-        ====================== -->
-
-        <div class="field">
-
-            <label>
-                👤 आपका नाम
-            </label>
-
-            <input
-                type="text"
-                id="name"
-                placeholder="अपना नाम लिखें"
-                autocomplete="name"
-            >
-
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                📱 मोबाइल नंबर
-            </label>
+        <div class="login-row">
 
             <input
                 type="tel"
-                id="mobile"
+                id="loginMobile"
                 placeholder="10 अंकों का मोबाइल नंबर"
                 maxlength="10"
                 inputmode="numeric"
                 autocomplete="tel"
             >
 
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                📅 Delivery Date
-            </label>
-
-            <input
-                type="date"
-                id="deliveryDate"
+            <button
+                class="small-btn"
+                id="sendOtpBtn"
+                onclick="sendOTP()"
             >
+                OTP भेजें
+            </button>
 
         </div>
 
+        <div id="recaptcha-container"></div>
 
-        <div class="field">
-
-            <label>
-                🪣 कितने Jar चाहिए?
-            </label>
+        <div id="otpArea">
 
             <input
-                type="number"
-                id="quantity"
-                value="1"
-                min="1"
-                max="300"
+                type="tel"
+                id="otp"
+                placeholder="6 अंकों का OTP"
+                maxlength="6"
                 inputmode="numeric"
             >
 
-        </div>
-
-
-        <div class="field">
-
-            <label>
-                📏 दूरी (KM)
-            </label>
-
-            <input
-                type="number"
-                id="distance"
-                value="0"
-                min="0"
-                step="0.1"
-                inputmode="decimal"
+            <button
+                class="small-btn"
+                style="width:100%; margin-top:10px; min-height:50px;"
+                id="verifyOtpBtn"
+                onclick="verifyOTP()"
             >
+                ✅ OTP Verify करें
+            </button>
 
         </div>
 
+        <div id="loginStatus"></div>
 
-        <div class="field">
+    </div>
 
-            <label>
-                📍 पूरा Address
-            </label>
+    <div
+        class="logged-in"
+        id="loggedInBox"
+    >
 
-            <textarea
-                id="address"
-                placeholder="अपना पूरा पता लिखें"
-            ></textarea>
+        ✅ <b>Login सफल है</b>
 
-        </div>
-
-
-        <!-- =====================
-             ORDER SUMMARY
-        ====================== -->
-
-        <div class="summary">
-
-            <h2>
-                🧾 Order Summary
-            </h2>
-
-
-            <div class="row">
-
-                <span>
-                    Jar Price
-                </span>
-
-                <span id="jarPrice">
-                    ₹20 × 1
-                </span>
-
-            </div>
-
-
-            <div class="row">
-
-                <span>
-                    Water Amount
-                </span>
-
-                <span id="waterAmount">
-                    ₹20
-                </span>
-
-            </div>
-
-
-            <div class="row">
-
-                <span>
-                    Delivery Charge
-                </span>
-
-                <span id="deliveryCharge">
-                    ₹0
-                </span>
-
-            </div>
-
-
-            <div class="row total">
-
-                <span>
-                    कुल राशि
-                </span>
-
-                <span id="totalAmount">
-                    ₹20
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- =====================
-             ORDER BUTTON
-        ====================== -->
-
-        <button
-            class="order-btn"
-            id="orderBtn"
-            onclick="placeOrder()"
-        >
-            🛒 Order करें
-        </button>
-
-
-        <!-- =====================
-             SUCCESS
-        ====================== -->
-
-        <div
-            class="success"
-            id="successBox"
-        >
-
-            <h3>
-                ✅ Order सफल हुआ!
-            </h3>
-
-            <div id="successText"></div>
-
-        </div>
-
-    </main>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        Nectar Water
         <br>
 
-        शुद्ध पानी • आपके घर तक
+        मोबाइल:
+        <b id="loggedMobile"></b>
 
-    </footer>
+        <br>
+
+        अब आप Order कर सकते हैं।
+
+        <br>
+
+        <button
+            class="logout-btn"
+            onclick="logoutCustomer()"
+        >
+            Logout
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================
+     ORDER CARD
+===================== -->
+
+<main class="card">
+
+    <div class="capacity">
+
+        📅 चुनी गई तारीख की उपलब्ध क्षमता:
+
+        <br>
+
+        <strong>
+            <span id="availableJars">
+                300
+            </span>
+
+            / 300 Jar बाकी
+        </strong>
+
+    </div>
+
+
+    <!-- NAME -->
+
+    <div class="field">
+
+        <label>
+            👤 आपका नाम
+        </label>
+
+        <input
+            type="text"
+            id="name"
+            placeholder="अपना नाम लिखें"
+            autocomplete="name"
+        >
+
+    </div>
+
+
+    <!-- MOBILE -->
+
+    <div class="field">
+
+        <label>
+            📱 मोबाइल नंबर
+        </label>
+
+        <input
+            type="tel"
+            id="mobile"
+            placeholder="Login के बाद नंबर यहाँ आएगा"
+            maxlength="10"
+            inputmode="numeric"
+            readonly
+        >
+
+    </div>
+
+
+    <!-- DATE -->
+
+    <div class="field">
+
+        <label>
+            📅 Delivery Date
+        </label>
+
+        <input
+            type="date"
+            id="deliveryDate"
+        >
+
+    </div>
+
+
+    <!-- QUANTITY -->
+
+    <div class="field">
+
+        <label>
+            🪣 कितने Jar चाहिए?
+        </label>
+
+        <input
+            type="number"
+            id="quantity"
+            value="1"
+            min="1"
+            max="300"
+            inputmode="numeric"
+        >
+
+    </div>
+
+
+    <!-- DISTANCE -->
+
+    <div class="field">
+
+        <label>
+            📏 दूरी (KM)
+        </label>
+
+        <input
+            type="number"
+            id="distance"
+            value="0"
+            min="0"
+            step="0.1"
+            inputmode="decimal"
+        >
+
+    </div>
+
+
+    <!-- ADDRESS -->
+
+    <div class="field">
+
+        <label>
+            📍 पूरा Address
+        </label>
+
+        <textarea
+            id="address"
+            placeholder="अपना पूरा पता लिखें"
+        ></textarea>
+
+    </div>
+
+
+    <!-- SUMMARY -->
+
+    <div class="summary">
+
+        <h2>
+            🧾 Order Summary
+        </h2>
+
+        <div class="row">
+
+            <span>
+                Jar Price
+            </span>
+
+            <span id="jarPrice">
+                ₹20 × 1
+            </span>
+
+        </div>
+
+
+        <div class="row">
+
+            <span>
+                Water Amount
+            </span>
+
+            <span id="waterAmount">
+                ₹20
+            </span>
+
+        </div>
+
+
+        <div class="row">
+
+            <span>
+                Delivery Charge
+            </span>
+
+            <span id="deliveryCharge">
+                ₹0
+            </span>
+
+        </div>
+
+
+        <div class="row total">
+
+            <span>
+                कुल राशि
+            </span>
+
+            <span id="totalAmount">
+                ₹20
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- ORDER BUTTON -->
+
+    <button
+        class="order-btn"
+        id="orderBtn"
+        onclick="placeOrder()"
+    >
+        🛒 Order करें
+    </button>
+
+
+    <!-- SUCCESS -->
+
+    <div
+        class="success"
+        id="successBox"
+    >
+
+        <h3>
+            ✅ Order सफल हुआ!
+        </h3>
+
+        <div id="successText"></div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    Nectar Water
+    <br>
+
+    शुद्ध पानी • आपके घर तक
+
+</footer>
 
 </div>
 
 
-<script>
+<!-- ==================================================
+     FIREBASE
+================================================== -->
+
+<script type="module">
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+import {
+    getAuth,
+    RecaptchaVerifier,
+    signInWithPhoneNumber,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+import {
+    getFirestore,
+    doc,
+    getDoc,
+    setDoc,
+    runTransaction,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+
+/* ==========================
+   FIREBASE CONFIG
+========================== */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyC3qW2tnclJO65ziiptBAWxzifPoSLcKTw",
+
+    authDomain:
+        "nectar-water-e42b4.firebaseapp.com",
+
+    projectId:
+        "nectar-water",
+
+    storageBucket:
+        "nectar-water.firebasestorage.app",
+
+    messagingSenderId:
+        "292708650665",
+
+    appId:
+        "1:292708650665:web:f8ec60a21665e70867a3b4",
+
+    measurementId:
+        "G-P40N8EEDRC"
+
+};
+
+
+/* ==========================
+   INITIALIZE
+========================== */
+
+const app =
+    initializeApp(firebaseConfig);
+
+const auth =
+    getAuth(app);
+
+const db =
+    getFirestore(app);
+
+
+let confirmationResult = null;
+
+let recaptchaVerifier = null;
+
+
+/* ==========================
+   RECAPTCHA
+========================== */
+
+function setupRecaptcha() {
+
+    if (recaptchaVerifier) {
+        return;
+    }
+
+    recaptchaVerifier =
+        new RecaptchaVerifier(
+            auth,
+            "recaptcha-container",
+            {
+                size: "normal",
+
+                callback: () => {
+
+                    document.getElementById(
+                        "loginStatus"
+                    ).textContent =
+                        "✅ Verification complete";
+
+                },
+
+                "expired-callback": () => {
+
+                    document.getElementById(
+                        "loginStatus"
+                    ).textContent =
+                        "reCAPTCHA expire हो गया। फिर से प्रयास करें।";
+
+                }
+
+            }
+        );
+
+}
+
+
+/* ==========================
+   SEND OTP
+========================== */
+
+window.sendOTP = async function() {
+
+    const mobile =
+        document
+        .getElementById("loginMobile")
+        .value
+        .trim();
+
+
+    if (
+        !/^[6-9][0-9]{9}$/
+        .test(mobile)
+    ) {
+
+        alert(
+            "कृपया सही 10 अंकों का मोबाइल नंबर डालें।"
+        );
+
+        return;
+    }
+
+
+    const btn =
+        document.getElementById(
+            "sendOtpBtn"
+        );
+
+    btn.disabled = true;
+
+    btn.textContent =
+        "OTP भेज रहे हैं...";
+
+
+    try {
+
+        setupRecaptcha();
+
+        const phoneNumber =
+            "+91" + mobile;
+
+
+        confirmationResult =
+            await signInWithPhoneNumber(
+                auth,
+                phoneNumber,
+                recaptchaVerifier
+            );
+
+
+        document.getElementById(
+            "otpArea"
+        ).style.display =
+            "block";
+
+
+        document.getElementById(
+            "loginStatus"
+        ).textContent =
+            "📩 OTP आपके मोबाइल पर भेज दिया गया है।";
+
+
+        btn.textContent =
+            "OTP भेजा गया";
+
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        document.getElementById(
+            "loginStatus"
+        ).textContent =
+            "❌ OTP भेजने में समस्या: " +
+            error.message;
+
+
+        btn.disabled = false;
+
+        btn.textContent =
+            "OTP फिर भेजें";
+
+    }
+
+};
+
+
+/* ==========================
+   VERIFY OTP
+========================== */
+
+window.verifyOTP = async function() {
+
+    const otp =
+        document
+        .getElementById("otp")
+        .value
+        .trim();
+
+
+    if (!/^[0-9]{6}$/.test(otp)) {
+
+        alert(
+            "कृपया 6 अंकों का OTP डालें।"
+        );
+
+        return;
+    }
+
+
+    if (!confirmationResult) {
+
+        alert(
+            "पहले OTP भेजें।"
+        );
+
+        return;
+    }
+
+
+    const btn =
+        document.getElementById(
+            "verifyOtpBtn"
+        );
+
+    btn.disabled = true;
+
+    btn.textContent =
+        "Verify हो रहा है...";
+
+
+    try {
+
+        await confirmationResult.confirm(
+            otp
+        );
+
+
+        document.getElementById(
+            "loginStatus"
+        ).textContent =
+            "✅ Login सफल हुआ!";
+
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        document.getElementById(
+            "loginStatus"
+        ).textContent =
+            "❌ गलत OTP या OTP expire हो गया।";
+
+
+        btn.disabled = false;
+
+        btn.textContent =
+            "✅ OTP Verify करें";
+
+    }
+
+};
+
+
+/* ==========================
+   AUTH STATE
+========================== */
+
+onAuthStateChanged(
+    auth,
+    (user) => {
+
+        if (user) {
+
+            const phone =
+                user.phoneNumber || "";
+
+            const mobile =
+                phone.replace(
+                    "+91",
+                    ""
+                );
+
+
+            document.getElementById(
+                "loginForm"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "loggedInBox"
+            ).style.display =
+                "block";
+
+
+            document.getElementById(
+                "loggedMobile"
+            ).textContent =
+                mobile;
+
+
+            document.getElementById(
+                "mobile"
+            ).value =
+                mobile;
+
+        }
+
+        else {
+
+            document.getElementById(
+                "loginForm"
+            ).style.display =
+                "block";
+
+
+            document.getElementById(
+                "loggedInBox"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "mobile"
+            ).value =
+                "";
+
+        }
+
+    }
+);
+
+
+/* ==========================
+   LOGOUT
+========================== */
+
+window.logoutCustomer =
+    async function() {
+
+        try {
+
+            await signOut(auth);
+
+            alert(
+                "Logout सफल हुआ।"
+            );
+
+        }
+
+        catch (error) {
+
+            console.error(error);
+
+        }
+
+    };
+
+
+/* ==========================
+   CHECK DAILY CAPACITY
+========================== */
+
+async function loadCapacity() {
+
+    const date =
+        document
+        .getElementById("deliveryDate")
+        .value;
+
+
+    if (!date) {
+        return;
+    }
+
+
+    try {
+
+        const bookingRef =
+            doc(
+                db,
+                "dailyBookings",
+                date
+            );
+
+
+        const snapshot =
+            await getDoc(
+                bookingRef
+            );
+
+
+        let booked = 0;
+
+
+        if (snapshot.exists()) {
+
+            booked =
+                Number(
+                    snapshot.data().bookedJar
+                ) || 0;
+
+        }
+
+
+        const remaining =
+            Math.max(
+                0,
+                300 - booked
+            );
+
+
+        document.getElementById(
+            "availableJars"
+        ).textContent =
+            remaining;
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Capacity error:",
+            error
+        );
+
+    }
+
+}
 
 
 /* ==========================
@@ -769,6 +1369,14 @@ dateInput.min =
     todayString;
 
 
+dateInput.addEventListener(
+    "change",
+    loadCapacity
+);
+
+
+loadCapacity();
+
 
 /* ==========================
    ELEMENTS
@@ -784,7 +1392,6 @@ const distanceInput =
     document.getElementById(
         "distance"
     );
-
 
 
 /* ==========================
@@ -820,7 +1427,7 @@ function calculateTotal() {
     /*
        DELIVERY RULE
 
-       1-29 Jar:
+       1-30 Jar:
        5 KM तक FREE
        5-15 KM = ₹1.50 प्रति Jar
 
@@ -843,7 +1450,9 @@ function calculateTotal() {
 
         }
 
-    } else {
+    }
+
+    else {
 
         if (
             distance > 5 &&
@@ -904,19 +1513,14 @@ function calculateTotal() {
     return {
 
         quantity,
-
         distance,
-
         waterAmount,
-
         deliveryCharge,
-
         total
 
     };
 
 }
-
 
 
 /* ==========================
@@ -938,12 +1542,32 @@ distanceInput.addEventListener(
 calculateTotal();
 
 
-
 /* ==========================
    ORDER
 ========================== */
 
-function placeOrder() {
+window.placeOrder =
+    async function() {
+
+
+    /* LOGIN CHECK */
+
+    const user =
+        auth.currentUser;
+
+
+    if (!user) {
+
+        alert(
+            "पहले मोबाइल नंबर से Login करें।"
+        );
+
+        document
+        .getElementById("loginMobile")
+        .focus();
+
+        return;
+    }
 
 
     const name =
@@ -954,10 +1578,12 @@ function placeOrder() {
 
 
     const mobile =
-        document
-        .getElementById("mobile")
-        .value
-        .trim();
+        user.phoneNumber
+        ? user.phoneNumber.replace(
+            "+91",
+            ""
+        )
+        : "";
 
 
     const date =
@@ -977,7 +1603,6 @@ function placeOrder() {
         calculateTotal();
 
 
-
     /* NAME */
 
     if (!name) {
@@ -990,23 +1615,6 @@ function placeOrder() {
     }
 
 
-
-    /* MOBILE */
-
-    if (
-        !/^[6-9][0-9]{9}$/
-        .test(mobile)
-    ) {
-
-        alert(
-            "कृपया सही 10 अंकों का मोबाइल नंबर डालें।"
-        );
-
-        return;
-    }
-
-
-
     /* DATE */
 
     if (!date) {
@@ -1017,7 +1625,6 @@ function placeOrder() {
 
         return;
     }
-
 
 
     /* QUANTITY */
@@ -1035,7 +1642,6 @@ function placeOrder() {
     }
 
 
-
     /* ADDRESS */
 
     if (!address) {
@@ -1048,40 +1654,274 @@ function placeOrder() {
     }
 
 
-
-    /* SUCCESS */
-
-    const successBox =
+    const orderBtn =
         document.getElementById(
-            "successBox"
+            "orderBtn"
         );
 
 
-    const successText =
-        document.getElementById(
-            "successText"
+    orderBtn.disabled = true;
+
+    orderBtn.textContent =
+        "Order दर्ज हो रहा है...";
+
+
+    try {
+
+
+        /* =====================
+           FIRESTORE TRANSACTION
+        ===================== */
+
+        const orderNumber =
+            "NW" +
+            Date.now();
+
+
+        await runTransaction(
+            db,
+            async (transaction) => {
+
+
+                const bookingRef =
+                    doc(
+                        db,
+                        "dailyBookings",
+                        date
+                    );
+
+
+                const bookingSnapshot =
+                    await transaction.get(
+                        bookingRef
+                    );
+
+
+                let bookedJar = 0;
+
+
+                if (
+                    bookingSnapshot.exists()
+                ) {
+
+                    bookedJar =
+                        Number(
+                            bookingSnapshot.data()
+                            .bookedJar
+                        ) || 0;
+
+                }
+
+
+                const remaining =
+                    300 - bookedJar;
+
+
+                if (
+                    result.quantity >
+                    remaining
+                ) {
+
+                    throw new Error(
+                        "इस तारीख के लिए केवल " +
+                        remaining +
+                        " Jar उपलब्ध हैं।"
+                    );
+
+                }
+
+
+                const newBookedJar =
+                    bookedJar +
+                    result.quantity;
+
+
+                if (
+                    bookingSnapshot.exists()
+                ) {
+
+                    transaction.update(
+                        bookingRef,
+                        {
+
+                            bookedJar:
+                                newBookedJar,
+
+                            lastOrderQuantity:
+                                result.quantity,
+
+                            updatedAt:
+                                serverTimestamp()
+
+                        }
+                    );
+
+                }
+
+                else {
+
+                    transaction.set(
+                        bookingRef,
+                        {
+
+                            bookedJar:
+                                result.quantity,
+
+                            lastOrderQuantity:
+                                result.quantity,
+
+                            updatedAt:
+                                serverTimestamp()
+
+                        }
+                    );
+
+                }
+
+
+                /* =================
+                   ORDER DOCUMENT
+                ================= */
+
+                const orderRef =
+                    doc(
+                        db,
+                        "orders",
+                        orderNumber
+                    );
+
+
+                transaction.set(
+                    orderRef,
+                    {
+
+                        orderNumber:
+                            orderNumber,
+
+                        uid:
+                            user.uid,
+
+                        name:
+                            name,
+
+                        mobile:
+                            mobile,
+
+                        quantity:
+                            result.quantity,
+
+                        jarPrice:
+                            20,
+
+                        waterAmount:
+                            result.waterAmount,
+
+                        distance:
+                            result.distance,
+
+                        deliveryCharge:
+                            result.deliveryCharge,
+
+                        totalAmount:
+                            result.total,
+
+                        deliveryDate:
+                            date,
+
+                        address:
+                            address,
+
+                        status:
+                            "Pending",
+
+                        createdAt:
+                            serverTimestamp()
+
+                    }
+                );
+
+            }
         );
 
 
-    successText.innerHTML =
+        /* =====================
+           SUCCESS
+        ===================== */
 
-        `धन्यवाद <b>${escapeHtml(name)}</b>!<br>
-        आपके लिए <b>${result.quantity} Jar</b> का Order दर्ज किया गया है।<br>
-        Delivery Date: <b>${formatDate(date)}</b><br>
-        कुल राशि: <b>₹${result.total}</b>`;
-
-
-    successBox.style.display =
-        "block";
+        const successBox =
+            document.getElementById(
+                "successBox"
+            );
 
 
-    successBox.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-    });
+        const successText =
+            document.getElementById(
+                "successText"
+            );
 
-}
 
+        successText.innerHTML =
+
+            `धन्यवाद <b>${escapeHtml(name)}</b>!<br>
+            आपका Order सफलतापूर्वक दर्ज हो गया है।<br><br>
+
+            🧾 Order Number:
+            <b>${escapeHtml(orderNumber)}</b><br>
+
+            📱 मोबाइल:
+            <b>${escapeHtml(mobile)}</b><br>
+
+            🪣 Jar:
+            <b>${result.quantity}</b><br>
+
+            📅 Delivery Date:
+            <b>${formatDate(date)}</b><br>
+
+            💰 कुल राशि:
+            <b>₹${result.total}</b>`;
+
+
+        successBox.style.display =
+            "block";
+
+
+        successBox.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+
+        await loadCapacity();
+
+
+        orderBtn.textContent =
+            "✅ Order हो गया";
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "ORDER ERROR:",
+            error
+        );
+
+
+        alert(
+            error.message ||
+            "Order करने में समस्या आई। कृपया फिर प्रयास करें।"
+        );
+
+
+        orderBtn.disabled = false;
+
+        orderBtn.textContent =
+            "🛒 Order करें";
+
+    }
+
+};
 
 
 /* ==========================
@@ -1099,7 +1939,6 @@ function formatDate(
     return `${parts[2]}/${parts[1]}/${parts[0]}`;
 
 }
-
 
 
 /* ==========================
@@ -1122,8 +1961,8 @@ function escapeHtml(text) {
 
 }
 
-
 </script>
 
 </body>
 </html>
+```
